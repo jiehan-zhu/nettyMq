@@ -23,11 +23,7 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
-        <!-- 分页框架 -->
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-        </dependency>
+
         <!-- JSON 序列化框架 -->
         <dependency>
             <groupId>com.alibaba</groupId>

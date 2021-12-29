@@ -14,8 +14,8 @@ import java.util.List;
 
 /**
  * Describe: 用户领域模型
- * Author: 就 眠 仪 式
- * CreateTime: 2019/10/23
+ * @author 就 眠 仪 式
+ * @date 2019/10/23
  */
 @Getter
 @Setter

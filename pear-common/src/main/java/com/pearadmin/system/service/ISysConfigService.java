@@ -69,4 +69,11 @@ public interface ISysConfigService {
      * Return: Boolean
      */
     Boolean batchRemove(String[] ids);
+
+    /**
+     * 查询系统配置
+     *
+     * @param code
+     */
+    String getConfig(String code);
 }

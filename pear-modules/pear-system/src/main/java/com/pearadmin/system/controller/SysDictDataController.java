@@ -3,17 +3,14 @@ package com.pearadmin.system.controller;
 import com.github.pagehelper.PageInfo;
 import com.pearadmin.common.constant.CommonConstant;
 import com.pearadmin.common.constant.ControllerConstant;
-import com.pearadmin.common.plugin.system.domain.SysBaseDict;
-import com.pearadmin.common.plugin.system.service.SystemService;
+import com.pearadmin.system.service.SystemService;
 import com.pearadmin.common.tools.SqlInjectionUtil;
-import com.pearadmin.common.tools.SecurityUtil;
 import com.pearadmin.common.tools.SequenceUtil;
 import com.pearadmin.common.web.base.BaseController;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.common.web.domain.response.module.ResultTable;
 import com.pearadmin.system.domain.SysDictData;
-import com.pearadmin.system.domain.SysUser;
 import com.pearadmin.system.service.ISysDictDataService;
 import io.swagger.annotations.Api;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -85,9 +81,9 @@ public class SysDictDataController extends BaseController {
      * Return: Result
      */
     @GetMapping(value = "/getDictItems/{dictCode}")
-    public Result<List<SysBaseDict>> getDictItems(@PathVariable String dictCode, @RequestParam(value = "sign", required = false) String sign, HttpServletRequest request) {
-        Result<List<SysBaseDict>> result = new Result<List<SysBaseDict>>();
-        List<SysBaseDict> ls = null;
+    public Result<List<SysDictData>> getDictItems(@PathVariable String dictCode, @RequestParam(value = "sign", required = false) String sign, HttpServletRequest request) {
+        Result<List<SysDictData>> result = new Result<>();
+        List<SysDictData> ls = null;
         try {
             if (dictCode.contains(CommonConstant.COMMA)) {
                 String[] params = dictCode.split(",");
@@ -99,14 +95,14 @@ public class SysDictDataController extends BaseController {
                 SqlInjectionUtil.filterContent(sqlInjCheck);
                 if (params.length == 4) {
                     SqlInjectionUtil.specialFilterContent(params[3]);
-                    ls = iSysBaseAPI.queryTableDictItemsByCodeAndFilter(params[0], params[1], params[2], params[3]);
+                    ls = sysDictDataService.queryTableDictItemsByCodeAndFilter(params[0], params[1], params[2], params[3]);
                 } else if (params.length == 3) {
-                    ls = iSysBaseAPI.queryTableDictItemsByCode(params[0], params[1], params[2]);
+                    ls = sysDictDataService.queryTableDictItemsByCode(params[0], params[1], params[2]);
                 } else {
                     return Result.failure("字典Code格式不正确！");
                 }
             } else {
-                ls = iSysBaseAPI.selectDictByCode(dictCode);
+                ls = sysDictDataService.selectByCode(dictCode);
             }
             result.setSuccess(true);
             result.setData(ls);
@@ -123,8 +119,8 @@ public class SysDictDataController extends BaseController {
      * Return: Result
      */
     @RequestMapping(value = "/loadDictItem/{dictCode}", method = RequestMethod.GET)
-    public Result<List<SysBaseDict>> loadDictItem(@PathVariable String dictCode, @RequestParam(name = "key") String keys, @RequestParam(value = "sign", required = false) String sign, HttpServletRequest request) {
-        Result<List<SysBaseDict>> result = new Result<>();
+    public Result<List<SysDictData>> loadDictItem(@PathVariable String dictCode, @RequestParam(name = "key") String keys, @RequestParam(value = "sign", required = false) String sign, HttpServletRequest request) {
+        Result<List<SysDictData>> result = new Result<>();
         try {
             if (dictCode.contains(CommonConstant.COMMA)) {
                 String[] params = dictCode.split(CommonConstant.COMMA);
@@ -132,7 +128,7 @@ public class SysDictDataController extends BaseController {
                     return Result.failure("字典Code格式不正确！");
                 }
                 String[] keyArray = keys.split(CommonConstant.COMMA);
-                List<SysBaseDict> texts = iSysBaseAPI.queryTableDictByKeys(params[0], params[1], params[2], keyArray);
+                List<SysDictData> texts = sysDictDataService.queryTableDictByKeys(params[0], params[1], params[2], keyArray);
                 return Result.success(texts);
             } else {
                 return Result.failure("字典Code格式不正确！");

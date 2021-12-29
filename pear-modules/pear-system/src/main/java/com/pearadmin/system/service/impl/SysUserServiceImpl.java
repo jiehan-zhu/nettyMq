@@ -47,17 +47,8 @@ public class SysUserServiceImpl implements ISysUserService {
     @Resource
     private SysRoleMapper sysRoleMapper;
 
-    /**
-     * 注入权限服务
-     */
-    @Resource
-    private SysPowerMapper sysPowerMapper;
 
-    /**
-     * 超级管理员配置
-     */
-    @Resource
-    private SecurityProperty securityProperty;
+
 
     /**
      * Describe: 根据条件查询用户列表数据
@@ -183,32 +174,6 @@ public class SysUserServiceImpl implements ISysUserService {
         return allRole;
     }
 
-    /**
-     * Describe: 获取用户菜单
-     * Param: username
-     * Return: Result
-     */
-    @Override
-    public List<SysMenu> getUserMenu(String username) {
-        String name = !(securityProperty.isSuperAuthOpen() && username.equals(securityProperty.getSuperAdmin())) ? username : "";
-        return sysPowerMapper.selectMenuByUsername(name);
-    }
 
-    /**
-     * Describe: 递归获取菜单tree
-     * Param: sysMenus
-     * Return: 操作结果
-     */
-    @Override
-    public List<SysMenu> toUserMenu(List<SysMenu> sysMenus, String parentId) {
-        List<SysMenu> list = new ArrayList<>();
-        for (SysMenu menu : sysMenus) {
-            if (parentId.equals(menu.getParentId())) {
-                menu.setChildren(toUserMenu(sysMenus, menu.getId()));
-                list.add(menu);
-            }
-        }
-        return list;
-    }
 
 }

@@ -116,7 +116,7 @@ public class SysPowerController extends BaseController {
             return failure("请选择上级菜单");
         }
         sysPower.setUpdateTime(LocalDateTime.now());
-        sysPower.setUpdateBy(((SysUser) SecurityUtil.currentUser()).getUserId());
+        sysPower.setUpdateBy(SecurityUtil.currentUser().getUserId());
         boolean result = sysPowerService.update(sysPower);
         return decide(result);
     }

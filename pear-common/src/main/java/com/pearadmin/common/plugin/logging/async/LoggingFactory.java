@@ -1,7 +1,7 @@
 package com.pearadmin.common.plugin.logging.async;
 
-import com.pearadmin.common.plugin.system.domain.SysBaseLog;
-import com.pearadmin.common.plugin.system.service.SystemService;
+import com.pearadmin.system.service.SystemService;
+import com.pearadmin.system.domain.SysLog;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +25,7 @@ public class LoggingFactory {
      * 执 行 日 志 入 库 操 作
      */
     @Async
-    public void record(SysBaseLog sysLog) {
+    public void record(SysLog sysLog) {
         sysContext.saveLog(sysLog);
     }
 }

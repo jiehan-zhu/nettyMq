@@ -78,19 +78,7 @@ public interface ISysUserService {
      */
     List<SysRole> getUserRole(String userId);
 
-    /**
-     * Describe: 获取用户菜单数据
-     * Param: SysUser
-     * Return: 操作结果
-     */
-    List<SysMenu> getUserMenu(String username);
 
-    /**
-     * Describe: 递归获取菜单tree
-     * Param: sysMenus
-     * Return: 操作结果
-     */
-    List<SysMenu> toUserMenu(List<SysMenu> sysMenus, String parentId);
 
 }
 

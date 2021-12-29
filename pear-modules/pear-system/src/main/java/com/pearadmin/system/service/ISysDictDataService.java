@@ -69,4 +69,39 @@ public interface ISysDictDataService {
      * Return: Boolean
      */
     Boolean updateById(SysDictData sysDictData);
+
+
+    /**
+     * 查询表字典通过查询指定table的 text code key 获取字典值
+     *
+     * @param table 表名
+     * @param text  label
+     * @param code  value
+     * @return
+     */
+    List<SysDictData> queryTableDictItemsByCode(String table, String text, String code);
+
+
+    /**
+     * 查询表字典 通过查询指定table的 text code 获取字典（指定查询条件）
+     *
+     * @param table 表名
+     * @param text  label
+     * @param code  value
+     * @param filterSql 条件
+     */
+    List<SysDictData> queryTableDictItemsByCodeAndFilter(String table, String text, String code, String filterSql);
+
+
+    /**
+     * 查询表字典 通过查询指定table的 text code key 获取字典值，包含value
+     *
+     * @param table    表名
+     * @param text     label
+     * @param code     value
+     * @param keyArray values
+     * @return
+     */
+    List<SysDictData> queryTableDictByKeys(String table, String text, String code, String[] keyArray);
+
 }

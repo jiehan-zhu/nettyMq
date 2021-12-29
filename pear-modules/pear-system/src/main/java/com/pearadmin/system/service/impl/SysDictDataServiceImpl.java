@@ -10,6 +10,7 @@ import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.system.domain.SysDictData;
 import com.pearadmin.system.mapper.SysDictDataMapper;
 import com.pearadmin.system.service.ISysDictDataService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -104,4 +105,21 @@ public class SysDictDataServiceImpl implements ISysDictDataService {
         }
         return true;
     }
+
+    @Override
+    public List<SysDictData> queryTableDictItemsByCode(String table, String text, String code) {
+        return sysDictDataMapper.queryTableDictItemsByCode(table, text, code);
+    }
+
+    @Override
+    public List<SysDictData> queryTableDictItemsByCodeAndFilter(String table, String text, String code, String filterSql) {
+        return sysDictDataMapper.queryTableDictItemsByCodeAndFilter(table, text, code, filterSql);
+    }
+
+    @Override
+    public List<SysDictData> queryTableDictByKeys(String table, String text, String code, String[] keyArray) {
+        return sysDictDataMapper.queryTableDictByKeys(table, text, code, keyArray);
+    }
+
+
 }

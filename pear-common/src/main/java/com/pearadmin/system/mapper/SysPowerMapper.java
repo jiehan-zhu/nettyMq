@@ -1,6 +1,5 @@
 package com.pearadmin.system.mapper;
 
-import com.pearadmin.system.domain.SysMenu;
 import com.pearadmin.system.domain.SysPower;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -50,12 +49,6 @@ public interface SysPowerMapper {
      */
     List<SysPower> selectByUsername(String username);
 
-    /**
-     * Describe: 根据 username 查询用户菜单
-     * Param: username
-     * Return: ResuMenu
-     */
-    List<SysMenu> selectMenuByUsername(String username);
 
 
     /**

@@ -159,7 +159,7 @@ public class SysUserController extends BaseController {
         String oldPassword = editPassword.getOldPassword();
         String newPassword = editPassword.getNewPassword();
         String confirmPassword = editPassword.getConfirmPassword();
-        SysUser sysUser = (SysUser) ServletUtil.getSession().getAttribute("currentUser");
+        SysUser sysUser = SecurityUtil.currentUser();
         SysUser editUser = sysUserService.getById(sysUser.getUserId());
         if (Strings.isBlank(confirmPassword)
                 || Strings.isBlank(newPassword)
@@ -201,7 +201,7 @@ public class SysUserController extends BaseController {
     @ApiOperation(value = "修改用户头像")
     @Logging(title = "修改头像", describe = "修改头像", type = BusinessType.EDIT)
     public Result updateAvatar(@RequestBody SysUser sysUser) {
-        String userId = ((SysUser) SecurityUtil.currentUser()).getUserId();
+        String userId = SecurityUtil.currentUser().getUserId();
         sysUser.setUserId(userId);
         boolean result = sysUserService.update(sysUser);
         return decide(result);
@@ -236,18 +236,7 @@ public class SysUserController extends BaseController {
         return decide(result);
     }
 
-    /**
-     * Describe: 根据 username 获取菜单数据
-     * Param SysRole
-     * Return 执行结果
-     */
-    @GetMapping("menu")
-    @ApiOperation(value = "获取用户菜单数据")
-    public List<SysMenu> getUserMenu() {
-        SysUser sysUser = (SysUser) SecurityUtil.currentUser();
-        List<SysMenu> menus = sysUserService.getUserMenu(sysUser.getUsername());
-        return sysUserService.toUserMenu(menus, "0");
-    }
+
 
     /**
      * Describe: 根据 userId 开启用户
@@ -283,7 +272,7 @@ public class SysUserController extends BaseController {
     @GetMapping("center")
     @ApiOperation(value = "个人资料")
     public ModelAndView center(Model model) {
-        SysUser sysUser = (SysUser) SecurityUtil.currentUser();
+        SysUser sysUser = SecurityUtil.currentUser();
         model.addAttribute("userInfo", sysUserService.getById(sysUser.getUserId()));
         model.addAttribute("logs", sysLogService.selectTopLoginLog(sysUser.getUsername()));
         return jumpPage(MODULE_PATH + "center");

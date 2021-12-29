@@ -111,4 +111,10 @@ public class SysConfigServiceImpl implements ISysConfigService {
         return result > 0;
     }
 
+    @Override
+    public String getConfig(String code) {
+        SysConfig config = sysConfigMapper.selectByCode(code);
+        return config != null ? config.getConfigValue() : "";
+    }
+
 }
