@@ -1,4 +1,4 @@
-package com.pearadmin.system.param;
+package com.pearadmin.system.domain.vo;
 
 import lombok.Data;
 
@@ -11,6 +11,7 @@ import lombok.Data;
  */
 @Data
 public class EditPassword {
+    private String userId;
 
     /**
      * 旧密码

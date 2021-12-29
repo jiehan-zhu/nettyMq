@@ -73,6 +73,9 @@
     <button sec:authorize="hasPermission('/system/user/remove','sys:user:remove')"
             class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="pear-icon pear-icon-ashbin"></i>
     </button>
+    <button sec:authorize="hasPermission('/system/user/editpasswordadmin','sys:user:editpasswordadmin')"
+            class="pear-btn pear-btn-danger pear-btn-sm" lay-event="editpasswordadmin"><i class="layui-icon layui-icon-key"></i>
+    </button>
 </script>
 
 <script id="user-enable" type="text/html">
@@ -117,7 +120,7 @@
                 {title: '电话', field: 'phone', align: 'center'},
                 {title: '启用', field: 'enable', align: 'center', templet: '#user-enable', width: 120},
                 {title: '注册时间', field: 'createTime', align: 'center'},
-                {title: '操作', toolbar: '#user-bar', align: 'center', width: 130}
+                {title: '操作', toolbar: '#user-bar', align: 'center', width: 180}
             ]
         ]
 
@@ -178,6 +181,8 @@
                 window.remove(obj);
             } else if (obj.event === 'edit') {
                 window.edit(obj);
+            }else if (obj.event === 'editpasswordadmin') {
+                window.editpasswordadmin(obj);
             }
         });
 
@@ -242,6 +247,16 @@
                 shade: 0.1,
                 area: ['550px', '500px'],
                 content: MODULE_PATH + 'edit?userId=' + obj.data['userId']
+            });
+        }
+
+        window.editpasswordadmin = function (obj){
+            layer.open({
+                type: 2,
+                title: '修改用户密码',
+                shade: 0.1,
+                area: ['550px', '200px'],
+                content: MODULE_PATH + 'editpasswordadmin?userId=' + obj.data['userId']
             });
         }
 

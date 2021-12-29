@@ -7,14 +7,12 @@ import com.pearadmin.common.plugin.logging.aop.enums.BusinessType;
 import com.pearadmin.common.plugin.submit.annotation.RepeatSubmit;
 import com.pearadmin.common.tools.SecurityUtil;
 import com.pearadmin.common.tools.SequenceUtil;
-import com.pearadmin.common.tools.ServletUtil;
 import com.pearadmin.common.web.base.BaseController;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.common.web.domain.response.module.ResultTable;
-import com.pearadmin.system.domain.SysMenu;
 import com.pearadmin.system.domain.SysUser;
-import com.pearadmin.system.param.EditPassword;
+import com.pearadmin.system.domain.vo.EditPassword;
 import com.pearadmin.system.service.ISysLogService;
 import com.pearadmin.system.service.ISysRoleService;
 import com.pearadmin.system.service.ISysUserService;
@@ -30,7 +28,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Describe: 用户控制器
@@ -137,6 +134,34 @@ public class SysUserController extends BaseController {
         model.addAttribute("sysRoles", sysUserService.getUserRole(userId));
         model.addAttribute("sysUser", sysUserService.getById(userId));
         return jumpPage(MODULE_PATH + "edit");
+    }
+
+    /**
+     * Describe: 用户密码修改视图
+     * Param ModelAndView
+     * Return 返回用户密码修改视图
+     */
+    @GetMapping("editpasswordadmin")
+    @ApiOperation(value = "获取管理员修改用户密码视图")
+    @PreAuthorize("hasPermission('/system/user/editPasswordAdmin','sys:user:editPasswordAdmin')")
+    public ModelAndView editPasswordAdminView(Model model, String userId) {
+        model.addAttribute("userId", userId);
+        return jumpPage(MODULE_PATH + "editPasswordAdmin");
+    }
+
+    /**
+     * Describe: 管理员修改用户密码接口
+     * Param editPassword
+     * Return: Result
+     */
+    @PutMapping("editPasswordAdmin")
+    @ApiOperation(value = "管理员修改用户密码")
+    @PreAuthorize("hasPermission('/system/user/editPasswordAdmin','sys:user:editPasswordAdmin')")
+    public Result editPasswordAdmin(@RequestBody EditPassword editPassword) {
+        SysUser editUser = sysUserService.getById(editPassword.getUserId());
+        editUser.setPassword(new BCryptPasswordEncoder().encode(editPassword.getNewPassword()));
+        boolean result = sysUserService.update(editUser);
+        return decide(result, "修改成功", "修改失败");
     }
 
     /**
