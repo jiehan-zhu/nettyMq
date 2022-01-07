@@ -38,5 +38,4 @@ public class SysConfig extends BaseDomain {
      * 配置值
      */
     private String configValue;
-
 }

@@ -2,6 +2,7 @@ package com.pearadmin.common.context;
 
 import com.baomidou.dynamic.datasource.DynamicRoutingDataSource;
 import com.baomidou.dynamic.datasource.creator.DataSourceCreator;
+import com.baomidou.dynamic.datasource.creator.DefaultDataSourceCreator;
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DataSourceProperty;
 import com.baomidou.dynamic.datasource.toolkit.DynamicDataSourceContextHolder;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,7 @@ public class DataContext {
     protected DataSource dataSource;
 
     @Resource
-    protected DataSourceCreator dataSourceCreator;
+    protected DefaultDataSourceCreator dataSourceCreator;
 
     /**
      * 新增数据源

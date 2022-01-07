@@ -2,10 +2,12 @@ package com.pearadmin.modules.sys.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.pearadmin.common.cache.impl.DictionaryCache;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.modules.sys.domain.SysDictData;
 import com.pearadmin.modules.sys.mapper.SysDictDataMapper;
 import com.pearadmin.modules.sys.service.ISysDictDataService;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,12 +15,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Describe: 字典值服务实现类
+ * Describe: 数据字典实现类
  * Author: 就 眠 仪 式
  * CreateTime: 2019/10/23
  */
 @Service
 public class SysDictDataServiceImpl implements ISysDictDataService {
+
+    @Resource
+    private DictionaryCache dictionaryCache;
 
     @Resource
     private SysDictDataMapper sysDictDataMapper;
@@ -30,15 +35,12 @@ public class SysDictDataServiceImpl implements ISysDictDataService {
 
     @Override
     public List<SysDictData> selectByCode(String typeCode) {
-
-        // TODO 怎么说呢
-        return new ArrayList<>();
+        return dictionaryCache.get(typeCode);
     }
 
     @Override
     public void refreshCacheTypeCode(String typeCode) {
-
-        // TODO 刷新
+        dictionaryCache.reload();
     }
 
     @Override
@@ -99,6 +101,4 @@ public class SysDictDataServiceImpl implements ISysDictDataService {
     public List<SysDictData> queryTableDictByKeys(String table, String text, String code, String[] keyArray) {
         return sysDictDataMapper.queryTableDictByKeys(table, text, code, keyArray);
     }
-
-
 }
