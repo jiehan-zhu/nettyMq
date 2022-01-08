@@ -48,6 +48,6 @@ public class DictionaryCache extends BaseCache<List<SysDictData>> {
             List<SysDictData> dictData = sysDictDataService.list(sysDictData);
             map.put(dict.getTypeCode(),dictData);
         });
-        return new HashMap<>();
+        return map;
     }
 }

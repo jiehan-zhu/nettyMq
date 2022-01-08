@@ -11,31 +11,19 @@ layui.define(['jquery', 'element', 'form'], function (exports) {
          * 根据Code 获取字典列表
          */
         this.dictListByCode = function (dictCode) {
-            var loadDictData = sessionStorage.getItem('loadDictData' + dictCode);
-            if (loadDictData == null) {
-                $.ajax({
-                    url: '/system/dictData/selectByCode',
-                    data: {'typeCode': dictCode},
-                    type: 'get',
-                    async: false,
-                    success: function (result) {
-                        if (result.success === true) {
-                            loadDictData = result.data;
-                            try {
-                                window.sessionStorage.removeItem('loadDictData' + dictCode);
-                                sessionStorage.setItem('loadDictData' + dictCode, JSON.stringify(loadDictData));
-                            } catch (e) {
-
-                            }
-                        }
-
+            let dictData = null;
+            $.ajax({
+                url: '/system/dictData/selectByCode',
+                data: {'typeCode': dictCode},
+                type: 'get',
+                async: false,
+                success: function (result) {
+                    if (result.success === true) {
+                        dictData = result.data;
                     }
-                })
-            } else {
-                loadDictData = JSON.parse(loadDictData);
-            }
-            return loadDictData;
-
+                }
+            })
+            return dictData;
         }
 
         /**
