@@ -8,7 +8,9 @@ layui.define(['jquery', 'element', 'form'], function (exports) {
     const dictionary = new function () {
 
         /**
-         * 根据Code 获取字典列表
+         * 根据 Code 加载后台字典数据
+         *
+         * @param dictCode 标识
          */
         this.dictListByCode = function (dictCode) {
             let dictData = null;
