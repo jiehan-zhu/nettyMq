@@ -18,5 +18,4 @@ public @interface Excel {
     Class clazz();
 
     ExcelModel model() default ExcelModel.WRITE;
-
 }
