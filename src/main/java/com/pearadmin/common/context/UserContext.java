@@ -4,12 +4,14 @@ import com.pearadmin.modules.sys.domain.SysUser;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
 
 /**
  * Describe: Security 工 具 类
  * Author: 就 眠 仪 式
  * CreateTime: 2019/10/23
  */
+@Component
 public class UserContext {
 
     /**

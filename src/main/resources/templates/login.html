@@ -5,7 +5,7 @@
     <link rel="stylesheet" th:href="@{/admin/css/other/login.css}"/>
 </head>
 <!-- 代 码 结 构 -->
-<body background="admin/images/login.svg">
+<body class="login-body" background="admin/images/login.svg">
 <form action="javascript:void(0);" class="layui-form">
     <div class="layui-form-item">
         <img class="logo" src="admin/images/logo.png"/>
@@ -28,7 +28,7 @@
         <input lay-skin="primary" name="remember-me" title="记住密码" type="checkbox">
     </div>
     <div class="layui-form-item">
-        <button class="pear-btn pear-btn-success login" lay-filter="login" lay-submit>
+        <button class="pear-btn pear-btn-primary login" lay-filter="login" lay-submit>
             登 入
         </button>
     </div>

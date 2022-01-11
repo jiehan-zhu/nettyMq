@@ -9,14 +9,7 @@
     height: 44px !important;
     line-height: 44px !important;
     font-size: 16px !important;
-    background-color: #5FB878 !important;
     font-weight: 550 !important;
-}
-
-.layui-form-checked[lay-skin=primary] i {
-    border-color: #5FB878 !important;
-    background-color: #5FB878 !important;
-    color: #fff !important;
 }
 
 .layui-tab-content {
@@ -36,10 +29,6 @@
     border-radius: 3px !important;
 }
 
-.layui-input:focus {
-    box-shadow: 0px 0px 3px 1px #5FB878 !important;
-}
-
 .logo {
     width: 60px !important;
     margin-top: 10px !important;
@@ -51,7 +40,6 @@
     font-size: 30px !important;
     font-weight: 550 !important;
     margin-left: 20px !important;
-    color: #5FB878 !important;
     display: inline-block !important;
     height: 60px !important;
     line-height: 60px !important;
