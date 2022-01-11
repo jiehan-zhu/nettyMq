@@ -11,8 +11,8 @@ import org.apache.ibatis.type.Alias;
  */
 
 @Data
-@Alias("SysDictType")
-public class SysDictType extends BaseDomain {
+@Alias("SysDict")
+public class SysDict extends BaseDomain {
 
     /**
      * 标识

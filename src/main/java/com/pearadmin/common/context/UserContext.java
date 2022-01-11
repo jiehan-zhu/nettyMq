@@ -7,9 +7,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 /**
- * Describe: Security 工 具 类
- * Author: 就 眠 仪 式
- * CreateTime: 2019/10/23
+ * 用户上下文
+ * <p>
+ * @serial 2.0.0
+ * @author 就眠儀式
  */
 @Component
 public class UserContext {

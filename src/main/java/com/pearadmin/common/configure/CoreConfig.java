@@ -24,9 +24,10 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Describe: 核 心 配 置
- * Author: 就 眠 仪 式
- * CreateTime: 2019/10/23
+ * Core 核心配置
+ * <p>
+ * @serial 2.0.0
+ * @author 就眠儀式
  */
 @Configuration
 public class CoreConfig {

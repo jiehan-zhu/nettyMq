@@ -22,9 +22,10 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Describe: 防止重复提交拦截器
- * Author: 就 眠 仪 式
- * CreateTime: 2019/10/23
+ * Repeat 核心实现
+ * <p>
+ * @serial 2.0.0
+ * @author 就眠儀式
  */
 @Aspect
 @Component

@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.pearadmin.common.tools.SequenceUtil;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -24,7 +26,7 @@ import java.util.List;
  * CreateTime: 2019/10/23
  */
 @Service
-public class SysUserServiceImpl implements ISysUserService {
+public class SysUserServiceImpl extends ServiceImpl<SysUserMapper,SysUser> implements ISysUserService {
 
     /**
      * 注入用户服务
@@ -44,39 +46,16 @@ public class SysUserServiceImpl implements ISysUserService {
     @Resource
     private SysRoleMapper sysRoleMapper;
 
-
-
-
     /**
      * Describe: 根据条件查询用户列表数据
-     * Param: username
-     * Return: 返回用户列表数据
-     */
-    @Override
-    public List<SysUser> list(SysUser param) {
-        return sysUserMapper.selectList(param);
-    }
-
-    /**
-     * Describe: 根据条件查询用户列表数据  分页
      * Param: username
      * Return: 返回分页用户列表数据
      */
     @Override
     public PageInfo<SysUser> page(SysUser param, PageDomain pageDomain) {
         PageHelper.startPage(pageDomain.getPage(), pageDomain.getLimit());
-        List<SysUser> sysUsers = sysUserMapper.selectList(param);
+        List<SysUser> sysUsers = sysUserMapper.selectUser(param);
         return new PageInfo<>(sysUsers);
-    }
-
-    /**
-     * Describe: 根据 ID 查询用户
-     * Param: id
-     * Return: 返回用户信息
-     */
-    @Override
-    public SysUser getById(String id) {
-        return sysUserMapper.selectById(id);
     }
 
     /**
@@ -100,36 +79,9 @@ public class SysUserServiceImpl implements ISysUserService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public boolean batchRemove(String[] ids) {
-        sysUserMapper.deleteByIds(ids);
+        sysUserMapper.deleteBatchIds(Arrays.asList(ids));
         sysUserRoleMapper.deleteByUserIds(ids);
         return true;
-    }
-
-    /**
-     * Describe: 保存用户数据
-     * Param: SysUser
-     * Return: 操作结果
-     */
-    @Override
-    public boolean save(SysUser sysUser) {
-        SysUser user = new SysUser();
-        user.setUsername(sysUser.getUsername());
-        if (sysUserMapper.count(user) > 0) {
-            return false;
-        }
-        int result = sysUserMapper.insert(sysUser);
-        return result > 0;
-    }
-
-    /**
-     * Describe: 修改用户数据
-     * Param: SysUser
-     * Return: 操作结果
-     */
-    @Override
-    public boolean update(SysUser sysUser) {
-        Integer result = sysUserMapper.updateById(sysUser);
-        return result > 0;
     }
 
     /**
@@ -138,6 +90,7 @@ public class SysUserServiceImpl implements ISysUserService {
      * Return: 操作结果
      */
     @Override
+    @Transactional
     public boolean saveUserRole(String userId, List<String> roleIds) {
         sysUserRoleMapper.deleteByUserId(userId);
         List<SysUserRole> sysUserRoles = new ArrayList<>();
@@ -148,8 +101,8 @@ public class SysUserServiceImpl implements ISysUserService {
             sysUserRole.setUserId(userId);
             sysUserRoles.add(sysUserRole);
         });
-        int i = sysUserRoleMapper.batchInsert(sysUserRoles);
-        return i > 0;
+        sysUserRoleMapper.batchInsert(sysUserRoles);
+        return true;
     }
 
     /**
@@ -170,7 +123,4 @@ public class SysUserServiceImpl implements ISysUserService {
         });
         return allRole;
     }
-
-
-
 }

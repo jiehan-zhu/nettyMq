@@ -6,9 +6,12 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 /**
- * Describe: Spring 工 具 类
- * Author: 就 眠 仪 式
- * CreateTime: 2019/10/23
+ * Spring 上下文
+ * <p>
+ * 提供便于操作 IOC 的 API
+ *
+ * @serial 2.0.0
+ * @author 就眠儀式
  */
 @Component
 public class BeanContext implements ApplicationContextAware {

@@ -1,6 +1,10 @@
 package com.pearadmin.modules.sys.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.pearadmin.common.web.base.BaseDomain;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.ibatis.type.Alias;
@@ -17,16 +21,15 @@ import java.util.List;
  * @author 就 眠 仪 式
  * @date 2019/10/23
  */
-@Getter
-@Setter
+@Data
 @Alias("SysUser")
+@TableName("sys_user")
 public class SysUser extends BaseDomain implements UserDetails, CredentialsContainer {
-
-    private static final long serialVersionUID = 1L;
 
     /**
      * 编号
      */
+    @TableId
     private String userId;
 
     /**
@@ -91,19 +94,20 @@ public class SysUser extends BaseDomain implements UserDetails, CredentialsConta
     private String login;
 
     /**
-     * 计算列
-     */
-    private String roleIds;
-
-
-    /**
-     * 最后一次登录时间
+     * 上次登录
      */
     private LocalDateTime lastTime;
 
     /**
-     * 权限 这里暂时不用 security 的 Authorities
+     * 角色列表
      */
+    @TableField(exist = false)
+    private String roleIds;
+
+    /**
+     * 权限列表
+     */
+    @TableField(exist = false)
     private List<SysPower> powerList;
 
     @Override

@@ -51,7 +51,7 @@ public class SecureRememberMeHandler implements AuthenticationSuccessHandler {
         LocalDateTime now = LocalDateTime.now();
         sysUser.setUserId(((SysUser) UserContext.currentUser()).getUserId());
         sysUser.setLastTime(now);
-        sysUserService.update(sysUser);
+        sysUserService.updateById(sysUser);
 
         SysUser currentUser = (SysUser) authentication.getPrincipal();
         currentUser.setLastTime(now);

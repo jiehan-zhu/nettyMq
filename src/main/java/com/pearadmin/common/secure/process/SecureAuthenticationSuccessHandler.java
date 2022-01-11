@@ -49,7 +49,7 @@ public class SecureAuthenticationSuccessHandler implements AuthenticationSuccess
         SysUser sysUser = new SysUser();
         sysUser.setUserId(((SysUser) UserContext.currentUser()).getUserId());
         sysUser.setLastTime(LocalDateTime.now());
-        sysUserService.update(sysUser);
+        sysUserService.updateById(sysUser);
 
         SysUser currentUser = (SysUser) authentication.getPrincipal();
         currentUser.setLastTime(LocalDateTime.now());

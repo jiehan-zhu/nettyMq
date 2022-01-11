@@ -9,6 +9,12 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.io.Serializable;
 
+/**
+ * Redis Template 配置文件
+ * <p>
+ * @serial 2.0.0
+ * @author 就眠儀式
+ */
 @Configuration
 public class RedisConfig {
 

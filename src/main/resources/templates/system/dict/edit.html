@@ -12,29 +12,29 @@
                     <label class="layui-form-label">编号</label>
                     <div class="layui-input-block">
                         <input autocomplete="off" class="layui-input" lay-verify="required" name="id" placeholder="请输入标题"
-                               th:value="${sysDictType.id}" type="text">
+                               th:value="${sysDict.id}" type="text">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">名称</label>
                     <div class="layui-input-block">
                         <input autocomplete="off" class="layui-input" lay-verify="required" name="typeName"
-                               placeholder="请输入标题" th:value="${sysDictType.typeName}" type="text">
+                               placeholder="请输入标题" th:value="${sysDict.typeName}" type="text">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">标识</label>
                     <div class="layui-input-block">
                         <input autocomplete="off" class="layui-input" lay-verify="required" name="typeCode"
-                               placeholder="请输入标题" readonly th:value="${sysDictType.typeCode}" type="text">
+                               placeholder="请输入标题" readonly th:value="${sysDict.typeCode}" type="text">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">状态</label>
                     <div class="layui-input-block">
-                        <input name="enable" th:checked="${sysDictType.enable eq '0'}" title="开启" type="radio"
+                        <input name="enable" th:checked="${sysDict.enable eq '0'}" title="开启" type="radio"
                                value="0">
-                        <input name="enable" th:checked="${sysDictType.enable eq '1'}" title="关闭" type="radio"
+                        <input name="enable" th:checked="${sysDict.enable eq '1'}" title="关闭" type="radio"
                                value="1">
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                     <label class="layui-form-label">描述</label>
                     <div class="layui-input-block">
                         <textarea class="layui-textarea" name="description" placeholder="请输入描述"
-                                  th:text="${sysDictType.description}"></textarea>
+                                  th:text="${sysDict.description}"></textarea>
                     </div>
                 </div>
             </div>

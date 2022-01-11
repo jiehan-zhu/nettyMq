@@ -160,7 +160,7 @@ public class SysUserController extends BaseController {
     public Result editPasswordAdmin(@RequestBody SysPassword sysPassword) {
         SysUser editUser = sysUserService.getById(sysPassword.getUserId());
         editUser.setPassword(new BCryptPasswordEncoder().encode(sysPassword.getNewPassword()));
-        boolean result = sysUserService.update(editUser);
+        boolean result = sysUserService.updateById(editUser);
         return decide(result, "修改成功", "修改失败");
     }
 
@@ -186,9 +186,7 @@ public class SysUserController extends BaseController {
         String confirmPassword = sysPassword.getConfirmPassword();
         SysUser sysUser = UserContext.currentUser();
         SysUser editUser = sysUserService.getById(sysUser.getUserId());
-        if (Strings.isBlank(confirmPassword)
-                || Strings.isBlank(newPassword)
-                || Strings.isBlank(oldPassword)) {
+        if (Strings.isBlank(confirmPassword) || Strings.isBlank(newPassword) || Strings.isBlank(oldPassword)) {
             return failure("输入不能为空");
         }
         if (!new BCryptPasswordEncoder().matches(oldPassword, editUser.getPassword())) {
@@ -198,7 +196,7 @@ public class SysUserController extends BaseController {
             return failure("两次密码输入不一致");
         }
         editUser.setPassword(new BCryptPasswordEncoder().encode(newPassword));
-        boolean result = sysUserService.update(editUser);
+        boolean result = sysUserService.updateById(editUser);
         return decide(result, "修改成功", "修改失败");
     }
 
@@ -213,7 +211,7 @@ public class SysUserController extends BaseController {
     @Log(title = "修改用户", describe = "修改用户", type = BusinessType.EDIT)
     public Result update(@RequestBody SysUser sysUser) {
         sysUserService.saveUserRole(sysUser.getUserId(), Arrays.asList(sysUser.getRoleIds().split(",")));
-        boolean result = sysUserService.update(sysUser);
+        boolean result = sysUserService.updateById(sysUser);
         return decide(result);
     }
 
@@ -228,7 +226,7 @@ public class SysUserController extends BaseController {
     public Result updateAvatar(@RequestBody SysUser sysUser) {
         String userId = UserContext.currentUser().getUserId();
         sysUser.setUserId(userId);
-        boolean result = sysUserService.update(sysUser);
+        boolean result = sysUserService.updateById(sysUser);
         return decide(result);
     }
 
@@ -272,7 +270,7 @@ public class SysUserController extends BaseController {
     @ApiOperation(value = "开启用户登录")
     public Result enable(@RequestBody SysUser sysUser) {
         sysUser.setEnable("1");
-        boolean result = sysUserService.update(sysUser);
+        boolean result = sysUserService.updateById(sysUser);
         return decide(result);
     }
 
@@ -285,7 +283,7 @@ public class SysUserController extends BaseController {
     @ApiOperation(value = "禁用用户登录")
     public Result disable(@RequestBody SysUser sysUser) {
         sysUser.setEnable("0");
-        boolean result = sysUserService.update(sysUser);
+        boolean result = sysUserService.updateById(sysUser);
         return decide(result);
     }
 
@@ -311,10 +309,9 @@ public class SysUserController extends BaseController {
     @PutMapping("updateInfo")
     @ApiOperation(value = "修改用户数据")
     public Result updateInfo(@RequestBody SysUser sysUser) {
-        boolean result = sysUserService.update(sysUser);
+        boolean result = sysUserService.updateById(sysUser);
         return decide(result);
     }
-
 
     /**
      * Describe: 更换头像

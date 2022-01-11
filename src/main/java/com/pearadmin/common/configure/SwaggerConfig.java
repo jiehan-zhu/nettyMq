@@ -18,14 +18,14 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 
 /**
- * Describe: 接 口 文 档 配 置 文 件
- * Author: 就 眠 仪 式
- * CreateTime: 2019/10/23
+ * Swagger 配置文件
+ * <p>
+ * @serial 2.0.0
+ * @author 就眠儀式
  */
 @Slf4j
 @Configuration
 @EnableOpenApi
-@ConditionalOnClass(Contact.class)
 @EnableConfigurationProperties(SwaggerProperty.class)
 public class SwaggerConfig {
 

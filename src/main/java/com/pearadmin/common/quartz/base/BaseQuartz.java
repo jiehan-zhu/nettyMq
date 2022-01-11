@@ -1,9 +1,10 @@
 package com.pearadmin.common.quartz.base;
 
 /**
- * Describe: 定时任务服务接口
- * Author: 就眠仪式
- * CreateTime: 2019/10/23
+ * Quartz Job 的实现接口
+ * <p>
+ * @serial 2.0.0
+ * @author 就眠儀式
  */
 public interface BaseQuartz {
 

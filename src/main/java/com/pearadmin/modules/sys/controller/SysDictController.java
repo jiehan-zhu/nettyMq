@@ -7,8 +7,8 @@ import com.pearadmin.common.web.base.BaseController;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.common.web.domain.response.module.ResultTable;
-import com.pearadmin.modules.sys.domain.SysDictType;
-import com.pearadmin.modules.sys.service.ISysDictTypeService;
+import com.pearadmin.modules.sys.domain.SysDict;
+import com.pearadmin.modules.sys.service.ISysDictService;
 import io.swagger.annotations.Api;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
@@ -26,12 +26,12 @@ import java.util.List;
 @RestController
 @Api(tags = {"数据字典"})
 @RequestMapping(ControllerConstant.API_SYSTEM_PREFIX + "dictType")
-public class SysDictTypeController extends BaseController {
+public class SysDictController extends BaseController {
 
     private final String MODULE_PATH = "system/dict/";
 
     @Resource
-    private ISysDictTypeService sysDictTypeService;
+    private ISysDictService sysDictTypeService;
 
     /**
      * Describe: 数据字典列表视图
@@ -51,15 +51,15 @@ public class SysDictTypeController extends BaseController {
      */
     @GetMapping("data")
     @PreAuthorize("hasPermission('/system/dictType/data','sys:dictType:data')")
-    public ResultTable data(SysDictType sysDictType, PageDomain pageDomain) {
-        PageInfo<SysDictType> pageInfo = sysDictTypeService.page(sysDictType, pageDomain);
+    public ResultTable data(SysDict sysDict, PageDomain pageDomain) {
+        PageInfo<SysDict> pageInfo = sysDictTypeService.page(sysDict, pageDomain);
         return pageTable(pageInfo.getList(), pageInfo.getTotal());
     }
 
     @GetMapping("list")
     @PreAuthorize("hasPermission('/system/dictType/data','sys:dictType:data')")
-    public ResultTable list(SysDictType sysDictType, PageDomain pageDomain) {
-        List<SysDictType> list = sysDictTypeService.list(sysDictType);
+    public ResultTable list(SysDict sysDict, PageDomain pageDomain) {
+        List<SysDict> list = sysDictTypeService.list(sysDict);
         return dataTable(list);
     }
 
@@ -81,9 +81,9 @@ public class SysDictTypeController extends BaseController {
      */
     @PostMapping("save")
     @PreAuthorize("hasPermission('/system/dictType/add','sys:dictType:add')")
-    public Result save(@RequestBody SysDictType sysDictType) {
-        sysDictType.setId(SequenceUtil.makeStringId());
-        boolean result = sysDictTypeService.save(sysDictType);
+    public Result save(@RequestBody SysDict sysDict) {
+        sysDict.setId(SequenceUtil.makeStringId());
+        boolean result = sysDictTypeService.save(sysDict);
         return decide(result);
     }
 
@@ -106,8 +106,8 @@ public class SysDictTypeController extends BaseController {
      */
     @PutMapping("update")
     @PreAuthorize("hasPermission('/system/dictType/edit','sys:dictType:edit')")
-    public Result update(@RequestBody SysDictType sysDictType) {
-        boolean result = sysDictTypeService.updateById(sysDictType);
+    public Result update(@RequestBody SysDict sysDict) {
+        boolean result = sysDictTypeService.updateById(sysDict);
         return decide(result);
     }
 
@@ -129,9 +129,9 @@ public class SysDictTypeController extends BaseController {
      * Return ResuTree
      */
     @PutMapping("enable")
-    public Result enable(@RequestBody SysDictType sysDictType) {
-        sysDictType.setEnable("0");
-        boolean result = sysDictTypeService.updateById(sysDictType);
+    public Result enable(@RequestBody SysDict sysDict) {
+        sysDict.setEnable("0");
+        boolean result = sysDictTypeService.updateById(sysDict);
         return decide(result);
     }
 
@@ -141,9 +141,9 @@ public class SysDictTypeController extends BaseController {
      * Return ResuTree
      */
     @PutMapping("disable")
-    public Result disable(@RequestBody SysDictType sysDictType) {
-        sysDictType.setEnable("1");
-        boolean result = sysDictTypeService.updateById(sysDictType);
+    public Result disable(@RequestBody SysDict sysDict) {
+        sysDict.setEnable("1");
+        boolean result = sysDictTypeService.updateById(sysDict);
         return decide(result);
     }
 }

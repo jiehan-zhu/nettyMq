@@ -1,6 +1,6 @@
 package com.pearadmin.modules.sys.mapper;
 
-import com.pearadmin.modules.sys.domain.SysDictType;
+import com.pearadmin.modules.sys.domain.SysDict;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -11,35 +11,35 @@ import java.util.List;
  * CreateTime: 2019/10/23
  */
 @Mapper
-public interface SysDictTypeMapper {
+public interface SysDictMapper {
 
     /**
      * Describe: 查询字典类型列表
      * Param: SysDictType
      * Return: List<SysDictType>
      */
-    List<SysDictType> selectList(SysDictType sysDictType);
+    List<SysDict> selectList(SysDict sysDict);
 
     /**
      * Describe: 根据 id 查询字典类型
      * Param: id
      * Return: SysDictType
      */
-    SysDictType selectById(String id);
+    SysDict selectById(String id);
 
     /**
      * Describe: 插入字典类型
      * Param: SysDictType
      * Return: Integer
      */
-    Integer insert(SysDictType sysDictType);
+    Integer insert(SysDict sysDict);
 
     /**
      * Describe: 根据 Id 修改字典类型
      * Param: SysDictType
      * Return: 执行结果
      */
-    Integer updateById(SysDictType sysDictType);
+    Integer updateById(SysDict sysDict);
 
     /**
      * Describe: 根据 id 删除字典类型

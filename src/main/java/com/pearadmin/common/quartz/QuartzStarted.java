@@ -10,9 +10,12 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * Describe: 定时任务启动处理类
- * Author: 就眠仪式
- * CreateTime: 2019/10/23
+ * Quartz Started
+ * <p>
+ * Spring 初始化时检测任务, 加载 Job 任务到内存
+ *
+ * @serial 2.0.0
+ * @author 就眠儀式
  */
 public class QuartzStarted {
 

@@ -9,9 +9,12 @@ import java.time.LocalDateTime;
 import java.util.Map;
 
 /**
- * Describe: 基 础 实 体 类
- * Author: 就 眠 仪 式
- * CreateTime: 2019/10/23
+ * 基础实体
+ * <p>
+ * 提供 createBy createTime updateBy updateTime remark公共字段
+ *
+ * @serial 2.0.0
+ * @author 就眠儀式
  */
 @Data
 public class BaseDomain implements Serializable {
@@ -60,5 +63,6 @@ public class BaseDomain implements Serializable {
     /**
      * 请求参数
      */
+    @TableField(exist = false)
     private Map<String, Object> params;
 }

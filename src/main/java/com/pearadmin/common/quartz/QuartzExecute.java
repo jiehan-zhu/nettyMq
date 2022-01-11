@@ -13,18 +13,16 @@ import java.lang.reflect.Method;
 import java.time.LocalDateTime;
 
 /**
- * Describe: 定时任务执行上下文
- * Author: 就免仪式
- * CreateTime: 2019/10/23
+ * Quartz Job 执行逻辑
+ * <p>
+ * 通过 className 反射生成实例, 执行任务并记录日志
+ *
+ * @serial 2.0.0
+ * @author 就眠儀式
  */
 @Slf4j
 public class QuartzExecute extends QuartzJobBean {
 
-    /**
-     * Describe: 执行任务并记录日志
-     * Param: JobExecutionContext
-     * Return: 无返回值
-     */
     @Override
     protected void executeInternal(JobExecutionContext context) {
         Object o = context.getMergedJobDataMap().get(ScheduleJob.JOB_PARAM_KEY);

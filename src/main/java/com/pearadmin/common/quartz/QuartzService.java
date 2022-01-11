@@ -5,9 +5,10 @@ import lombok.NoArgsConstructor;
 import org.quartz.*;
 
 /**
- * Describe: 定时任务处理器
- * Author: 就免仪式
- * CreateTime: 2019/10/23
+ * Quartz 服务
+ * <p>
+ * @serial 2.0.0
+ * @author 就眠儀式
  */
 @NoArgsConstructor
 public class QuartzService {

@@ -6,14 +6,14 @@ import com.wf.captcha.utils.CaptchaUtil;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Describe: 验证码控制器
- * Author: 就 眠 仪 式
- * CreateTime: 2019/10/23
+ * 验证码控制器
+ * <p>
+ * @serial 2.0.0
+ * @author 就眠儀式
  */
 @RestController
 @Api(tags = {"验证生成"})
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class SysCaptchaController extends BaseController {
 
     /**
-     * 验证码生成
+     * 生成验证
      *
      * @param request  请求报文
      * @param response 响应报文
@@ -32,7 +32,7 @@ public class SysCaptchaController extends BaseController {
     }
 
     /**
-     * 异步验证
+     * 远程验证
      *
      * @param request 请求报文
      * @param captcha 验证码

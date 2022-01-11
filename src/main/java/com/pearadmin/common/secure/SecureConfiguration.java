@@ -20,9 +20,10 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 import javax.annotation.Resource;
 
 /**
- * Describe: Security 配置
- * Author: 就眠仪式
- * CreateTime: 2019/10/23
+ * Security 配置
+ * <p>
+ * @serial 2.0.0
+ * @author 就眠儀式
  */
 @Configuration
 @EnableWebSecurity
@@ -30,72 +31,39 @@ import javax.annotation.Resource;
 @EnableConfigurationProperties(SecurityProperty.class)
 public class SecureConfiguration extends WebSecurityConfigurerAdapter {
 
-    /**
-     * 配置未登录自定义处理类
-     */
     @Resource
     private SecureAuthenticationEntryPoint securityAuthenticationEntryPoint;
 
-    /**
-     * 登录成功处理类
-     */
     @Resource
     private SecureAuthenticationSuccessHandler securityAccessSuccessHandler;
 
-    /**
-     * 登录失败处理类
-     */
     @Resource
     private SecureAuthenticationFailureHandler securityAccessFailureHandler;
 
-    /**
-     * 退出登录处理类
-     */
     @Resource
     private SecureLogoutSuccessHandler securityAccessLogoutHandler;
 
-    /**
-     * 没有权限处理类
-     */
     @Resource
     private SecureAccessDeniedHandler securityAccessDeniedHandler;
 
-    /**
-     * 配置不拦截url
-     */
     @Resource
     private SecurityProperty securityProperty;
 
-    /**
-     * 实现userservice
-     */
     @Resource
     private UserDetailsService securityUserDetailsService;
 
-    /**
-     * remember me redis持久化
-     */
     @Resource
     private PersistentTokenRepository securityUserTokenService;
 
-    /**
-     * 自定义验证码验证
-     */
     @Resource
     private SecureCaptchaSupport securityCaptchaSupport;
 
     @Resource
     private SecureSessionExpiredHandler securityExpiredSessionHandler;
 
-    /**
-     * 密码加密
-     */
     @Resource
     private PasswordEncoder passwordEncoder;
 
-    /**
-     * 用于统计用户在线
-     */
     @Resource
     private SessionRegistry sessionRegistry;
 
@@ -105,7 +73,6 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter {
     @Resource
     private SecureRememberMeHandler rememberMeAuthenticationSuccessHandler;
 
-
     /**
      * 身份认证接口
      */
@@ -113,7 +80,6 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(securityUserDetailsService).passwordEncoder(passwordEncoder);
     }
-
 
     /**
      * Describe: 配置 Security 控制逻辑

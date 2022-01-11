@@ -3,11 +3,11 @@ package com.pearadmin.modules.sys.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.pearadmin.common.web.domain.request.PageDomain;
-import com.pearadmin.modules.sys.domain.SysDictType;
+import com.pearadmin.modules.sys.domain.SysDict;
 import com.pearadmin.modules.sys.mapper.SysDictDataMapper;
-import com.pearadmin.modules.sys.mapper.SysDictTypeMapper;
+import com.pearadmin.modules.sys.mapper.SysDictMapper;
 import com.pearadmin.modules.sys.service.ISysDictDataService;
-import com.pearadmin.modules.sys.service.ISysDictTypeService;
+import com.pearadmin.modules.sys.service.ISysDictService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,10 +19,10 @@ import java.util.List;
  * CreateTime: 2019/10/23
  */
 @Service
-public class SysDictTypeServiceImpl implements ISysDictTypeService {
+public class SysDictServiceImpl implements ISysDictService {
 
     @Resource
-    private SysDictTypeMapper sysDictTypeMapper;
+    private SysDictMapper sysDictMapper;
 
     @Resource
     private ISysDictDataService iSysDictDataService;
@@ -36,8 +36,8 @@ public class SysDictTypeServiceImpl implements ISysDictTypeService {
      * Return: List<SysDictType>
      */
     @Override
-    public List<SysDictType> list(SysDictType sysDictType) {
-        return sysDictTypeMapper.selectList(sysDictType);
+    public List<SysDict> list(SysDict sysDict) {
+        return sysDictMapper.selectList(sysDict);
     }
 
     /**
@@ -46,9 +46,9 @@ public class SysDictTypeServiceImpl implements ISysDictTypeService {
      * Return: PageInfo<SysDictType>
      */
     @Override
-    public PageInfo<SysDictType> page(SysDictType sysDictType, PageDomain pageDomain) {
+    public PageInfo<SysDict> page(SysDict sysDict, PageDomain pageDomain) {
         PageHelper.startPage(pageDomain.getPage(), pageDomain.getLimit());
-        List<SysDictType> list = sysDictTypeMapper.selectList(sysDictType);
+        List<SysDict> list = sysDictMapper.selectList(sysDict);
         return new PageInfo<>(list);
     }
 
@@ -58,10 +58,10 @@ public class SysDictTypeServiceImpl implements ISysDictTypeService {
      * Return: Boolean
      */
     @Override
-    public Boolean save(SysDictType sysDictType) {
-        Integer result = sysDictTypeMapper.insert(sysDictType);
+    public Boolean save(SysDict sysDict) {
+        Integer result = sysDictMapper.insert(sysDict);
         if (result > 0) {
-            iSysDictDataService.refreshCacheTypeCode(sysDictType.getTypeCode());
+            iSysDictDataService.refreshCacheTypeCode(sysDict.getTypeCode());
             return true;
         } else {
             return false;
@@ -74,8 +74,8 @@ public class SysDictTypeServiceImpl implements ISysDictTypeService {
      * Return: 返回字典类型信息
      */
     @Override
-    public SysDictType getById(String id) {
-        return sysDictTypeMapper.selectById(id);
+    public SysDict getById(String id) {
+        return sysDictMapper.selectById(id);
     }
 
     /**
@@ -84,9 +84,9 @@ public class SysDictTypeServiceImpl implements ISysDictTypeService {
      * Return: Boolean
      */
     @Override
-    public Boolean updateById(SysDictType sysDictType) {
-        int result = sysDictTypeMapper.updateById(sysDictType);
-        SysDictType dictType = sysDictTypeMapper.selectById(sysDictType.getId());
+    public Boolean updateById(SysDict sysDict) {
+        int result = sysDictMapper.updateById(sysDict);
+        SysDict dictType = sysDictMapper.selectById(sysDict.getId());
         if (result > 0) {
             iSysDictDataService.refreshCacheTypeCode(dictType.getTypeCode());
             return true;
@@ -102,11 +102,11 @@ public class SysDictTypeServiceImpl implements ISysDictTypeService {
      */
     @Override
     public Boolean remove(String id) {
-        SysDictType sysDictType = sysDictTypeMapper.selectById(id);
-        if (sysDictType != null) {
-            sysDictTypeMapper.deleteById(id);
-            sysDictDataMapper.deleteByCode(sysDictType.getTypeCode());
-            iSysDictDataService.refreshCacheTypeCode(sysDictType.getTypeCode());
+        SysDict sysDict = sysDictMapper.selectById(id);
+        if (sysDict != null) {
+            sysDictMapper.deleteById(id);
+            sysDictDataMapper.deleteByCode(sysDict.getTypeCode());
+            iSysDictDataService.refreshCacheTypeCode(sysDict.getTypeCode());
         }
 
         return true;

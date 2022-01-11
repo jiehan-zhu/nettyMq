@@ -6,11 +6,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Base Cache
+ * Base Cache 缓存容器
+ * <p>
+ * 基于 HashMap 做容器, Spring Scheduled 提供定时刷新机制, 通过 extends 集成实现 load 接口
+ * 提供 Get Reload 开发 Api
  *
- * Author: 就 眠 仪 式
- * CreateTime: 2021/04/01
- * */
+ * @serial 2.0.0
+ * @author 就眠儀式
+ */
 @EnableScheduling
 public abstract class BaseCache<T> {
 

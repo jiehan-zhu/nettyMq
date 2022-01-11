@@ -5,11 +5,11 @@ import com.pearadmin.common.aop.enums.ExcelModel;
 import java.lang.annotation.*;
 
 /**
- * Excel 注解
- *
- * Author 就 眠 仪 式
- * CreateTime: 2021/04/20
- * */
+ * Excel 导入导出
+ * <p>
+ * @serial 2.0.0
+ * @author 就眠儀式
+ */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})

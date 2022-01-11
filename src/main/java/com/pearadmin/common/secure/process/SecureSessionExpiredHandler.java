@@ -9,9 +9,10 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 /**
- * Describe: 自定义 Security 同账号多端登录挤下线 跳转地址
- * Author: John Ming
- * CreateTime: 2019/10/23
+ * Security Session 过期 Handler
+ * <p>
+ * @serial 2.0.0
+ * @author 就眠儀式
  */
 @Component
 public class SecureSessionExpiredHandler implements SessionInformationExpiredStrategy {
