@@ -31,6 +31,7 @@ public class BaseDomain implements Serializable {
     /**
      * 创建人名称
      */
+    @TableField(exist = false)
     private String createName;
 
     /**
@@ -48,6 +49,7 @@ public class BaseDomain implements Serializable {
     /**
      * 修改人名称
      */
+    @TableField(exist = false)
     private String updateName;
 
     /**

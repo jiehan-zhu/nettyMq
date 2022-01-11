@@ -41,5 +41,4 @@ public class DomainInterceptor implements MetaObjectHandler {
         this.strictInsertFill(metaObject,"updateBy", String.class, userContext.getUserId());
         this.strictUpdateFill(metaObject, "updateTime", LocalDateTime.class, LocalDateTime.now());
     }
-
 }

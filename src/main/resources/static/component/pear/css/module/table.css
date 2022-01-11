@@ -40,10 +40,6 @@
     padding-top: 1px !important;
 }
 
-.layui-table-box * {
-    font-size: 13px !important;
-}
-
 .layui-table-page .layui-laypage input {
     width: 40px;
     height: 26.5px !important;

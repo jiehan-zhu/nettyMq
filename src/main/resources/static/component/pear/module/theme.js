@@ -90,6 +90,5 @@ layui.define(["jquery","layer"], function (exports) {
             $("head").append("<style id='pear-admin-color'>"+style+"</style>")
         }
     }
-
     exports(MOD_NAME, theme);
 });

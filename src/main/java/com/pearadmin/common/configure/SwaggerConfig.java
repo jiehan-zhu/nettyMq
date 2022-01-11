@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
  */
 @Slf4j
 @Configuration
-@EnableSwagger2
+@EnableOpenApi
 @ConditionalOnClass(Contact.class)
 @EnableConfigurationProperties(SwaggerProperty.class)
 public class SwaggerConfig {

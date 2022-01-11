@@ -153,7 +153,7 @@
         <!-- 接 口 文 档 -->
         <dependency>
             <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
+            <artifactId>springfox-boot-starter</artifactId>
             <version>${swagger.version}</version>
         </dependency>
         <!-- JSON 解 析 工 具 -->
@@ -161,12 +161,6 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
-        </dependency>
-        <!-- 接 口 文 档 -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${swagger.version}</version>
         </dependency>
         <!--Apache 工 具 包-->
         <dependency>
