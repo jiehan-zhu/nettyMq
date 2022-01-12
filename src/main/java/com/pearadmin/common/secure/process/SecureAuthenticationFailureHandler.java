@@ -24,9 +24,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Describe: 自定义 Security 用户登录失败处理类
- * Author: 就 眠 仪 式
- * CreateTime: 2019/10/23
+ * Security 认证失败 Handler
+ * <p>
+ * @serial 2.0.0
+ * @author 就眠儀式
  */
 @Component
 public class SecureAuthenticationFailureHandler implements AuthenticationFailureHandler {

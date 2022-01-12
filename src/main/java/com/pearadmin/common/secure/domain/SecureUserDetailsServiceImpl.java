@@ -13,9 +13,10 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * Describe: Security 用户服务
- * Author: 就 眠 仪 式
- * CreateTime: 2019/10/23
+ * Security 加载用户信息服务
+ * <p>
+ * @serial 2.0.0
+ * @author 就眠儀式
  */
 @Component
 public class SecureUserDetailsServiceImpl implements UserDetailsService {

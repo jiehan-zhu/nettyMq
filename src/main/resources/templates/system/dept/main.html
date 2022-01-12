@@ -50,7 +50,7 @@
 
 <script id="dept-status" type="text/html">
     <input type="checkbox" name="enable" value="{{d.deptId}}" lay-skin="switch" lay-text="启用|禁用"
-           lay-filter="dept-enable" {{ d.status== '0' ? 'checked' : '' }}>
+           lay-filter="dept-enable" {{ d.status == '0' ? 'checked' : '' }}>
 </script>
 
 </body>
@@ -100,30 +100,7 @@
         });
 
         form.on('submit(dept-query)', function (data) {
-            var keyword = data.field.deptName;
-            var $tds = $('#dept-table').next('.treeTable').find('.layui-table-body tbody tr td');
-            if (!keyword) {
-                $tds.css('background-color', 'transparent');
-                layer.msg("请输入关键字", {icon: 5});
-                return;
-            }
-            var searchCount = 0;
-            $tds.each(function () {
-                $(this).css('background-color', 'transparent');
-                if ($(this).text().indexOf(keyword) >= 0) {
-                    $(this).css('background-color', 'rgba(250,230,160,0.5)');
-                    if (searchCount == 0) {
-                        $('body,html').stop(true);
-                        $('body,html').animate({scrollTop: $(this).offset().top - 150}, 500);
-                    }
-                    searchCount++;
-                }
-            });
-            if (searchCount == 0) {
-                layer.msg("没有匹配结果", {icon: 5});
-            } else {
-                treetable.expandAll('#dept-table');
-            }
+            treetable.search("#dept-table", data.field.deptName);
             return false;
         });
 

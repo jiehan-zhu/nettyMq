@@ -16,19 +16,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * 登 录 验 证 码 过 滤 器
+ * Security 权限注解实现
  *
- * @author John Ming
- * @createTime 2020/11/20
+ * Author: 就 眠 仪 式
+ * CreateTime: 2019/10/23
  */
 @Component
 public class SecureCaptchaSupport extends OncePerRequestFilter implements Filter {
 
+    /**
+     * 需要过滤的接口条件
+     * */
     private String defaultFilterProcessUrl = "/login";
     private String method = "POST";
 
     /**
-     * 验 证 码 校 监 逻 辑
+     * 验证码校检逻辑
      */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {

@@ -18,7 +18,8 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Describe: Security 在线用户监测任务
+ * Security 在线用户监测任务
+ *
  * Author: 就眠仪式
  * CreateTime: 2019/10/23
  */
