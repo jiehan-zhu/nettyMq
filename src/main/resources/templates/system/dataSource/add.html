@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include :: header('新增notice')"/>
+</head>
+<body>
+<form action="javascript:void(0);" class="layui-form">
+    <div class="mainBox">
+        <div class="main-container">
+            <div class="layui-form-item">
+                <label class="layui-form-label">名称：</label>
+                <div class="layui-input-block">
+                    <input class="layui-input" lay-verify="required" name="name" placeholder="请输入数据源名称" type="text"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">账户：</label>
+                <div class="layui-input-block">
+                    <input class="layui-input" lay-verify="required" name="username" placeholder="请输入账户" type="text"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">密码：</label>
+                <div class="layui-input-block">
+                    <input class="layui-input" lay-verify="required" name="password" placeholder="请输入密码" type="text"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">链接：</label>
+                <div class="layui-input-block">
+                    <textarea class="layui-textarea" lay-verify="required" name="url" placeholder="请输入数据库链接字符串" type="text"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">驱动：</label>
+                <div class="layui-input-block">
+                    <input class="layui-input" lay-verify="required" name="driver" placeholder="请输入驱动" type="text"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注：</label>
+                <div class="layui-input-block">
+                    <textarea class="layui-textarea" lay-verify="required" name="remark" placeholder="请输入数据库链接字符串" type="text"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="button-container">
+            <button class="pear-btn pear-btn-primary pear-btn-sm" lay-filter="dataSource-save" lay-submit="" type="submit">
+                <i class="layui-icon layui-icon-ok"></i>
+                提交
+            </button>
+            <button class="pear-btn pear-btn-sm" type="reset">
+                <i class="layui-icon layui-icon-refresh"></i>
+                重置
+            </button>
+        </div>
+    </div>
+</form>
+</body>
+<th:block th:include="include :: footer"/>
+<script th:inline="javascript">
+    layui.use(['form', 'jquery'], function () {
+        let form = layui.form;
+        let $ = layui.jquery;
+
+        let prefix = "/system/dataSource/";
+
+        form.on('submit(dataSource-save)', function (data) {
+                $.ajax({
+                    url: prefix + 'save',
+                    data: JSON.stringify(data.field),
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    type: 'post',
+                    success: function (result) {
+                        if (result.success) {
+                            layer.msg(result.msg, {icon: 1, time: 1000}, function () {
+                                parent.layer.close(parent.layer.getFrameIndex(window.name));
+                                parent.layui.table.reload("dataSource-table");
+                            });
+                        } else {
+                            layer.msg(result.msg, {icon: 2, time: 1000});
+                        }
+                    }
+                })
+            return false;
+        });
+    });
+</script>
+</html>

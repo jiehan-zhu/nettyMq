@@ -95,7 +95,7 @@ public class SysDictController extends BaseController {
     @GetMapping("edit")
     @PreAuthorize("hasPermission('/system/dictType/edit','sys:dictType:edit')")
     public ModelAndView edit(Model model, String dictTypeId) {
-        model.addAttribute("sysDictType", sysDictTypeService.getById(dictTypeId));
+        model.addAttribute("sysDict", sysDictTypeService.getById(dictTypeId));
         return jumpPage(MODULE_PATH + "edit");
     }
 

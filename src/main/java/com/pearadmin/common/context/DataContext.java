@@ -5,10 +5,14 @@ import com.baomidou.dynamic.datasource.creator.DataSourceCreator;
 import com.baomidou.dynamic.datasource.creator.DefaultDataSourceCreator;
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DataSourceProperty;
 import com.baomidou.dynamic.datasource.toolkit.DynamicDataSourceContextHolder;
+import com.pearadmin.modules.sys.domain.SysDataSource;
+import com.pearadmin.modules.sys.service.ISysDataSourceService;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,6 +29,9 @@ public class DataContext {
 
     @Resource
     protected DefaultDataSourceCreator dataSourceCreator;
+
+    @Resource
+    private ISysDataSourceService sysDataSourceService;
 
     /**
      * 新增数据源
@@ -109,5 +116,17 @@ public class DataContext {
         return dynamicRoutingDataSource.getDataSource(name);
     }
 
-    // TODO init datasource
+    // init dataSource
+    @PostConstruct
+    public void loadDataSource() {
+        List<SysDataSource> sysDataSources = sysDataSourceService.list();
+        sysDataSources.forEach(sysDataSource -> {
+            createDataSource(
+                    sysDataSource.getName(),
+                    sysDataSource.getUsername(),
+                    sysDataSource.getPassword(),
+                    sysDataSource.getUrl(),
+                    sysDataSource.getDriver());
+        });
+    }
 }
