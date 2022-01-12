@@ -24,8 +24,6 @@
     <properties>
         <!-- JDK 版本 -->
         <java.version>1.8</java.version>
-        <!-- 数 据 源 版 本 -->
-        <druid.version>1.2.8</druid.version>
         <!-- Mysql 版 本 -->
         <mysql.version>8.0.19</mysql.version>
         <!-- MyBatis 版 本 -->
@@ -35,7 +33,7 @@
         <!-- Fast Json 序 列 化 版 本 -->
         <fastjson.version>1.2.79</fastjson.version>
         <!-- Lombok 版 本 -->
-        <lombok.version>1.18.12</lombok.version>
+        <lombok.version>1.18.22</lombok.version>
         <!-- apache 工 具 类 -->
         <commons.lang3.version>3.10</commons.lang3.version>
         <!-- apache io 工具类 -->
@@ -63,7 +61,7 @@
         <!-- yaml 解 析 -->
         <yaml.version>1.26</yaml.version>
         <!-- HuTool 工 具 类 -->
-        <hutool.version>5.7.18</hutool.version>
+        <hutool.version>5.7.19</hutool.version>
         <!-- Xss 工 具 类 -->
         <jsoup.version>1.9.2</jsoup.version>
         <!-- 系 统 工 具 -->
@@ -71,7 +69,7 @@
         <!-- 网 路 工 具 -->
         <commons.net.version>3.8.0</commons.net.version>
         <!-- Excel 导入导出 -->
-        <easyexcel.version>2.2.7</easyexcel.version>
+        <easyexcel.version>3.0.5</easyexcel.version>
         <!-- Maven 配 置 编 译 JDK 版 本-->
         <maven.compiler.target>8</maven.compiler.target>
         <maven.compiler.source>8</maven.compiler.source>

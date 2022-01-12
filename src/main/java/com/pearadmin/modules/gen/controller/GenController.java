@@ -102,17 +102,17 @@ public class GenController extends BaseController {
     /**
      * 导入表结构
      */
-    @GetMapping("/importTable")
-    public String importTable() {
-        return prefix + "importTable";
+    @GetMapping("/add")
+    public String add() {
+        return prefix + "add";
     }
 
     /**
-     * 导入表结构（保存）
+     * 导入代码生成配置
      */
-    @PostMapping("/importTable")
+    @PostMapping("/add")
     @ResponseBody
-    public Result importTableSave(String tables) {
+    public Result add(String tables) {
         String[] tableNames = Convert.toStrArray(tables);
         List<GenTable> tableList = genTableService.selectDbTableListByNames(tableNames);
         tableList.forEach(table -> {
@@ -126,7 +126,6 @@ public class GenController extends BaseController {
      * 修改代码生成业务
      *
      * @param tableId  编号
-     * @param modelMap 数据
      */
     @GetMapping("/edit")
     public String edit(String tableId, ModelMap modelMap) {
@@ -150,7 +149,7 @@ public class GenController extends BaseController {
     }
 
     /**
-     * 修改保存代码生成业务
+     * 修改代码生成配置
      *
      * @param genTable 代码生成实体
      */
@@ -163,7 +162,7 @@ public class GenController extends BaseController {
     }
 
     /**
-     * 根据 编号 删除代码生成配置
+     * 删除代码生成配置
      *
      * @param ids 代码生成编号
      */
@@ -210,7 +209,9 @@ public class GenController extends BaseController {
     }
 
     /**
-     * 批量生成代码
+     * 批量代码生成
+     *
+     * @param tables 表格集合
      */
     @GetMapping("/batchGenCode")
     @ResponseBody

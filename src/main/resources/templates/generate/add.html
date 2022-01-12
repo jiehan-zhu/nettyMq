@@ -91,7 +91,7 @@
         }
         let tables = layui.common.joinArray(checks.data, "tableName");
         let data = {"tables": tables};
-        layui.common.ajax.post(prefix + "/importTable", data, function (res) {
+        layui.common.ajax.post(prefix + "/add", data, function (res) {
             if (res.success) {
                 layer.msg(res.msg, {icon: 1, time: 1000}, function () {
                     parent.layui.table.reload('table_gen');
