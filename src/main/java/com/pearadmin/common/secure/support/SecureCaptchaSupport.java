@@ -5,6 +5,7 @@ import com.pearadmin.common.tools.ServletUtil;
 import com.pearadmin.common.tools.string.StringUtil;
 import com.pearadmin.common.web.domain.response.Result;
 import com.wf.captcha.utils.CaptchaUtil;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -17,9 +18,9 @@ import java.io.IOException;
 
 /**
  * Security 权限注解实现
- *
- * Author: 就 眠 仪 式
- * CreateTime: 2019/10/23
+ * <p>
+ * @serial 2.0.0
+ * @author 就眠儀式
  */
 @Component
 public class SecureCaptchaSupport extends OncePerRequestFilter implements Filter {

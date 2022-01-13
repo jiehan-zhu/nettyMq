@@ -133,9 +133,22 @@ public class SysRoleController extends BaseController {
     }
 
     /**
-     * Describe: 保存角色权限
+     * Describe: 获取数据授权视图
+     * Param ModelAndView
+     * Return ModelAndView
+     */
+    @GetMapping("dept")
+    @ApiOperation(value = "获取分配数据权限视图")
+    @PreAuthorize("hasPermission('/system/role/dept','sys:role:dept')")
+    public ModelAndView dept(Model model, String roleId) {
+        model.addAttribute("roleId", roleId);
+        return jumpPage(MODULE_PATH + "dept");
+    }
+
+    /**
+     * Describe: 保存操作权限
      * Param RoleId PowerIds
-     * Return ResuBean
+     * Return Result
      */
     @PutMapping("saveRolePower")
     @ApiOperation(value = "保存角色权限数据")
@@ -146,9 +159,20 @@ public class SysRoleController extends BaseController {
     }
 
     /**
+     * Describe: 保存数据权限
+     * Param RoleId PowerIds
+     * Return Result
+     */
+    @PutMapping("saveRoleDept")
+    @ApiOperation(value = "保存角色部门数据")
+    public Result saveRoleDept(String roleId, String dataScope, String deptIds) {
+        return null;
+    }
+
+    /**
      * Describe: 获取角色权限
      * Param RoleId
-     * Return ResuTree
+     * Return ResultTree
      */
     @GetMapping("getRolePower")
     @ApiOperation(value = "获取角色权限数据")
@@ -160,7 +184,7 @@ public class SysRoleController extends BaseController {
     /**
      * Describe: 用户删除接口
      * Param: id
-     * Return: ResuBean
+     * Return: Result
      */
     @DeleteMapping("remove/{id}")
     @ApiOperation(value = "删除角色数据")
@@ -173,7 +197,7 @@ public class SysRoleController extends BaseController {
     /**
      * Describe: 用户批量删除接口
      * Param: ids
-     * Return: ResuBean
+     * Return: Result
      */
     @DeleteMapping("batchRemove/{ids}")
     @ApiOperation(value = "批量删除角色数据")

@@ -5,6 +5,7 @@
 }
 
 .layui-form button {
+    background: #36b368;
     width: 100% !important;
     height: 44px !important;
     line-height: 44px !important;
@@ -37,6 +38,7 @@
 }
 
 .title {
+    color: #36b368;
     font-size: 30px !important;
     font-weight: 550 !important;
     margin-left: 20px !important;

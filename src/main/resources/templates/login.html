@@ -43,9 +43,11 @@
         let popup = layui.popup;
         let captchaPath = "/system/captcha/generate";
 
+        // 登录
         form.on('submit(login)', function (data) {
             let loader = layer.load();
             let btn = button.load({elem: '.login'});
+
             $.ajax({
                 url: '/login',
                 data: data.field,
@@ -72,9 +74,11 @@
         $("#captchaImage").click(function () {
             document.getElementById("captchaImage").src = captchaPath + "?" + Math.random();
         })
+
         setInterval(function () {
             document.getElementById("captchaImage").src = captchaPath + "?" + Math.random();
         }, 30 * 1000);
+
         validateKickout();
     })
 </script>

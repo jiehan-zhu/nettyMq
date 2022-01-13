@@ -19,7 +19,12 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import java.util.List;
 
-
+/**
+ * 多数据源控制器
+ * <p>
+ * @serial 2.0.0
+ * @author 就眠儀式
+ */
 @RestController
 @Api(tags = {"多数据源"})
 @RequestMapping(ControllerConstant.API_SYSTEM_PREFIX + "dataSource")

@@ -58,6 +58,7 @@ public class SecureAuthenticationFailureHandler implements AuthenticationFailure
         if (e instanceof DisabledException) {
             result.setMsg("用户未启用");
         }
+
         SysLog sysLog = new SysLog();
         sysLog.setId(SequenceUtil.makeStringId());
         sysLog.setTitle("登录");

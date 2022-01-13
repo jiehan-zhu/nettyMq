@@ -16,7 +16,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
-
 import javax.annotation.Resource;
 
 /**
@@ -59,10 +58,10 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter {
     private SecureCaptchaSupport securityCaptchaSupport;
 
     @Resource
-    private SecureSessionExpiredHandler securityExpiredSessionHandler;
+    private PasswordEncoder passwordEncoder;
 
     @Resource
-    private PasswordEncoder passwordEncoder;
+    private SecureSessionExpiredHandler securityExpiredSessionHandler;
 
     @Resource
     private SessionRegistry sessionRegistry;

@@ -37,6 +37,7 @@ public class SecureAuthenticationSuccessHandler implements AuthenticationSuccess
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
+
         SysLog sysLog = new SysLog();
         sysLog.setId(SequenceUtil.makeStringId());
         sysLog.setTitle("登录");
@@ -47,7 +48,7 @@ public class SecureAuthenticationSuccessHandler implements AuthenticationSuccess
         sysLogService.save(sysLog);
 
         SysUser sysUser = new SysUser();
-        sysUser.setUserId(((SysUser) UserContext.currentUser()).getUserId());
+        sysUser.setUserId(UserContext.currentUser().getUserId());
         sysUser.setLastTime(LocalDateTime.now());
         sysUserService.updateById(sysUser);
 
