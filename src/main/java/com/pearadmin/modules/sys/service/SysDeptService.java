@@ -11,7 +11,7 @@ import java.util.List;
  * Author: 就 眠 仪 式
  * CreateTime: 2019/10/23
  */
-public interface ISysDeptService {
+public interface SysDeptService {
 
     /**
      * Describe: 查询部门数据
@@ -69,4 +69,11 @@ public interface ISysDeptService {
      * Return: 操作结果
      */
     List<SysDept> selectByParentId(String tenantId);
+
+    /**
+     * 根据 parent 查询部门列表
+     *
+     * @param parent 父级编号
+     * */
+    List<SysDept> treeAndChildren(String parent);
 }

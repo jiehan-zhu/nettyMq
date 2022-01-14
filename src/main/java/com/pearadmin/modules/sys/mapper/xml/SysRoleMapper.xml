@@ -36,15 +36,11 @@
     <!-- 根据 用户名-->
     <select id="selectByUsername" resultMap="SysRoleMap">
         SELECT *
-        FROM sys_role sr ON sr.role_id = srp.role_id
-        LEFT JOIN sys_user_role sur
-        ON sur.role_id = sr.role_id
-            LEFT JOIN sys_user su ON su.user_id = sur.user_id
-        WHERE
-            su.username = #{username}
-          and sr.enable = 1
-        ORDER BY
-            sr.sort ASC
+        FROM sys_role sr
+        LEFT JOIN sys_user_role sur ON sur.role_id = sr.role_id
+        LEFT JOIN sys_user su ON su.user_id = sur.user_id
+        WHERE su.username = #{username} and sr.enable = 1
+        ORDER BY sr.sort ASC
     </select>
 
     <!-- 新增 SysRole 数据 -->
@@ -104,6 +100,9 @@
             </if>
             <if test="enable!=null and enable!=''">
                 enable = #{enable},
+            </if>
+            <if test="dataScope!=null">
+                data_scope = #{dataScope},
             </if>
             <if test="details!=null and details!=''">
                 details = #{details},

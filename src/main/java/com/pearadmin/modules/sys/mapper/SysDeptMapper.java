@@ -63,4 +63,12 @@ public interface SysDeptMapper {
      */
     List<SysDept> selectListByParentId(String parentId);
 
+    /**
+     * 根据 userId 获取部门列表
+     *
+     * @param userId 用户编号
+     * @return {@link SysDept}
+     * */
+    List<SysDept> selectDeptByUserId(String userId);
+
 }

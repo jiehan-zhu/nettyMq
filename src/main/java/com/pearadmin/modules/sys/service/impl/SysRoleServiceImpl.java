@@ -4,13 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.pearadmin.common.tools.SequenceUtil;
 import com.pearadmin.common.web.domain.request.PageDomain;
-import com.pearadmin.modules.sys.domain.SysPower;
-import com.pearadmin.modules.sys.domain.SysRole;
-import com.pearadmin.modules.sys.domain.SysRolePower;
-import com.pearadmin.modules.sys.mapper.SysPowerMapper;
-import com.pearadmin.modules.sys.mapper.SysRoleMapper;
-import com.pearadmin.modules.sys.mapper.SysRolePowerMapper;
-import com.pearadmin.modules.sys.mapper.SysUserRoleMapper;
+import com.pearadmin.modules.sys.domain.*;
+import com.pearadmin.modules.sys.mapper.*;
 import com.pearadmin.modules.sys.service.ISysRoleService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,10 +36,22 @@ public class SysRoleServiceImpl implements ISysRoleService {
     private SysPowerMapper sysPowerMapper;
 
     /**
+     * 注入部门服务
+     * */
+    @Resource
+    private SysDeptMapper sysDeptMapper;
+
+    /**
      * 注入角色权限服务
      */
     @Resource
     private SysRolePowerMapper sysRolePowerMapper;
+
+    /**
+     * 注入角色部门服务
+     * */
+    @Resource
+    private SysRoleDeptMapper sysRoleDeptMapper;
 
     /**
      * 引入用户角色服务
@@ -122,6 +129,38 @@ public class SysRoleServiceImpl implements ISysRoleService {
             }
         }));
         return allPower;
+    }
+
+    @Override
+    public List<SysDept> getRoleDept(String roleId) {
+        List<SysDept> allDept = sysDeptMapper.selectList(null);
+        List<SysRoleDept> myDept = sysRoleDeptMapper.selectByRoleId(roleId);
+        allDept.forEach(sysDept -> {
+            myDept.forEach(sysRoleDept -> {
+                if(sysRoleDept.getDeptId().equals(sysDept.getDeptId())){
+                    sysDept.setCheckArr("1");
+                }
+            });
+        });
+        return allDept;
+    }
+
+    @Override
+    @Transactional
+    public Boolean saveRoleDept(String roleId, List<String> deptIds) {
+        sysRoleDeptMapper.deleteByRoleId(roleId);
+        List<SysRoleDept> roleDepts = new ArrayList<>();
+        deptIds.forEach(deptId -> {
+            SysRoleDept sysRoleDept = new SysRoleDept();
+            sysRoleDept.setId(SequenceUtil.makeStringId());
+            sysRoleDept.setRoleId(roleId);
+            sysRoleDept.setDeptId(deptId);
+            roleDepts.add(sysRoleDept);
+        });
+        if(roleDepts.size() > 0) {
+            sysRoleDeptMapper.batchInsert(roleDepts);
+        }
+        return true;
     }
 
     /**

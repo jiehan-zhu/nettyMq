@@ -10,7 +10,7 @@ import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.modules.sys.domain.SysLog;
 import com.pearadmin.modules.sys.domain.SysUser;
 import com.pearadmin.modules.sys.service.ISysLogService;
-import com.pearadmin.modules.sys.service.ISysUserService;
+import com.pearadmin.modules.sys.service.SysUserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -33,7 +33,7 @@ public class SecureAuthenticationSuccessHandler implements AuthenticationSuccess
     private ISysLogService sysLogService;
 
     @Resource
-    private ISysUserService sysUserService;
+    private SysUserService sysUserService;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {

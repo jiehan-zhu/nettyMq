@@ -5,7 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.modules.sys.domain.SysDept;
 import com.pearadmin.modules.sys.mapper.SysDeptMapper;
-import com.pearadmin.modules.sys.service.ISysDeptService;
+import com.pearadmin.modules.sys.service.SysDeptService;
 import com.pearadmin.modules.sys.mapper.SysUserMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-public class SysDeptServiceImpl implements ISysDeptService {
+public class SysDeptServiceImpl implements SysDeptService {
 
     @Resource
     private SysDeptMapper sysDeptMapper;
@@ -113,5 +113,26 @@ public class SysDeptServiceImpl implements ISysDeptService {
     @Override
     public List<SysDept> selectByParentId(String tenantId) {
         return sysDeptMapper.selectListByParentId(tenantId);
+    }
+
+    @Override
+    public List<SysDept> treeAndChildren(String parent) {
+        List<SysDept> ds = sysDeptMapper.selectListByParentId(parent);
+        for (SysDept sd: ds) {
+            treeAndChildren(sd,ds);
+        }
+        return ds;
+    }
+
+    private void treeAndChildren(SysDept sd, List<SysDept> ds) {
+        List<SysDept> dss = sysDeptMapper.selectListByParentId(sd.getDeptId());
+        if(dss.size() > 0) {
+            for (SysDept sdd: dss) {
+                ds.add(sdd);
+                treeAndChildren(sdd,ds);
+            }
+        } else {
+            return;
+        }
     }
 }

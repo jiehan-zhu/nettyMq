@@ -4,4 +4,24 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pearadmin.modules.sys.mapper.SysRoleDeptMapper">
 
+    <select id="selectByRoleId" resultType="SysRoleDept">
+        select * from sys_role_dept
+    </select>
+
+    <!-- 根据 Id 删除角色数据 -->
+    <delete id="deleteByRoleId" parameterType="string">
+        delete
+        from sys_role_dept
+        where role_id = #{roleId}
+    </delete>
+
+    <insert id="batchInsert" parameterType="list">
+        insert into sys_role_dept
+        ( id, role_id, dept_id )
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, #{item.roleId}, #{item.deptId})
+        </foreach>
+    </insert>
+
 </mapper>

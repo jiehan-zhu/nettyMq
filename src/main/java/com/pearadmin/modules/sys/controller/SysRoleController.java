@@ -8,6 +8,7 @@ import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.common.web.domain.response.module.ResultTable;
 import com.pearadmin.common.web.domain.response.module.ResultTree;
+import com.pearadmin.common.web.interceptor.enums.Scope;
 import com.pearadmin.modules.sys.domain.SysRole;
 import com.pearadmin.modules.sys.service.ISysRoleService;
 import io.swagger.annotations.Api;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -141,6 +143,7 @@ public class SysRoleController extends BaseController {
     @ApiOperation(value = "获取分配数据权限视图")
     @PreAuthorize("hasPermission('/system/role/dept','sys:role:dept')")
     public ModelAndView dept(Model model, String roleId) {
+        model.addAttribute("sysRole", sysRoleService.getById(roleId));
         model.addAttribute("roleId", roleId);
         return jumpPage(MODULE_PATH + "dept");
     }
@@ -165,8 +168,13 @@ public class SysRoleController extends BaseController {
      */
     @PutMapping("saveRoleDept")
     @ApiOperation(value = "保存角色部门数据")
-    public Result saveRoleDept(String roleId, String dataScope, String deptIds) {
-        return null;
+    public Result saveRoleDept(String roleId, Scope dataScope, String deptIds) {
+        SysRole sysRole = new SysRole();
+        sysRole.setRoleId(roleId);
+        sysRole.setDataScope(dataScope);
+        boolean result1 = sysRoleService.update(sysRole);
+        boolean result2 = sysRoleService.saveRoleDept(roleId, deptIds==null ? new ArrayList<>() : Arrays.asList(deptIds.split(",")));
+        return decide(result1 && result2);
     }
 
     /**
@@ -180,6 +188,19 @@ public class SysRoleController extends BaseController {
     public ResultTree getRolePower(String roleId) {
         return dataTree(sysRoleService.getRolePower(roleId));
     }
+
+    /**
+     * Describe: 获取角色权限
+     * Param RoleId
+     * Return ResultTree
+     */
+    @GetMapping("getRoleDept")
+    @ApiOperation(value = "获取角色权限数据")
+    @PreAuthorize("hasPermission('/system/role/dept','sys:role:dept')")
+    public ResultTree getRoleDept(String roleId) {
+        return dataTree(sysRoleService.getRoleDept(roleId));
+    }
+
 
     /**
      * Describe: 用户删除接口

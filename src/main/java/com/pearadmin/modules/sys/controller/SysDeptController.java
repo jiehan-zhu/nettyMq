@@ -7,7 +7,7 @@ import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.common.web.domain.response.module.ResultTable;
 import com.pearadmin.common.web.domain.response.module.ResultTree;
 import com.pearadmin.modules.sys.domain.SysDept;
-import com.pearadmin.modules.sys.service.ISysDeptService;
+import com.pearadmin.modules.sys.service.SysDeptService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -36,7 +36,7 @@ public class SysDeptController extends BaseController {
      * Describe: 部门模块服务
      */
     @Resource
-    private ISysDeptService sysDeptService;
+    private SysDeptService sysDeptService;
 
     /**
      * Describe: 获取部门列表视图

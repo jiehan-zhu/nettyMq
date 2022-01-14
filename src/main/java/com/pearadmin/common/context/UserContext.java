@@ -1,10 +1,13 @@
 package com.pearadmin.common.context;
 
+import com.pearadmin.modules.sys.domain.SysRole;
 import com.pearadmin.modules.sys.domain.SysUser;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * 用户上下文
@@ -69,4 +72,9 @@ public class UserContext {
      * deptId 当前部门
      * */
     public String getDeptId(){ return getPrincipal().getDeptId(); }
+
+    /**
+     * roles 角色列表
+     * */
+    public List<SysRole> getRoles() { return getPrincipal().getRoles(); }
 }

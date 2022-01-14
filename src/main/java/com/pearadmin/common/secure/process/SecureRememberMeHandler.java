@@ -8,7 +8,7 @@ import com.pearadmin.common.tools.SequenceUtil;
 import com.pearadmin.modules.sys.domain.SysLog;
 import com.pearadmin.modules.sys.domain.SysUser;
 import com.pearadmin.modules.sys.service.ISysLogService;
-import com.pearadmin.modules.sys.service.ISysUserService;
+import com.pearadmin.modules.sys.service.SysUserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -28,7 +28,7 @@ public class SecureRememberMeHandler implements AuthenticationSuccessHandler {
     private ISysLogService sysLogService;
 
     @Resource
-    private ISysUserService sysUserService;
+    private SysUserService sysUserService;
 
     @Resource
     private SessionRegistry sessionRegistry;

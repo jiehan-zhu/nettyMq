@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class PreviewInterceptor implements HandlerInterceptor{
 
-    private static Boolean enablePreview = true;
+    private static Boolean enablePreview = false;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

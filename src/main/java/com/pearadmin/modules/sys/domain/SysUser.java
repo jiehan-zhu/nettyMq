@@ -105,6 +105,13 @@ public class SysUser extends BaseDomain implements UserDetails, CredentialsConta
     private String roleIds;
 
     /**
+     * 角色列表
+     * */
+    @TableField(exist = false)
+    private List<SysRole> roles;
+
+
+    /**
      * 权限列表
      */
     @TableField(exist = false)

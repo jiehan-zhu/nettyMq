@@ -58,4 +58,9 @@ public class SysDept extends BaseDomain {
      */
     private Integer sort;
 
+    /**
+     * 计算列 提供给前端组件
+     */
+    private String checkArr = "0";
+
 }

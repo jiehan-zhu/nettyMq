@@ -2,6 +2,7 @@ package com.pearadmin.modules.sys.service;
 
 import com.github.pagehelper.PageInfo;
 import com.pearadmin.common.web.domain.request.PageDomain;
+import com.pearadmin.modules.sys.domain.SysDept;
 import com.pearadmin.modules.sys.domain.SysPower;
 import com.pearadmin.modules.sys.domain.SysRole;
 
@@ -58,11 +59,25 @@ public interface ISysRoleService {
     List<SysPower> getRolePower(String roleId);
 
     /**
+     * Describe: 获取角色权限
+     * Param: roleId
+     * Return: 操作结果
+     */
+    List<SysDept> getRoleDept(String roleId);
+
+    /**
      * Describe: 保存角色权限
      * Param: roleId , powerIds
      * Return: 操作结果
      */
     Boolean saveRolePower(String roleId, List<String> powerIds);
+
+    /**
+     * Describe: 保存角色权限
+     * Param: roleId , powerIds
+     * Return: 操作结果
+     */
+    Boolean saveRoleDept(String roleId, List<String> deptIds);
 
     /**
      * Describe: 根据 id 删除角色数据

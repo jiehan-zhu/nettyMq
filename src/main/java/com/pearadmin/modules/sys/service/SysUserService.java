@@ -3,6 +3,7 @@ package com.pearadmin.modules.sys.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.pagehelper.PageInfo;
 import com.pearadmin.common.web.domain.request.PageDomain;
+import com.pearadmin.modules.sys.domain.SysDept;
 import com.pearadmin.modules.sys.domain.SysRole;
 import com.pearadmin.modules.sys.domain.SysUser;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * Author: 就 眠 仪 式
  * CreateTime: 2019/10/23
  */
-public interface ISysUserService extends IService<SysUser> {
+public interface SysUserService extends IService<SysUser> {
 
     /**
      * Describe: 根据条件查询用户列表数据  分页
@@ -49,6 +50,15 @@ public interface ISysUserService extends IService<SysUser> {
      * Return: 操作结果
      */
     List<SysRole> getUserRole(String userId);
+
+    /**
+     * 获取用户部门 (数据权限)
+     *
+     * @param userId 用户编号
+     *
+     * @return {@link SysDept}
+     * */
+    List<SysDept> dept(String userId);
 
 }
 

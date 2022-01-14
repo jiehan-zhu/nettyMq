@@ -1,8 +1,10 @@
 package com.pearadmin.common.secure.domain;
 
 import com.pearadmin.modules.sys.domain.SysPower;
+import com.pearadmin.modules.sys.domain.SysRole;
 import com.pearadmin.modules.sys.domain.SysUser;
 import com.pearadmin.modules.sys.mapper.SysPowerMapper;
+import com.pearadmin.modules.sys.mapper.SysRoleMapper;
 import com.pearadmin.modules.sys.mapper.SysUserMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,6 +27,9 @@ public class SecureUserDetailsServiceImpl implements UserDetailsService {
     private SysUserMapper sysUserMapper;
 
     @Resource
+    private SysRoleMapper sysRoleMapper;
+
+    @Resource
     private SysPowerMapper sysPowerMapper;
 
     @Override
@@ -34,7 +39,10 @@ public class SecureUserDetailsServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException("Account Not Found");
         }
         List<SysPower> powerList = sysPowerMapper.selectByUsername(username);
+        List<SysRole> roleList = sysRoleMapper.selectByUsername(username);
         sysUser.setPowerList(powerList);
+        sysUser.setRoles(roleList);
         return sysUser;
     }
+
 }

@@ -56,6 +56,10 @@
             class="pear-btn pear-btn-warming pear-btn-sm" lay-event="power"><i
             class="layui-icon layui-icon-vercode"></i>
     </button>
+    <button sec:authorize="hasPermission('/system/role/power','sys:role:power')"
+            class="pear-btn pear-btn-warming pear-btn-sm" lay-event="dept"><i
+            class="layui-icon layui-icon-password"></i>
+    </button>
     <button sec:authorize="hasPermission('/system/role/remove','sys:role:remove')"
             class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i>
     </button>
@@ -110,6 +114,8 @@
                 window.edit(obj);
             } else if (obj.event === 'power') {
                 window.power(obj);
+            } else if (obj.event === 'dept') {
+                window.dept(obj);
             }
         });
 
@@ -170,6 +176,16 @@
                 shade: 0.1,
                 area: ['320px', '400px'],
                 content: MODULE_PATH + 'power?roleId=' + obj.data["roleId"]
+            });
+        }
+
+        window.dept = function (obj) {
+            layer.open({
+                type: 2,
+                title: '授权',
+                shade: 0.1,
+                area: ['320px', '400px'],
+                content: MODULE_PATH + 'dept?roleId=' + obj.data["roleId"]
             });
         }
 

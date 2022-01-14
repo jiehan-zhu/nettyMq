@@ -14,7 +14,7 @@ import com.pearadmin.common.web.domain.response.module.ResultTable;
 import com.pearadmin.modules.sys.domain.SysUser;
 import com.pearadmin.modules.sys.domain.SysPassword;
 import com.pearadmin.modules.sys.service.ISysRoleService;
-import com.pearadmin.modules.sys.service.ISysUserService;
+import com.pearadmin.modules.sys.service.SysUserService;
 import com.pearadmin.modules.sys.service.ISysLogService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -48,7 +48,7 @@ public class SysUserController extends BaseController {
      * Describe: 用户模块服务
      */
     @Resource
-    private ISysUserService sysUserService;
+    private SysUserService sysUserService;
 
     /**
      * Describe: 角色模块服务

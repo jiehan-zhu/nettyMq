@@ -5,13 +5,15 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.pearadmin.common.tools.SequenceUtil;
 import com.pearadmin.common.web.domain.request.PageDomain;
+import com.pearadmin.modules.sys.domain.SysDept;
 import com.pearadmin.modules.sys.domain.SysRole;
 import com.pearadmin.modules.sys.domain.SysUser;
 import com.pearadmin.modules.sys.domain.SysUserRole;
 import com.pearadmin.modules.sys.mapper.SysRoleMapper;
 import com.pearadmin.modules.sys.mapper.SysUserMapper;
+import com.pearadmin.modules.sys.mapper.SysDeptMapper;
 import com.pearadmin.modules.sys.mapper.SysUserRoleMapper;
-import com.pearadmin.modules.sys.service.ISysUserService;
+import com.pearadmin.modules.sys.service.SysUserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,13 +28,16 @@ import java.util.List;
  * CreateTime: 2019/10/23
  */
 @Service
-public class SysUserServiceImpl extends ServiceImpl<SysUserMapper,SysUser> implements ISysUserService {
+public class SysUserServiceImpl extends ServiceImpl<SysUserMapper,SysUser> implements SysUserService {
 
     /**
      * 注入用户服务
      */
     @Resource
     private SysUserMapper sysUserMapper;
+
+    @Resource
+    private SysDeptMapper sysDeptMapper;
 
     /**
      * 注入用户角色服务
@@ -123,4 +128,10 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper,SysUser> imple
         });
         return allRole;
     }
+
+    @Override
+    public List<SysDept> dept(String userId) {
+        return sysDeptMapper.selectDeptByUserId(userId);
+    }
+
 }

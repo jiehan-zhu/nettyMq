@@ -1,6 +1,7 @@
 package com.pearadmin.modules.sys.domain;
 
 import com.pearadmin.common.web.base.BaseDomain;
+import com.pearadmin.common.web.interceptor.enums.Scope;
 import lombok.Data;
 import org.apache.ibatis.type.Alias;
 
@@ -42,6 +43,11 @@ public class SysRole extends BaseDomain {
      * 排序
      */
     private Integer sort;
+
+    /**
+     * 数据权限
+     * */
+    private Scope dataScope;
 
     /**
      * 提供前端 显示
