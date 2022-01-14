@@ -8,7 +8,10 @@
     <div class="mainBox">
         <div class="main-container">
             <div class="layui-upload">
-                <button class="layui-btn layui-btn-normal" id="testList" type="button">选择多文件</button>
+                <button class="pear-btn pear-btn-primary" style="width: 100%;" id="testList" type="button">
+                    <i class="layui-icon layui-icon-upload"></i>
+                    上传文件
+                </button>
                 <div class="layui-upload-list">
                     <table class="layui-table">
                         <thead>
@@ -62,8 +65,9 @@
                         , '<td>' + file.name + '</td>'
                         , '<td>' + (file.size / 1024).toFixed(1) + 'kb</td>'
                         , '<td>'
-                        , '<button class="layui-btn layui-btn-xs demo-reload layui-hide">重传</button>'
-                        , '<button class="layui-btn layui-btn-xs layui-btn-danger demo-delete">删除</button>'
+                        , '<button class="pear-btn pear-btn-xs demo-reload layui-hide">重传</button>'
+                        , '&nbsp;'
+                        , '<button class="pear-btn pear-btn-xs layui-btn-danger demo-delete">删除</button>'
                         , '</td>'
                         , '</tr>'].join(''));
 
