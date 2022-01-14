@@ -7,6 +7,12 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
 
+/**
+ * mybatis-plus 字段填充
+ * <p>
+ * @serial 2.0.0
+ * @author 就眠儀式
+ */
 @Component
 public class DomainInterceptor implements MetaObjectHandler {
 

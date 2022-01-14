@@ -7,16 +7,15 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import com.pearadmin.common.constant.ConfigurationConstant;
+import com.pearadmin.common.web.interceptor.PreviewInterceptor;
+import com.pearadmin.common.web.interceptor.RateLimitInterceptor;
 import com.pearadmin.modules.sys.service.ISysConfigService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.annotation.Resource;
-import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -30,10 +29,16 @@ import java.time.format.DateTimeFormatter;
  * @author 就眠儀式
  */
 @Configuration
-public class CoreConfig {
+public class CoreConfig implements WebMvcConfigurer {
 
     @Resource
     private ISysConfigService sysContext;
+
+    @Resource
+    private RateLimitInterceptor rateLimitInterceptor;
+
+    @Resource
+    private PreviewInterceptor previewInterceptor;
 
     @Bean
     public MailAccount mailAccount() {
@@ -55,5 +60,11 @@ public class CoreConfig {
         javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         javaTimeModule.addSerializer(LocalTime.class, new LocalTimeSerializer(DateTimeFormatter.ofPattern("HH:mm:ss")));
         return javaTimeModule;
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(rateLimitInterceptor).addPathPatterns("/**");
+        registry.addInterceptor(previewInterceptor).addPathPatterns("/**");
     }
 }

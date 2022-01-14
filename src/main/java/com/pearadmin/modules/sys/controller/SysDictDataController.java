@@ -38,9 +38,6 @@ public class SysDictDataController extends BaseController {
     @Resource
     private ISysDictDataService sysDictDataService;
 
-    @Resource
-    private BaseContext iSysBaseAPI;
-
     /**
      * Describe: 数据字典列表视图
      * Param: ModelAndView

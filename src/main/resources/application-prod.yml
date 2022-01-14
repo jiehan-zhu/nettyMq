@@ -23,52 +23,48 @@ spring:
     timeout: 1000
   # 数据源配置
   datasource:
+    # 连接池配置
+    druid:
+      filters: stat,wall
+      maxActive: 20
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 10
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      maxOpenPreparedStatements: 20
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: /druid/*,*js,*gif,*jpg,*bmp,*png,*css,*ico
+        session-stat-enable: true
+        session-stat-max-count: 10
+        principal-session-name: session_name
+        principal-cookie-name: cookie_name
+        profile-enable: true
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: false
+        aop-patterns: com.pearadmin.*
+    # 动态数据源配置
     dynamic:
-      primary: master #设置默认的数据源或者数据源组,默认值即为master
-      strict: false #设置严格模式,默认false不启动. 启动后在未匹配到指定数据源时候会抛出异常,不启动则使用默认数据源.
+      primary: master
+      strict: false
+      p6spy: false
+      # 数据源列表
       datasource:
-        # 主 库 配 置
+        # 主库
         master:
           url: jdbc:mysql://127.0.0.1:3306/pear-admin-boot?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
           username: root
           password: root
-          druid:
-            # 初始连接数
-            initialSize: 5
-            # 最小连接池数量
-            minIdle: 10
-            # 最大连接池数量
-            maxActive: 20
-            # 配置获取连接等待超时的时间
-            maxWait: 60000
-            # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
-            timeBetweenEvictionRunsMillis: 60000
-            # 配置一个连接在池中最小生存的时间，单位是毫秒
-            minEvictableIdleTimeMillis: 300000
-            # 配置一个连接在池中最大生存的时间，单位是毫秒
-            maxEvictableIdleTimeMillis: 900000
-            # 配置检测连接是否有效
-            validationQuery: SELECT 1 FROM DUAL
-            testWhileIdle: true
-            testOnBorrow: false
-            testOnReturn: false
-            webStatFilter:
-              enabled: true
-            statViewServlet:
-              enabled: true
-              # 设置白名单，不填则允许所有访问
-              allow:
-              url-pattern: /druid/*
-              # 控制台管理用户名和密码
-              login-username:
-              login-password:
-            filter:
-              stat:
-                enabled: true
-                # 慢SQL记录
-                log-slow-sql: true
-                slow-sql-millis: 1000
-                merge-sql: true
-              wall:
-                config:
-                  multi-statement-allow: true
+        # 从库
+        second:
+          url: jdbc:mysql://127.0.0.1:3306/pear-admin-boot?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
+          username: root
+          password: root

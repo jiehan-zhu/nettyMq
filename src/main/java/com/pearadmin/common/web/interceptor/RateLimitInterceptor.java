@@ -14,11 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 限 流 拦 截 器
- *
- * Author: 就 眠 仪 式
- * CreateTime: 2020/10/23
- * */
+ * 基于 Redis 的限流拦截器
+ * <p>
+ * @serial 2.0.0
+ * @author 就眠儀式
+ */
 @Component
 public class RateLimitInterceptor implements HandlerInterceptor {
 

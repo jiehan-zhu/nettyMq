@@ -256,6 +256,11 @@
             <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
             <version>${dynamic.verion}</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.21</version>
+        </dependency>
         <!-- Jackson 扩展包 -->
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
