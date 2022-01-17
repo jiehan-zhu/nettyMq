@@ -22,6 +22,9 @@ public class SysDruidController extends BaseController {
 
     private final String MODULE_PATH = "system/druid/";
 
+    /**
+     * Druid 首页
+     * */
     @GetMapping("main")
     @PreAuthorize("hasPermission('/system/druid/main','sys:druid:main')")
     public ModelAndView main() {

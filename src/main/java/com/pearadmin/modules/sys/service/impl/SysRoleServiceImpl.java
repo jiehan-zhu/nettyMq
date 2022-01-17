@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -67,7 +68,7 @@ public class SysRoleServiceImpl implements ISysRoleService {
      */
     @Override
     public List<SysRole> list(SysRole param) {
-        return sysRoleMapper.selectList(param);
+        return sysRoleMapper.selectRole(param);
     }
 
     /**
@@ -78,7 +79,7 @@ public class SysRoleServiceImpl implements ISysRoleService {
     @Override
     public PageInfo<SysRole> page(SysRole param, PageDomain pageDomain) {
         PageHelper.startPage(pageDomain.getPage(), pageDomain.getLimit());
-        List<SysRole> list = sysRoleMapper.selectList(param);
+        List<SysRole> list = sysRoleMapper.selectRole(param);
         return new PageInfo<>(list);
     }
 
@@ -121,7 +122,7 @@ public class SysRoleServiceImpl implements ISysRoleService {
      */
     @Override
     public List<SysPower> getRolePower(String roleId) {
-        List<SysPower> allPower = sysPowerMapper.selectList(null);
+        List<SysPower> allPower = sysPowerMapper.selectPower(null);
         List<SysRolePower> myPower = sysRolePowerMapper.selectByRoleId(roleId);
         allPower.forEach(sysPower -> myPower.forEach(sysRolePower -> {
             if (sysRolePower.getPowerId().equals(sysPower.getPowerId())) {
@@ -206,7 +207,7 @@ public class SysRoleServiceImpl implements ISysRoleService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public boolean batchRemove(String[] ids) {
-        sysRoleMapper.deleteByIds(ids);
+        sysRoleMapper.deleteBatchIds(Arrays.asList(ids));
         sysUserRoleMapper.deleteByRoleIds(ids);
         sysRolePowerMapper.deleteByRoleIds(ids);
         return true;

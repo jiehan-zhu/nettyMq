@@ -21,6 +21,7 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -61,6 +62,12 @@ public class SysUserController extends BaseController {
      */
     @Resource
     private ISysLogService sysLogService;
+
+    /**
+     * Describe: 密码加密
+     * */
+    @Resource
+    private PasswordEncoder passwordEncoder;
 
     /**
      * Describe: 获取用户列表视图
@@ -115,11 +122,10 @@ public class SysUserController extends BaseController {
         sysUser.setLogin("0");
         sysUser.setEnable("1");
         sysUser.setStatus("1");
-        sysUser.setUserId(SequenceUtil.makeStringId());
-        sysUser.setPassword(new BCryptPasswordEncoder().encode(sysUser.getPassword()));
+        sysUser.setPassword(passwordEncoder.encode(sysUser.getPassword()));
         sysUserService.saveUserRole(sysUser.getUserId(), Arrays.asList(sysUser.getRoleIds().split(",")));
-        Boolean result = sysUserService.save(sysUser);
-        return decide(result);
+        sysUserService.save(sysUser);
+        return success("保存成功");
     }
 
     /**
@@ -157,11 +163,9 @@ public class SysUserController extends BaseController {
     @PutMapping("editPasswordAdmin")
     @ApiOperation(value = "管理员修改用户密码")
     @PreAuthorize("hasPermission('/system/user/editPasswordAdmin','sys:user:editPasswordAdmin')")
-    public Result editPasswordAdmin(@RequestBody SysPassword sysPassword) {
-        SysUser editUser = sysUserService.getById(sysPassword.getUserId());
-        editUser.setPassword(new BCryptPasswordEncoder().encode(sysPassword.getNewPassword()));
-        boolean result = sysUserService.updateById(editUser);
-        return decide(result, "修改成功", "修改失败");
+    public Result editPasswordAdmin(@RequestBody SysUser sysUser) {
+        sysUser.setPassword(passwordEncoder.encode(sysUser.getPassword()));
+        return decide(sysUserService.updateById(sysUser), "修改成功", "修改失败");
     }
 
     /**
@@ -195,7 +199,7 @@ public class SysUserController extends BaseController {
         if (!newPassword.equals(confirmPassword)) {
             return failure("两次密码输入不一致");
         }
-        editUser.setPassword(new BCryptPasswordEncoder().encode(newPassword));
+        editUser.setPassword(passwordEncoder.encode(newPassword));
         boolean result = sysUserService.updateById(editUser);
         return decide(result, "修改成功", "修改失败");
     }
@@ -258,8 +262,6 @@ public class SysUserController extends BaseController {
         boolean result = sysUserService.remove(id);
         return decide(result);
     }
-
-
 
     /**
      * Describe: 根据 userId 开启用户

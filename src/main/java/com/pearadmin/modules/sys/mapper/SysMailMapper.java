@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.pearadmin.modules.sys.domain.SysMail;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -12,15 +13,7 @@ import java.util.List;
  * CreateTime: 2021/1/13 14:51
  */
 @Mapper
-public interface SysMailMapper {
-
-    /**
-     * 保存邮件
-     *
-     * @param sysMail
-     * @return integer
-     */
-    Integer insert(SysMail sysMail);
+public interface SysMailMapper extends BaseMapper<SysMail> {
 
     /**
      * 根据条件查询邮件列表
@@ -29,21 +22,5 @@ public interface SysMailMapper {
      * @return list
      */
     List<SysMail> selectList(SysMail sysMail);
-
-    /**
-     * 根据id删除邮件
-     *
-     * @param id
-     * @return 操作结果
-     */
-    Integer deleteById(@Param("mailId") String id);
-
-    /**
-     * 批量删除邮件
-     *
-     * @param ids
-     * @return
-     */
-    Integer deleteByIds(List<String> ids);
 
 }

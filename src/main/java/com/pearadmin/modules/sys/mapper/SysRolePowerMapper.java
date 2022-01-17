@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.pearadmin.modules.sys.domain.SysRolePower;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * CreateTime: 2019/10/23
  */
 @Mapper
-public interface SysRolePowerMapper {
+public interface SysRolePowerMapper extends BaseMapper<SysRolePower> {
 
     List<SysRolePower> selectByRoleId(String roleId);
 

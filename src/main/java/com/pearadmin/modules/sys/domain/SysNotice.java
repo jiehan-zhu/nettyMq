@@ -2,6 +2,7 @@ package com.pearadmin.modules.sys.domain;
 
 import com.pearadmin.common.web.base.BaseDomain;
 import lombok.Data;
+import org.apache.ibatis.type.Alias;
 
 /**
  * notice对象 sys_notice
@@ -10,7 +11,9 @@ import lombok.Data;
  * @date 2021-03-13
  */
 @Data
+@Alias("SysNotice")
 public class SysNotice extends BaseDomain {
+
     /** 编号 */
     private String id;
 

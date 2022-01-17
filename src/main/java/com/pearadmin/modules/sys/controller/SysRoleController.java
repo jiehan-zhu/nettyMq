@@ -231,7 +231,7 @@ public class SysRoleController extends BaseController {
     /**
      * Describe: 根据 Id 启用角色
      * Param: roleId
-     * Return: ResuBean
+     * Return: Result
      */
     @PutMapping("enable")
     @ApiOperation(value = "启用角色")
@@ -242,9 +242,9 @@ public class SysRoleController extends BaseController {
     }
 
     /**
-     * Describe: 根据 Id 禁用角色
+     * Describe: 禁用角色
      * Param: roleId
-     * Return: ResuBean
+     * Return: Result
      */
     @PutMapping("disable")
     @ApiOperation(value = "禁用角色")

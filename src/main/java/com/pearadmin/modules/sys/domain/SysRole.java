@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.pearadmin.common.web.base.BaseDomain;
 import com.pearadmin.common.web.interceptor.enums.Scope;
 import lombok.Data;
@@ -52,5 +53,6 @@ public class SysRole extends BaseDomain {
     /**
      * 提供前端 显示
      */
+    @TableField(exist = false)
     private boolean checked = false;
 }

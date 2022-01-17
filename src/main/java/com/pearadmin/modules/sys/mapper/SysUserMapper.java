@@ -49,4 +49,5 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
      * Return: Integer
      */
     Integer resetDeptByDeptIds(String[] deptIds);
+
 }

@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.pearadmin.modules.sys.domain.SysNotice;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * @date 2021-03-13
  */
 @Mapper
-public interface SysNoticeMapper {
+public interface SysNoticeMapper extends BaseMapper<SysNotice> {
     /**
      * 查询notice
      *

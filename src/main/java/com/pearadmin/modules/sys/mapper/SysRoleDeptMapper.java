@@ -15,4 +15,5 @@ public interface SysRoleDeptMapper extends BaseMapper<SysRoleDept> {
     int deleteByRoleId(String roleId);
 
     int batchInsert(List<SysRoleDept> sysRoleDepts);
+
 }

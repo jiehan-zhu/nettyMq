@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 
 /**
- * Describe: 系 统 配 置 控 制 器
- * Author: 就 眠 仪 式
- * CreateTime: 2019/10/23
+ * 系统配置控制器
+ * <p>
+ * @serial 2.0.0
+ * @author 就眠儀式
  */
 @RestController
 @Api(tags = {"全局配置"})
@@ -32,6 +34,7 @@ public class SysConfigController extends BaseController {
      * 基础路径
      */
     private final String MODULE_PATH = "system/config/";
+
     /**
      * 引入服务
      */
@@ -118,7 +121,7 @@ public class SysConfigController extends BaseController {
     @DeleteMapping("remove/{id}")
     @PreAuthorize("hasPermission('/system/config/remove','sys:config:remove')")
     public Result remove(@PathVariable("id") String id) {
-        Boolean result = sysConfigService.remove(id);
+        Boolean result = sysConfigService.removeById(id);
         return decide(result);
     }
 
@@ -131,7 +134,7 @@ public class SysConfigController extends BaseController {
     @ApiOperation(value = "批量删除系统配置数据")
     @PreAuthorize("hasPermission('/system/config/remove','sys:config:remove')")
     public Result batchRemove(@PathVariable String ids) {
-        boolean result = sysConfigService.batchRemove(ids.split(","));
+        boolean result = sysConfigService.removeByIds(Arrays.asList(ids.split(",")));
         return decide(result);
     }
 

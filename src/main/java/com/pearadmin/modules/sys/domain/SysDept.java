@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.pearadmin.common.web.base.BaseDomain;
 import lombok.Data;
 import org.apache.ibatis.type.Alias;
@@ -61,6 +62,7 @@ public class SysDept extends BaseDomain {
     /**
      * 计算列 提供给前端组件
      */
+    @TableField(exist = false)
     private String checkArr = "0";
 
 }

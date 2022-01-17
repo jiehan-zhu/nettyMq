@@ -1,5 +1,6 @@
 package com.pearadmin.common.cache.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import com.pearadmin.common.cache.BaseCache;
 import com.pearadmin.modules.sys.domain.SysConfig;
@@ -27,7 +28,7 @@ public class AllocationCache extends BaseCache<String> {
     @Override
     public Map<String, String> load() {
         log.info("Refresh Cache - 全局配置");
-        List<SysConfig> list = sysConfigService.list(null);
+        List<SysConfig> list = sysConfigService.list(new QueryWrapper<>());
         return list.stream().collect(Collectors.toMap(SysConfig::getConfigCode, SysConfig::getConfigValue));
     }
 }

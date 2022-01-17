@@ -21,6 +21,9 @@ public class SysDocController extends BaseController {
 
     private final String MODULE_PATH = "system/doc/";
 
+    /**
+     * Swagger 首页
+     * */
     @GetMapping("main")
     @PreAuthorize("hasPermission('/system/doc/main','sys:doc:main')")
     public ModelAndView main() {

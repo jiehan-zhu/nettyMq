@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.pearadmin.common.aop.enums.LoggingType;
 import com.pearadmin.modules.sys.domain.SysLog;
 import org.apache.ibatis.annotations.Mapper;
@@ -13,14 +14,7 @@ import java.util.List;
  * CreateTime: 2019/10/23
  */
 @Mapper
-public interface SysLogMapper {
-
-    /**
-     * Describe: 插入日志信息
-     * Param: logging
-     * Return: 影响行数
-     */
-    int insert(SysLog sysLog);
+public interface SysLogMapper extends BaseMapper<SysLog> {
 
     /**
      * Describe: 查询日志信息
@@ -28,13 +22,6 @@ public interface SysLogMapper {
      * Return: 日志列表
      */
     List<SysLog> selectList(LoggingType loggingType, LocalDateTime startTime, LocalDateTime endTime);
-
-    /**
-     * Describe: 根据 id 查询日志信息
-     * Param: id
-     * Return: Logging
-     */
-    SysLog getById(String id);
 
     /**
      * Describe: 根据 operateName 查询日志

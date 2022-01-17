@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.pearadmin.common.aop.enums.BusinessType;
 import com.pearadmin.common.aop.enums.LoggingType;
 import com.pearadmin.common.aop.enums.RequestModel;
@@ -116,5 +117,6 @@ public class SysLog {
     /**
      * 扩 展 信 息
      */
+    @TableField(exist = false)
     private Map<String, String> map = new HashMap<>();
 }

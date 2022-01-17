@@ -69,7 +69,7 @@ public class SysMailServiceImpl implements ISysMailService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Integer removeByIds(List<String> ids) {
-        return sysMailMapper.deleteByIds(ids);
+        return sysMailMapper.deleteBatchIds(ids);
     }
 
 }

@@ -74,8 +74,8 @@ public class SysOnlineController extends BaseController {
      * Param: onlineId
      * Return: ModelAndView
      */
-    @DeleteMapping("/remove/{onlineId}")
     @ResponseBody
+    @DeleteMapping("/remove/{onlineId}")
     public Result remove(@PathVariable String onlineId) {
         // 从sessionRegistry中获取所有的用户信息
         List<Object> principals = sessionRegistry.getAllPrincipals();

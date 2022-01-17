@@ -38,7 +38,7 @@ public class SysPowerServiceImpl implements ISysPowerService {
      */
     @Override
     public List<SysPower> list(SysPower sysPower) {
-        return sysPowerMapper.selectList(sysPower);
+        return sysPowerMapper.selectPower(sysPower);
     }
 
     /**

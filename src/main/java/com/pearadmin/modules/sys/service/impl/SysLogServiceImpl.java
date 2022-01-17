@@ -48,7 +48,7 @@ public class SysLogServiceImpl implements ISysLogService {
 
     @Override
     public SysLog getById(String id) {
-        return sysLogMapper.getById(id);
+        return sysLogMapper.selectById(id);
     }
 
     @Override

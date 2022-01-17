@@ -12,11 +12,13 @@ import com.pearadmin.modules.sys.service.ISysDataSourceService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -48,7 +50,6 @@ public class SysDataSourceController extends BaseController {
     public ModelAndView main() {
         return jumpPage(MODULE_PATH + "main");
     }
-
 
     /**
      * 查询多库列表
@@ -129,10 +130,10 @@ public class SysDataSourceController extends BaseController {
      *
      * @param ids 多库编号
      */
-    @DeleteMapping("removeBatch")
+    @DeleteMapping("batchRemove/{ids}")
     @Log(title = "批量删除")
     @ApiOperation(value = "批量删除")
-    public Result removeBatch(@RequestParam List<String> ids) {
-        return decide(sysDataSourceService.removeByIds(ids));
+    public Result removeBatch(@PathVariable String ids) {
+        return decide(sysDataSourceService.removeByIds(Arrays.asList(ids.split(","))));
     }
 }

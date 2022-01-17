@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.pearadmin.modules.sys.domain.SysConfig;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -12,28 +13,14 @@ import java.util.List;
  * CreateTime: 2019/10/23
  */
 @Mapper
-public interface SysConfigMapper {
+public interface SysConfigMapper extends BaseMapper<SysConfig> {
 
     /**
      * Describe: 查询系统配置信息
      * Param: SysConfig
      * Return: 执行结果
      */
-    List<SysConfig> selectList(SysConfig param);
-
-    /**
-     * Describe: 添加系统配置
-     * Param: SysConfig
-     * Return: 执行结果
-     */
-    Integer insert(SysConfig sysConfig);
-
-    /**
-     * Describe: 根据 Id 查询系统配置
-     * Param: id
-     * Return: SysConfig
-     */
-    SysConfig selectById(@Param("id") String id);
+    List<SysConfig> selectConfig(SysConfig param);
 
     /**
      * Describe: 根据 Code 查询系统配置
@@ -41,26 +28,5 @@ public interface SysConfigMapper {
      * Return: SysConfig
      */
     SysConfig selectByCode(@Param("code") String code);
-
-    /**
-     * Describe: 根据 Id 修改系统配置
-     * Param: SysConfig
-     * Return: Boolean
-     */
-    Integer updateById(SysConfig sysConfig);
-
-    /**
-     * Describe: 根据 Id 删除系统配置
-     * Param: id
-     * Return: SysConfig
-     */
-    Integer deleteById(String id);
-
-    /**
-     * Describe: 根据 Id 删除系统配置
-     * Param: id
-     * Return: SysConfig
-     */
-    Integer deleteByIds(String[] id);
 
 }

@@ -65,10 +65,11 @@
 
 <th:block th:include="include :: footer"/>
 <script>
-    layui.use(['table', 'form', 'jquery', 'dictionary'], function () {
+    layui.use(['table', 'form', 'jquery', 'dictionary', 'common'], function () {
         let table = layui.table;
         let form = layui.form;
         let $ = layui.jquery;
+        let common = layui.common;
 
         let prefix = "/system/dataSource/";
 
@@ -184,11 +185,7 @@
                 layer.msg("未选中数据", {icon: 3, time: 1000});
                 return false;
             }
-            let ids = "";
-            for (let i = 0; i < data.length; i++) {
-                ids += data[i].id + ",";
-            }
-            ids = ids.substr(0, ids.length - 1);
+            let ids = common.checkField(obj,'id');
             layer.confirm('确定要删除这些数据源', {icon: 3, title: '提示'}, function (index) {
                 layer.close(index);
                 let loading = layer.load();

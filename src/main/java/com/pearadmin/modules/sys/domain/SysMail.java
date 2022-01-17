@@ -15,8 +15,6 @@ import java.time.LocalDateTime;
 @Alias("SysMail")
 public class SysMail implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
     /**
      * 邮件id
      */

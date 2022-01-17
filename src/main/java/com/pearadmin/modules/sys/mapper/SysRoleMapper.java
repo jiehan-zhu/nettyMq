@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.pearadmin.modules.sys.domain.SysRole;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -12,7 +13,8 @@ import java.util.List;
  * CreateTime: 2019/10/23
  */
 @Mapper
-public interface SysRoleMapper {
+public interface SysRoleMapper extends BaseMapper<SysRole> {
+
     /**
      * Describe: 根据 username 查询用户权限
      * Param: username
@@ -25,41 +27,6 @@ public interface SysRoleMapper {
      * Param: SysRole
      * Return: List<SysRole>
      */
-    List<SysRole> selectList(SysRole param);
-
-    /**
-     * Describe: 添加角色数据
-     * Param: SysRole
-     * Return: 执行结果
-     */
-    Integer insert(SysRole sysRole);
-
-    /**
-     * Describe: 根据 Id 查询角色
-     * Param: id
-     * Return: SysRole
-     */
-    SysRole selectById(@Param("id") String id);
-
-    /**
-     * Describe: 根据 Id 修改角色
-     * Param: SysRole
-     * Return: Integer
-     */
-    Integer updateById(SysRole sysRole);
-
-    /**
-     * Describe: 根据 Id 删除用户
-     * Param: id
-     * Return: Integer
-     */
-    Integer deleteById(String id);
-
-    /**
-     * Describe: 根据 Id 批量删除
-     * Param: ids
-     * Return: Integer
-     */
-    Integer deleteByIds(String[] ids);
+    List<SysRole> selectRole(SysRole param);
 
 }

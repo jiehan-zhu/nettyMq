@@ -11,6 +11,10 @@ import lombok.Data;
  */
 @Data
 public class SysPassword {
+
+    /**
+     * 编号
+     * */
     private String userId;
 
     /**
