@@ -59,27 +59,6 @@ public class SysDeptServiceImpl implements SysDeptService {
     }
 
     /**
-     * Describe: 根据 ID 查询部门
-     * Param: id
-     * Return: 返回部门信息
-     */
-    @Override
-    public SysDept getById(String id) {
-        return sysDeptMapper.selectById(id);
-    }
-
-    /**
-     * Describe: 修改用户数据
-     * Param: SysUser
-     * Return: 操作结果
-     */
-    @Override
-    public boolean update(SysDept sysDept) {
-        Integer result = sysDeptMapper.updateById(sysDept);
-        return result > 0;
-    }
-
-    /**
      * Describe: 根据 id 删除部门数据
      * Param: id
      * Return: Boolean
@@ -89,6 +68,17 @@ public class SysDeptServiceImpl implements SysDeptService {
     public Boolean remove(String id) {
         sysDeptMapper.deleteById(id);
         sysUserMapper.resetDeptByDeptId(id);
+        return true;
+    }
+
+    @Override
+    public SysDept getById(String id) {
+        return sysDeptMapper.selectById(id);
+    }
+
+    @Override
+    public boolean update(SysDept sysDept) {
+        sysDeptMapper.updateById(sysDept);
         return true;
     }
 

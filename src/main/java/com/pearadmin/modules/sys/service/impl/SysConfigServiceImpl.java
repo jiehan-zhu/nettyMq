@@ -63,5 +63,4 @@ public class SysConfigServiceImpl extends ServiceImpl<SysConfigMapper, SysConfig
         SysConfig config = sysConfigMapper.selectByCode(code);
         return config != null ? config.getConfigValue() : "";
     }
-
 }

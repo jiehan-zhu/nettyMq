@@ -64,7 +64,7 @@ pear:
     super-admin: admin
     # 允 许 同 一 账 号 多 端 登 录 个 数
     maximum: 1
-    # 记 住 密 码 KEY
+    # 记 住 密 码
     remember-key: PEAR_REMEMBER
     # 不 需 要 权 限 拦 截 的 接 口 配 置
     open-api:
