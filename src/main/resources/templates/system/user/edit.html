@@ -60,7 +60,7 @@
                     <label class="layui-form-label">角色</label>
                     <div class="layui-input-block">
                         <input lay-skin="primary" name="roleIds"
-                               th:checked="${sysRole.checked}" th:each="sysRole:${sysRole}" th:title="${sysRole.roleName}"
+                               th:checked="${sysRole.checked}" th:each="sysRole:${sysRoles}" th:title="${sysRole.roleName}"
                                th:value="${sysRole.roleId}" type="checkbox">
                     </div>
                 </div>

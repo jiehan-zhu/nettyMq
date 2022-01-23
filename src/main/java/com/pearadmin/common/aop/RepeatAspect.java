@@ -31,9 +31,15 @@ import java.util.concurrent.TimeUnit;
 @Component
 public abstract class RepeatAspect {
 
+    /**
+     * Redis 模板
+     * */
     @Resource
     private RedisTemplate<String, Map<String,Object>> redisTemplate;
 
+    /**
+     * 用户上下文
+     * */
     @Resource
     private UserContext userContext;
 

@@ -24,9 +24,6 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 @Configuration
 public class SecureExtendConfiguration {
 
-    /**
-     * 注解权限
-     */
     @Resource
     private SecurePermissionSupport securityPermissionEvaluator;
 

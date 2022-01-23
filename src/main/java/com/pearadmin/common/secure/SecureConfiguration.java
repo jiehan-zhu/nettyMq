@@ -70,7 +70,7 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter {
     private SecureLogoutHandler securityLogoutHandler;
 
     @Resource
-    private SecureRememberMeHandler rememberMeAuthenticationSuccessHandler;
+    private SecureRememberMeHandler secureRememberMeHandler;
 
     /**
      * 身份认证接口
@@ -119,7 +119,7 @@ public class SecureConfiguration extends WebSecurityConfigurerAdapter {
                 .rememberMe()
                 .rememberMeParameter("remember-me")
                 .rememberMeCookieName("rememberme-token")
-                .authenticationSuccessHandler(rememberMeAuthenticationSuccessHandler)
+                .authenticationSuccessHandler(secureRememberMeHandler)
                 .tokenRepository(securityUserTokenService)
                 .key(securityProperty.getRememberKey())
                 .and()
