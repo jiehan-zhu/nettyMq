@@ -53,7 +53,7 @@
         <!-- 模 板 引 擎 版 本 -->
         <velocity.version>1.7</velocity.version>
         <!-- security thymeleaf -->
-        <thymeleaf-extras.version>3.1.0.M1</thymeleaf-extras.version>
+        <thymeleaf-extras.version>3.0.4.RELEASE</thymeleaf-extras.version>
         <!-- dynamic 动态数据库  -->
         <dynamic.verion>3.5.0</dynamic.verion>
         <!-- jackson -->

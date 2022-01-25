@@ -9,39 +9,39 @@
         <div class="main-container">
             <div class="main-container">
                 <div class="layui-form-item layui-hide">
-                    <label class="layui-form-label">编号</label>
+                    <label class="layui-form-label"><span style="color: red;">*</span>编号</label>
                     <div class="layui-input-block">
-                        <input autocomplete="off" class="layui-input" lay-verify="title" name="deptId"
+                        <input autocomplete="off" class="layui-input" lay-verify="required" name="deptId"
                                placeholder="请输入标题" th:value="${sysDept.deptId}" type="text">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">名称</label>
+                    <label class="layui-form-label"><span style="color: red;">*</span>名称</label>
                     <div class="layui-input-block">
-                        <input autocomplete="off" class="layui-input" lay-verify="title" name="deptName"
+                        <input autocomplete="off" class="layui-input" lay-verify="required" name="deptName"
                                placeholder="请输入标题" th:value="${sysDept.deptName}" type="text">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">负责人</label>
+                    <label class="layui-form-label"><span style="color: red;">*</span>管理</label>
                     <div class="layui-input-block">
-                        <input autocomplete="off" class="layui-input" lay-verify="title" name="leader"
+                        <input autocomplete="off" class="layui-input" lay-verify="required" name="leader"
                                placeholder="请输入标题" th:value="${sysDept.leader}"
                                type="text">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">邮箱</label>
+                    <label class="layui-form-label"><span style="color: red;">*</span>邮箱</label>
                     <div class="layui-input-block">
-                        <input autocomplete="off" class="layui-input" lay-verify="title" name="email"
+                        <input autocomplete="off" class="layui-input" lay-verify="email" name="email"
                                placeholder="请输入标题" th:value="${sysDept.email}"
                                type="text">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">联系方式</label>
+                    <label class="layui-form-label"><span style="color: red;">*</span>电话</label>
                     <div class="layui-input-block">
-                        <input autocomplete="off" class="layui-input" lay-verify="title" name="phone"
+                        <input autocomplete="off" class="layui-input" lay-verify="phone" name="phone"
                                placeholder="请输入标题" th:value="${sysDept.phone}"
                                type="text">
                     </div>

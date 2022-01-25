@@ -9,36 +9,36 @@
         <div class="main-container">
             <div class="main-container">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">上级部门</label>
+                    <label class="layui-form-label">上级</label>
                     <div class="layui-input-block">
                         <ul class="dtree" data-id="0" id="selectParent" name="parentId"></ul>
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">名称</label>
+                    <label class="layui-form-label"><span style="color: red;">*</span>名称</label>
                     <div class="layui-input-block">
-                        <input autocomplete="off" class="layui-input" lay-verify="title" name="deptName" placeholder="请输入标题"
+                        <input autocomplete="off" class="layui-input" lay-verify="required" name="deptName" placeholder="请输入标题"
                                type="text">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">负责人</label>
+                    <label class="layui-form-label"><span style="color: red;">*</span>管理</label>
                     <div class="layui-input-block">
-                        <input autocomplete="off" class="layui-input" lay-verify="title" name="leader" placeholder="请输入标题"
+                        <input autocomplete="off" class="layui-input" lay-verify="required" name="leader" placeholder="请输入标题"
                                type="text">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">邮箱</label>
+                    <label class="layui-form-label"><span style="color: red;">*</span>邮箱</label>
                     <div class="layui-input-block">
-                        <input autocomplete="off" class="layui-input" lay-verify="title" name="email" placeholder="请输入标题"
+                        <input autocomplete="off" class="layui-input" lay-verify="email" name="email" placeholder="请输入标题"
                                type="text">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">联系方式</label>
+                    <label class="layui-form-label"><span style="color: red;">*</span>电话</label>
                     <div class="layui-input-block">
-                        <input autocomplete="off" class="layui-input" lay-verify="title" name="phone" placeholder="请输入标题"
+                        <input autocomplete="off" class="layui-input" lay-verify="phone" name="phone" placeholder="请输入标题"
                                type="text">
                     </div>
                 </div>
@@ -52,12 +52,12 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">排序</label>
                     <div class="layui-input-block">
-                        <input autocomplete="off" class="layui-input" lay-verify="title" name="sort" placeholder="请输入标题"
+                        <input autocomplete="off" class="layui-input" name="sort" placeholder="请输入标题"
                                type="text">
                     </div>
                 </div>
                 <div class="layui-form-item layui-form-text">
-                    <label class="layui-form-label">详细地址</label>
+                    <label class="layui-form-label">地址</label>
                     <div class="layui-input-block">
                         <textarea class="layui-textarea" name="address" placeholder="请输入描述"></textarea>
                     </div>

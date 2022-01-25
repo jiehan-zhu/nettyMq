@@ -16,30 +16,30 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">账号</label>
+                    <label class="layui-form-label"><span style="color:red;">*</span>账号</label>
                     <div class="layui-input-block">
                         <input autocomplete="off" class="layui-input" lay-verify="required" name="username"
                                placeholder="请输入标题" th:value="${sysUser.username}" type="text">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">姓名</label>
+                    <label class="layui-form-label"><span style="color:red;">*</span>姓名</label>
                     <div class="layui-input-block">
                         <input autocomplete="off" class="layui-input" lay-verify="required" name="realName"
                                placeholder="请输入标题" th:value="${sysUser.realName}" type="text">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">邮箱</label>
+                    <label class="layui-form-label"><span style="color:red;">*</span>邮箱</label>
                     <div class="layui-input-block">
-                        <input autocomplete="off" class="layui-input" name="email"
+                        <input autocomplete="off" lay-verify="email" class="layui-input" name="email"
                                placeholder="请输入标题" th:value="${sysUser.email}" type="text">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">电话</label>
+                    <label class="layui-form-label"><span style="color:red;">*</span>电话</label>
                     <div class="layui-input-block">
-                        <input autocomplete="off" class="layui-input" name="phone"
+                        <input autocomplete="off" lay-verify="phone" class="layui-input" name="phone"
                                placeholder="请输入标题" th:value="${sysUser.phone}" type="text">
                     </div>
                 </div>
