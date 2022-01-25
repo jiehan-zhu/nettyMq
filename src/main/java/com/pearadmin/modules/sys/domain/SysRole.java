@@ -1,6 +1,7 @@
 package com.pearadmin.modules.sys.domain;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.pearadmin.common.web.base.BaseDomain;
 import com.pearadmin.common.web.interceptor.enums.Scope;
 import lombok.Data;
@@ -18,6 +19,7 @@ public class SysRole extends BaseDomain {
     /**
      * 编号
      */
+    @TableId
     private String roleId;
 
     /**

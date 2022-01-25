@@ -1,6 +1,7 @@
 package com.pearadmin.modules.sys.domain;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.pearadmin.common.aop.enums.BusinessType;
 import com.pearadmin.common.aop.enums.LoggingType;
 import com.pearadmin.common.aop.enums.RequestModel;
@@ -27,6 +28,7 @@ public class SysLog {
     /**
      * 编号
      */
+    @TableId
     private String id;
 
     /**

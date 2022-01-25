@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.domain;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class SysMenu {
     /**
      * 菜单编号
      */
+    @TableId
     private String id;
 
     /**

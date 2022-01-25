@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.domain;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import org.apache.ibatis.type.Alias;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,7 @@ public class SysRoleDept {
     /**
      * 编号
      * */
+    @TableId
     private String id;
 
     /**

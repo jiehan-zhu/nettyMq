@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.domain;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.pearadmin.common.web.base.BaseDomain;
 import lombok.Data;
 
@@ -16,6 +17,7 @@ public class SysFile extends BaseDomain {
     /**
      * 文件编号
      */
+    @TableId
     private String id;
 
     /**

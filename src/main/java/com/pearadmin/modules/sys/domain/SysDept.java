@@ -1,6 +1,7 @@
 package com.pearadmin.modules.sys.domain;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.pearadmin.common.web.base.BaseDomain;
 import lombok.Data;
 import org.apache.ibatis.type.Alias;
@@ -17,6 +18,7 @@ public class SysDept extends BaseDomain {
     /**
      * 部门编号
      */
+    @TableId
     private String deptId;
 
     /**

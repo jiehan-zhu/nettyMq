@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.domain;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.pearadmin.common.web.base.BaseDomain;
 import lombok.Data;
 import org.apache.ibatis.type.Alias;
@@ -15,6 +16,7 @@ import org.apache.ibatis.type.Alias;
 public class SysNotice extends BaseDomain {
 
     /** 编号 */
+    @TableId
     private String id;
 
     /** 标题 */

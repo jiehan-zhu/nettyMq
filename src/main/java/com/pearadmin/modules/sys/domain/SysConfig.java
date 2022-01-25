@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.domain;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.pearadmin.common.web.base.BaseDomain;
 import lombok.Data;
 import org.apache.ibatis.type.Alias;
@@ -16,6 +17,7 @@ public class SysConfig extends BaseDomain {
     /**
      * 配置标识
      */
+    @TableId
     private String configId;
 
     /**
