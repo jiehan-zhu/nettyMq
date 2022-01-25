@@ -8,6 +8,8 @@ import com.pearadmin.modules.sys.service.ISysConfigService;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -29,6 +31,9 @@ public class AllocationCache extends BaseCache<String> {
     public Map<String, String> load() {
         log.info("Refresh Cache - 全局配置");
         List<SysConfig> list = sysConfigService.list(new QueryWrapper<>());
-        return list.stream().collect(Collectors.toMap(SysConfig::getConfigCode, SysConfig::getConfigValue));
+        if(list.size() > 0) {
+            return list.stream().collect(Collectors.toMap(SysConfig::getConfigCode, SysConfig::getConfigValue));
+        }
+        return new HashMap<>();
     }
 }

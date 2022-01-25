@@ -9,30 +9,30 @@
         <div class="main-container">
             <div class="main-container">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">任务名称</label>
+                    <label class="layui-form-label"><span style="color: red;">*</span>名称</label>
                     <div class="layui-input-block">
-                        <input autocomplete="off" class="layui-input" lay-verify="title" name="jobName" placeholder="任务名称"
+                        <input autocomplete="off" class="layui-input" lay-verify="required" name="jobName" placeholder="任务名称"
                                type="text">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">运行类</label>
+                    <label class="layui-form-label"><span style="color: red;">*</span>任务</label>
                     <div class="layui-input-block">
-                        <input autocomplete="off" class="layui-input" lay-verify="title" name="beanName" placeholder="运行类"
+                        <input autocomplete="off" class="layui-input" lay-verify="required" name="beanName" placeholder="运行类"
                                type="text">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">参数</label>
                     <div class="layui-input-block">
-                        <input autocomplete="off" class="layui-input" lay-verify="title" name="params" placeholder="执行表达式"
+                        <input autocomplete="off" class="layui-input" name="params" placeholder="执行表达式"
                                type="text">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">表达式</label>
+                    <label class="layui-form-label"><span style="color: red;">*</span>Cron</label>
                     <div class="layui-input-block">
-                        <input autocomplete="off" class="layui-input" id="cronExpression" lay-verify="title"
+                        <input autocomplete="off" class="layui-input" id="cronExpression" lay-verify="required"
                                name="cronExpression" placeholder="执行表达式" type="text">
                     </div>
                 </div>
