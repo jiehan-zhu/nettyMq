@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 25/01/2022 21:45:52
+ Date: 26/01/2022 00:55:11
 */
 
 SET NAMES utf8mb4;
@@ -1107,6 +1107,8 @@ CREATE TABLE `schedule_job`  (
 -- ----------------------------
 -- Records of schedule_job
 -- ----------------------------
+INSERT INTO `schedule_job` VALUES ('1486010868926775296', 'commonTask', '', '*/5 * * * * ?', 0, '', '2022-01-26 00:19:35', '测试任务');
+INSERT INTO `schedule_job` VALUES ('1486013097326936064', '234', '', '*/5 * * * * ?', 0, '23', '2022-01-26 00:28:26', '234');
 
 -- ----------------------------
 -- Table structure for schedule_job_details
@@ -1166,6 +1168,95 @@ CREATE TABLE `schedule_log`  (
 -- ----------------------------
 -- Records of schedule_log
 -- ----------------------------
+INSERT INTO `schedule_log` VALUES ('1486010870906486784', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:19:35');
+INSERT INTO `schedule_log` VALUES ('1486010891802509312', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:19:40');
+INSERT INTO `schedule_log` VALUES ('1486010904456724480', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:19:43');
+INSERT INTO `schedule_log` VALUES ('1486010912778223616', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:19:45');
+INSERT INTO `schedule_log` VALUES ('1486010933732966400', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:19:50');
+INSERT INTO `schedule_log` VALUES ('1486010954729652224', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:19:55');
+INSERT INTO `schedule_log` VALUES ('1486010975692783616', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:20:00');
+INSERT INTO `schedule_log` VALUES ('1486010996651720704', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:20:05');
+INSERT INTO `schedule_log` VALUES ('1486011017627435008', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:20:10');
+INSERT INTO `schedule_log` VALUES ('1486011038565400576', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:20:15');
+INSERT INTO `schedule_log` VALUES ('1486011059541114880', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:20:20');
+INSERT INTO `schedule_log` VALUES ('1486011080504246272', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:20:25');
+INSERT INTO `schedule_log` VALUES ('1486011101505126400', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:20:30');
+INSERT INTO `schedule_log` VALUES ('1486011122451480576', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:20:35');
+INSERT INTO `schedule_log` VALUES ('1486011143418806272', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:20:40');
+INSERT INTO `schedule_log` VALUES ('1486011164402909184', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:20:45');
+INSERT INTO `schedule_log` VALUES ('1486011185370234880', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:20:50');
+INSERT INTO `schedule_log` VALUES ('1486011206337560576', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:20:55');
+INSERT INTO `schedule_log` VALUES ('1486011227309080576', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:21:00');
+INSERT INTO `schedule_log` VALUES ('1486011248284794880', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:21:05');
+INSERT INTO `schedule_log` VALUES ('1486011269247926272', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:21:10');
+INSERT INTO `schedule_log` VALUES ('1486011290227834880', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:21:15');
+INSERT INTO `schedule_log` VALUES ('1486011311195160576', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:21:20');
+INSERT INTO `schedule_log` VALUES ('1486011332170874880', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:21:25');
+INSERT INTO `schedule_log` VALUES ('1486011353138200576', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:21:30');
+INSERT INTO `schedule_log` VALUES ('1486011374109720576', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:21:35');
+INSERT INTO `schedule_log` VALUES ('1486011395135766528', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:21:40');
+INSERT INTO `schedule_log` VALUES ('1486011416086315008', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:21:45');
+INSERT INTO `schedule_log` VALUES ('1486011437020086272', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:21:50');
+INSERT INTO `schedule_log` VALUES ('1486011458104852480', '1486010868926775296', 'commonTask', '', 0, NULL, 2, '2022-01-26 00:21:55');
+INSERT INTO `schedule_log` VALUES ('1486011478967320576', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:22:00');
+INSERT INTO `schedule_log` VALUES ('1486011499938840576', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:22:05');
+INSERT INTO `schedule_log` VALUES ('1486011520906166272', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:22:10');
+INSERT INTO `schedule_log` VALUES ('1486011541923823616', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:22:15');
+INSERT INTO `schedule_log` VALUES ('1486011562849206272', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:22:20');
+INSERT INTO `schedule_log` VALUES ('1486011583833309184', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:22:25');
+INSERT INTO `schedule_log` VALUES ('1486011604792246272', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:22:30');
+INSERT INTO `schedule_log` VALUES ('1486011625814097920', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:22:35');
+INSERT INTO `schedule_log` VALUES ('1486011646735286272', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:22:40');
+INSERT INTO `schedule_log` VALUES ('1486011667740360704', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:22:45');
+INSERT INTO `schedule_log` VALUES ('1486011688762212352', '1486010868926775296', 'commonTask', '', 0, NULL, 2, '2022-01-26 00:22:50');
+INSERT INTO `schedule_log` VALUES ('1486011709649846272', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:22:55');
+INSERT INTO `schedule_log` VALUES ('1486011730629754880', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:23:00');
+INSERT INTO `schedule_log` VALUES ('1486011751597080576', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:23:05');
+INSERT INTO `schedule_log` VALUES ('1486011772564406272', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:23:10');
+INSERT INTO `schedule_log` VALUES ('1486011793569480704', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:23:15');
+INSERT INTO `schedule_log` VALUES ('1486011814507446272', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:23:20');
+INSERT INTO `schedule_log` VALUES ('1486011835541880832', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:23:25');
+INSERT INTO `schedule_log` VALUES ('1486011856454680576', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:23:30');
+INSERT INTO `schedule_log` VALUES ('1486011877426200576', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:23:35');
+INSERT INTO `schedule_log` VALUES ('1486011898393526272', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:23:40');
+INSERT INTO `schedule_log` VALUES ('1486011919419572224', '1486010868926775296', 'commonTask', '', 0, NULL, 3, '2022-01-26 00:23:45');
+INSERT INTO `schedule_log` VALUES ('1486011940336566272', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:23:50');
+INSERT INTO `schedule_log` VALUES ('1486011961371000832', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:23:55');
+INSERT INTO `schedule_log` VALUES ('1486011982283800576', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:24:00');
+INSERT INTO `schedule_log` VALUES ('1486012003251126272', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:24:05');
+INSERT INTO `schedule_log` VALUES ('1486012024239423488', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:24:10');
+INSERT INTO `schedule_log` VALUES ('1486012045194166272', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:24:15');
+INSERT INTO `schedule_log` VALUES ('1486012066199240704', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:24:20');
+INSERT INTO `schedule_log` VALUES ('1486012087137206272', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:24:25');
+INSERT INTO `schedule_log` VALUES ('1486012108167446528', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:24:30');
+INSERT INTO `schedule_log` VALUES ('1486012129084440576', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:24:35');
+INSERT INTO `schedule_log` VALUES ('1486012150055960576', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:24:40');
+INSERT INTO `schedule_log` VALUES ('1486012171023286272', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:24:45');
+INSERT INTO `schedule_log` VALUES ('1486012192019972096', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:24:50');
+INSERT INTO `schedule_log` VALUES ('1486012212966326272', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:24:55');
+INSERT INTO `schedule_log` VALUES ('1486012233992372224', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:25:00');
+INSERT INTO `schedule_log` VALUES ('1486012254909366272', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:25:05');
+INSERT INTO `schedule_log` VALUES ('1486012275931217920', '1486010868926775296', 'commonTask', '', 0, NULL, 1, '2022-01-26 00:25:10');
+INSERT INTO `schedule_log` VALUES ('1486012296852406272', '1486010868926775296', 'commonTask', '', 0, NULL, 0, '2022-01-26 00:25:15');
+INSERT INTO `schedule_log` VALUES ('1486013097549234176', '1486013097326936064', '234', '', 1, 'No bean named \'234\' available', 0, '2022-01-26 00:28:26');
+INSERT INTO `schedule_log` VALUES ('1486013114771046400', '1486013097326936064', '234', '', 1, 'No bean named \'234\' available', 0, '2022-01-26 00:28:30');
+INSERT INTO `schedule_log` VALUES ('1486013123260317696', '1486013097326936064', '234', '', 1, 'No bean named \'234\' available', 0, '2022-01-26 00:28:32');
+INSERT INTO `schedule_log` VALUES ('1486013135746760704', '1486013097326936064', '234', '', 1, 'No bean named \'234\' available', 0, '2022-01-26 00:28:35');
+INSERT INTO `schedule_log` VALUES ('1486013156714086400', '1486013097326936064', '234', '', 1, 'No bean named \'234\' available', 0, '2022-01-26 00:28:40');
+INSERT INTO `schedule_log` VALUES ('1486013177702383616', '1486013097326936064', '234', '', 1, 'No bean named \'234\' available', 0, '2022-01-26 00:28:45');
+INSERT INTO `schedule_log` VALUES ('1486013198627766272', '1486013097326936064', '234', '', 1, 'No bean named \'234\' available', 0, '2022-01-26 00:28:50');
+INSERT INTO `schedule_log` VALUES ('1486013219645423616', '1486013097326936064', '234', '', 1, 'No bean named \'234\' available', 0, '2022-01-26 00:28:55');
+INSERT INTO `schedule_log` VALUES ('1486013240575000576', '1486013097326936064', '234', '', 1, 'No bean named \'234\' available', 0, '2022-01-26 00:29:00');
+INSERT INTO `schedule_log` VALUES ('1486013261546520576', '1486013097326936064', '234', '', 1, 'No bean named \'234\' available', 0, '2022-01-26 00:29:05');
+INSERT INTO `schedule_log` VALUES ('1486013282518040576', '1486013097326936064', '234', '', 1, 'No bean named \'234\' available', 0, '2022-01-26 00:29:10');
+INSERT INTO `schedule_log` VALUES ('1486013303485366272', '1486013097326936064', '234', '', 1, 'No bean named \'234\' available', 0, '2022-01-26 00:29:15');
+INSERT INTO `schedule_log` VALUES ('1486013324469469184', '1486013097326936064', '234', '', 1, 'No bean named \'234\' available', 0, '2022-01-26 00:29:20');
+INSERT INTO `schedule_log` VALUES ('1486013345432600576', '1486013097326936064', '234', '', 1, 'No bean named \'234\' available', 0, '2022-01-26 00:29:25');
+INSERT INTO `schedule_log` VALUES ('1486013366399926272', '1486013097326936064', '234', '', 1, 'No bean named \'234\' available', 0, '2022-01-26 00:29:30');
+INSERT INTO `schedule_log` VALUES ('1486013387430166528', '1486013097326936064', '234', '', 1, 'No bean named \'234\' available', 0, '2022-01-26 00:29:35');
+INSERT INTO `schedule_log` VALUES ('1486013408342966272', '1486013097326936064', '234', '', 1, 'No bean named \'234\' available', 0, '2022-01-26 00:29:40');
+INSERT INTO `schedule_log` VALUES ('1486013429364817920', '1486013097326936064', '234', '', 1, 'No bean named \'234\' available', 0, '2022-01-26 00:29:45');
+INSERT INTO `schedule_log` VALUES ('1486013450290200576', '1486013097326936064', '234', '', 1, 'No bean named \'234\' available', 0, '2022-01-26 00:29:50');
 
 -- ----------------------------
 -- Table structure for schedule_paused_trigger_grps
@@ -1294,8 +1385,8 @@ CREATE TABLE `sys_config`  (
   `config_code` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '配置标识',
   `config_value` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '配置值',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
-  `create_by` char(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
-  `update_by` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '修改人',
+  `create_by` char(19) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
+  `update_by` char(19) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '修改人',
   `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   `config_type` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '配置类型',
@@ -1357,9 +1448,9 @@ CREATE TABLE `sys_dept`  (
   `phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '联系方式',
   `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '邮箱',
   `status` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '部门状态',
-  `create_by` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
+  `create_by` varchar(19) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '修改人',
+  `update_by` varchar(19) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '修改人',
   `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
   `remark` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '备注',
   `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '详细地址',
@@ -1421,7 +1512,7 @@ CREATE TABLE `sys_dict_data`  (
   `is_default` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '是否默认',
   `update_by` char(19) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '修改人',
   `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
-  `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
+  `create_by` char(19) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   `enable` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '是否启用',
@@ -11469,6 +11560,24 @@ INSERT INTO `sys_log` VALUES ('1485920040946499584', '登录', '/login', 'OTHER'
 INSERT INTO `sys_log` VALUES ('1485967369829351424', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-25 21:26:44', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
 INSERT INTO `sys_log` VALUES ('1485967836797992960', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-25 21:28:35', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
 INSERT INTO `sys_log` VALUES ('1485970398490132480', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-25 21:38:46', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
+INSERT INTO `sys_log` VALUES ('1485992679715110912', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-25 23:07:18', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
+INSERT INTO `sys_log` VALUES ('1485993660922200064', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-25 23:11:12', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
+INSERT INTO `sys_log` VALUES ('1485994727160414208', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-25 23:15:26', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
+INSERT INTO `sys_log` VALUES ('1485995617892171776', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-25 23:18:58', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
+INSERT INTO `sys_log` VALUES ('1485999976117960704', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-25 23:36:18', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
+INSERT INTO `sys_log` VALUES ('1486001077949038592', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-25 23:40:40', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
+INSERT INTO `sys_log` VALUES ('1486001670646136832', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-25 23:43:02', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
+INSERT INTO `sys_log` VALUES ('1486002353181032448', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-25 23:45:44', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
+INSERT INTO `sys_log` VALUES ('1486002878064623616', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-25 23:47:49', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
+INSERT INTO `sys_log` VALUES ('1486003598264369152', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-25 23:50:41', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
+INSERT INTO `sys_log` VALUES ('1486004657070276608', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-25 23:54:54', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
+INSERT INTO `sys_log` VALUES ('1486006144940900352', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-26 00:00:48', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
+INSERT INTO `sys_log` VALUES ('1486006953900507136', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-26 00:04:01', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
+INSERT INTO `sys_log` VALUES ('1486007334328074240', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-26 00:05:32', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
+INSERT INTO `sys_log` VALUES ('1486008721162108928', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-26 00:11:02', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
+INSERT INTO `sys_log` VALUES ('1486010690299756544', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-26 00:18:52', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
+INSERT INTO `sys_log` VALUES ('1486012794607239168', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-26 00:27:14', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
+INSERT INTO `sys_log` VALUES ('1486013639231012864', '登录', '/login', 'OTHER', 'POST', 'admin', '/login', '127.0.0.1', NULL, NULL, '1', NULL, '2022-01-26 00:30:35', '登录成功', NULL, '谷歌浏览器', 'Windows', 'LOGIN');
 
 -- ----------------------------
 -- Table structure for sys_mail
@@ -11901,14 +12010,14 @@ CREATE TABLE `sys_user`  (
 -- Records of sys_user
 -- ----------------------------
 INSERT INTO `sys_user` VALUES ('1306230031168569344', 'feng', '$2a$10$jjf2h8Cx2lkFMKy3NY9pguADYAMewyPr2IJw8YAI5zSH2/0R/9Kra', NULL, '1', '风筝', 'feng@gmail.com', NULL, '0', '15553726531', '2000-02-09 00:00:00', NULL, NULL, NULL, '被岁月镂空，亦受其雕琢', '1', NULL, '10', NULL);
-INSERT INTO `sys_user` VALUES ('1309861917694623744', 'admin', '$2a$10$6T.NGloFO.mD/QOAUelMTOcjAH8N49h34TsXduDVlnNMrASIGBNz6', NULL, '1', '管理', 'Jmys1992@qq.com', '', '0', '15553726531', '2020-09-26 22:26:32', NULL, '2022-01-25 21:38:46', '1309861917694623744', '被岁月镂空，亦受其雕琢', '1', NULL, '1', '2022-01-25 21:38:46');
+INSERT INTO `sys_user` VALUES ('1309861917694623744', 'admin', '$2a$10$6T.NGloFO.mD/QOAUelMTOcjAH8N49h34TsXduDVlnNMrASIGBNz6', NULL, '1', '管理', 'Jmys1992@qq.com', '', '0', '15553726531', '2020-09-26 22:26:32', NULL, '2022-01-26 00:30:35', '1309861917694623744', '被岁月镂空，亦受其雕琢', '1', NULL, '1', '2022-01-26 00:30:35');
 INSERT INTO `sys_user` VALUES ('1310409555649232897', 'ruhua', '$2a$10$pkvLdCLdFp2sXZpmK34wveekbWvHinW2ldBnic4SqjiKO8jK4Etka', NULL, '1', '如花', 'ruhua@gmail.com', NULL, '0', '15553726531', '2020-09-28 10:42:39', NULL, NULL, NULL, NULL, '1', NULL, '1', NULL);
 INSERT INTO `sys_user` VALUES ('1349016976730619905', 'mwj', '$2a$10$mD0pnwOGjmOKihboidaTveUdrqcDYoluzfCOA0Ho87iwr9PKrDA6i', NULL, '1', '风筝', '', NULL, '1', '666666666', '2021-01-12 23:34:45', NULL, NULL, NULL, NULL, '1', NULL, '6', '2021-01-12 23:35:12');
 INSERT INTO `sys_user` VALUES ('1349021166525743105', 'xiana', '$2a$10$6VuyGmiEbIix/gPDU8oe3O7DZSxGVByjXCHQGtyEMoRAt74M/daee', NULL, '1', '夏娜', 'xiana@gmail.com', NULL, '0', '15553726531', '2021-01-12 23:51:24', NULL, NULL, NULL, NULL, '1', NULL, '1', NULL);
 INSERT INTO `sys_user` VALUES ('1355966975355912193', 'sanman', '$2a$10$AD3QnQMRhYY7RUDHd1EEL.KHaDW8/S66SsESwh.9ta8bLiUXrZcJe', NULL, '1', '散漫', 'sanman@gmail.com', NULL, '0', '15553726531', '2021-02-01 03:51:34', NULL, NULL, NULL, NULL, '1', NULL, '1', NULL);
 INSERT INTO `sys_user` VALUES ('1355967204012589057', 'langhua', '$2a$10$MNbf6dSvvncpoPsNFyMW6ObPwfj3jCKsZa7LvVAiXco1DWtgA46he', NULL, '1', '浪花', 'langhua@gmail.com', NULL, '0', '15553726531', '2021-02-01 03:52:29', NULL, NULL, NULL, NULL, '1', NULL, '1', NULL);
 INSERT INTO `sys_user` VALUES ('1355967579994193921', 'zidian', '$2a$10$c9OatFOMGnj37A6UJTwfGOKqCwCx50K8eZsjV5YoBRlpYHcz8WfyW', NULL, '1', '字典', 'zidian', NULL, '0', '15553726531', '2021-02-01 03:53:58', NULL, NULL, NULL, NULL, '1', NULL, '1', NULL);
-INSERT INTO `sys_user` VALUES ('1370973608502886401', 'duanlang', '$2a$10$XNcKlX3AnXR/Gh2g8aLX5OFtLD69Yjl1O8PDLmITH4WCQT.shsrWe', NULL, '1', '断浪', 'duanlang@gmail.com', NULL, '0', '15553726531', '2021-03-14 13:42:34', NULL, NULL, NULL, NULL, '1', NULL, '1', '2021-03-14 13:47:28');
+INSERT INTO `sys_user` VALUES ('1370973608502886401', 'duanlang', '$2a$10$XNcKlX3AnXR/Gh2g8aLX5OFtLD69Yjl1O8PDLmITH4WCQT.shsrWe', NULL, '1', '断浪', 'duanlang@gmail.com', NULL, '0', '15553726531', '2021-03-14 13:42:34', NULL, '2022-01-25 23:44:50', '1309861917694623744', NULL, '1', NULL, '1', '2021-03-14 13:47:28');
 INSERT INTO `sys_user` VALUES ('1460505942704521217', '2342332', '$2a$10$4WI5yQhbRrzoq98El4G1xej7K0qTu1i5O41kSlvm3vkJqCqCL10ZS', NULL, '1', '32423423', '32423', NULL, '1', '3242342', NULL, NULL, NULL, NULL, NULL, '1', NULL, '1', NULL);
 INSERT INTO `sys_user` VALUES ('1460509791712444417', '3424', '$2a$10$JusbybebfX1nplA600Jnae4OIlBGzvodZqyn4HdXIAxfB0uOmOvZa', NULL, '1', '32432', '32423', NULL, '0', '324', NULL, NULL, NULL, NULL, NULL, '1', NULL, '1', NULL);
 INSERT INTO `sys_user` VALUES ('1460511736024006657', '32422342342', '$2a$10$iYKEXmPhwILlI.K88noBnuDXxPZoC6W2ILOO7miPJNHC3AumkfnQa', NULL, '1', '34234', '2342', NULL, '1', '3242', NULL, NULL, NULL, NULL, NULL, '1', NULL, '8', NULL);
@@ -12012,7 +12121,6 @@ INSERT INTO `sys_user_role` VALUES ('1355967330718318592', '1355967204012589057'
 INSERT INTO `sys_user_role` VALUES ('1355967330718318593', '1355967204012589057', '1313761100243664896');
 INSERT INTO `sys_user_role` VALUES ('1355967580686254080', '1355967579994193921', '1309851245195821056');
 INSERT INTO `sys_user_role` VALUES ('1355967580686254081', '1355967579994193921', '1313761100243664896');
-INSERT INTO `sys_user_role` VALUES ('1370973609278832640', '1370973608502886401', '1313761100243664896');
 INSERT INTO `sys_user_role` VALUES ('1460505375164858368', '1460505374258888705', '1309851245195821056');
 INSERT INTO `sys_user_role` VALUES ('1460505490055233536', '1460505488876634113', '1309851245195821056');
 INSERT INTO `sys_user_role` VALUES ('1460505503292456960', '1460505502331961345', '1309851245195821056');
@@ -12030,6 +12138,8 @@ INSERT INTO `sys_user_role` VALUES ('1480925148579102720', '1480925147811545089'
 INSERT INTO `sys_user_role` VALUES ('1480925148579102721', '1480925147811545089', '1313761100243664896');
 INSERT INTO `sys_user_role` VALUES ('1481092459923505152', '1309861917694623744', '1309851245195821056');
 INSERT INTO `sys_user_role` VALUES ('1481092459923505153', '1309861917694623744', '1313761100243664896');
+INSERT INTO `sys_user_role` VALUES ('1486002124293668864', '1370973608502886401', '1309851245195821056');
+INSERT INTO `sys_user_role` VALUES ('1486002124293668865', '1370973608502886401', '1313761100243664896');
 INSERT INTO `sys_user_role` VALUES ('442110794142978048', NULL, '1');
 INSERT INTO `sys_user_role` VALUES ('442110794142978049', NULL, '2');
 INSERT INTO `sys_user_role` VALUES ('442110794142978050', NULL, '3');
