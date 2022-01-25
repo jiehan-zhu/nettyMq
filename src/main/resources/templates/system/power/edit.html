@@ -95,10 +95,10 @@
 </form>
 <th:block th:include="include :: footer"/>
 <script th:inline="javascript">
-    layui.use(['form', 'jquery', 'iconPicker', 'dtree'], function () {
+    layui.use(['form', 'jquery', 'icon', 'dtree'], function () {
         let form = layui.form;
         let $ = layui.jquery;
-        let iconPicker = layui.iconPicker;
+        let icon = layui.icon;
         let dtree = layui.dtree;
 
         dtree.renderSelect({
@@ -155,18 +155,17 @@
             return false;
         });
 
-        iconPicker.render({
+        icon.render({
             elem: '#icon',
-            type: 'fontClass',
-            search: true,
+            style: 'color: #5FB878;',
+            placeholder: '',
+            isSplit: true,
             page: true,
-            limit: 12,
-            click: function (data) {
-                console.log(data);
+            search: true,
+            click: function(obj) {
+                console.log(obj)
             }
         });
-
-        iconPicker.checkIcon("icon", [[${sysPower.icon}]]);
 
         window.init = function (type) {
             if (type == '0') {
