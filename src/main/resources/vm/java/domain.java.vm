@@ -25,7 +25,6 @@ import com.pearadmin.common.web.base.TreeDomain;
 #end
 @Data
 public class ${ClassName} extends ${Entity}{
-private static final long serialVersionUID=1L;
 
 #foreach ($column in $columns)
 #if(!$table.isSuperColumn($column.javaField))
@@ -39,11 +38,12 @@ private static final long serialVersionUID=1L;
 #end
 #end
     private $column.javaType $column.javaField;
-#end
-#end
-#if($table.sub)
-/** $table.subTable.functionName信息 */
-private List<${subClassName}> ${subclassName}List;
 
+#end
+#end
+
+#if($table.sub)
+    /** $table.subTable.functionName信息 */
+    private List<${subClassName}> ${subclassName}List;
 #end
 }

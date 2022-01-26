@@ -131,6 +131,7 @@
             #{${pkColumn.javaField}}
         </foreach>
     </delete>
+
 #if($table.sub)
     <delete id="delete${subClassName}By${subTableFkClassName}s" parameterType="String">
         delete from `${subTableName}` where `${subTableFkName}` in

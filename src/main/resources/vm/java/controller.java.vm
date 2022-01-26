@@ -66,11 +66,6 @@ public class ${ClassName}Controller extends BaseController {
     @PostMapping("/save")
     @PreAuthorize("hasPermission('/${moduleName}/${businessName}/add','${permissionPrefix}:add')")
     public Result save(@RequestBody ${ClassName} ${className}) {
-        SysUser sysUser = UserContext.currentUser();
-        ${className}.setId(SequenceUtil.makeStringId());
-        ${className}.setCreateTime(LocalDateTime.now());
-        ${className}.setCreateBy(sysUser.getUserId());
-        ${className}.setCreateName(sysUser.getUsername());
         return decide(${className}Service.insert${ClassName}(${className}));
     }
 
@@ -92,10 +87,6 @@ public class ${ClassName}Controller extends BaseController {
     @PutMapping("/update")
     @PreAuthorize("hasPermission('/${moduleName}/${businessName}/edit','${permissionPrefix}:edit')")
     public Result update(@RequestBody ${ClassName} ${className}) {
-        SysUser sysUser =  UserContext.currentUser();
-        ${className}.setUpdateTime(LocalDateTime.now());
-        ${className}.setUpdateBy(sysUser.getUserId());
-        ${className}.setUpdateName(sysUser.getUsername());
         return decide(${className}Service.update${ClassName}(${className}));
     }
 

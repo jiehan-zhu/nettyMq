@@ -12,14 +12,14 @@ import ${packageName}.domain.${ClassName};
  * @date ${datetime}
  */
 public interface I${ClassName}Service {
+
     /**
      * 查询${functionName}
      *
      * @param ${pkColumn.javaField} ${functionName}ID
      * @return ${functionName}
      */
-        ${ClassName} select${ClassName}ById(${pkColumn.javaType} ${pkColumn.javaField});
-
+     ${ClassName} select${ClassName}ById(${pkColumn.javaType} ${pkColumn.javaField});
 
     /**
      * 查询${functionName}

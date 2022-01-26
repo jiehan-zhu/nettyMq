@@ -19,6 +19,7 @@ import ${packageName}.service.I${ClassName}Service;
  */
 @Service
 public class ${ClassName}ServiceImpl implements I${ClassName}Service {
+
     @Autowired
     private ${ClassName}Mapper ${className}Mapper;
 
@@ -101,4 +102,5 @@ public class ${ClassName}ServiceImpl implements I${ClassName}Service {
     public int delete${ClassName}ById(${pkColumn.javaType} ${pkColumn.javaField}) {
         return ${className}Mapper.delete${ClassName}ById(${pkColumn.javaField});
     }
+
 }
