@@ -215,8 +215,8 @@ public class SysUserController extends BaseController {
     @Log(title = "修改用户", describe = "修改用户", type = BusinessType.EDIT)
     public Result update(@RequestBody SysUser sysUser) {
         sysUserService.saveUserRole(sysUser.getUserId(), Arrays.asList(sysUser.getRoleIds().split(",")));
-        boolean result = sysUserService.updateById(sysUser);
-        return decide(result);
+        sysUserService.updateById(sysUser);
+        return success();
     }
 
     /**
@@ -230,8 +230,7 @@ public class SysUserController extends BaseController {
     public Result updateAvatar(@RequestBody SysUser sysUser) {
         String userId = UserContext.currentUser().getUserId();
         sysUser.setUserId(userId);
-        boolean result = sysUserService.updateById(sysUser);
-        return decide(result);
+        return decide(sysUserService.updateById(sysUser));
     }
 
     /**
@@ -244,8 +243,7 @@ public class SysUserController extends BaseController {
     @PreAuthorize("hasPermission('/system/user/remove','sys:user:remove')")
     @Log(title = "删除用户", describe = "删除用户", type = BusinessType.REMOVE)
     public Result batchRemove(@PathVariable String ids) {
-        boolean result = sysUserService.batchRemove(ids.split(","));
-        return decide(result);
+        return decide(sysUserService.batchRemove(ids.split(",")));
     }
 
     /**
@@ -259,8 +257,7 @@ public class SysUserController extends BaseController {
     @PreAuthorize("hasPermission('/system/user/remove','sys:user:remove')")
     @Log(title = "删除用户", describe = "删除用户", type = BusinessType.REMOVE)
     public Result remove(@PathVariable String id) {
-        boolean result = sysUserService.remove(id);
-        return decide(result);
+        return decide(sysUserService.remove(id));
     }
 
     /**
@@ -272,8 +269,7 @@ public class SysUserController extends BaseController {
     @ApiOperation(value = "开启用户登录")
     public Result enable(@RequestBody SysUser sysUser) {
         sysUser.setEnable("1");
-        boolean result = sysUserService.updateById(sysUser);
-        return decide(result);
+        return decide(sysUserService.updateById(sysUser));
     }
 
     /**
@@ -285,8 +281,7 @@ public class SysUserController extends BaseController {
     @ApiOperation(value = "禁用用户登录")
     public Result disable(@RequestBody SysUser sysUser) {
         sysUser.setEnable("0");
-        boolean result = sysUserService.updateById(sysUser);
-        return decide(result);
+        return decide(sysUserService.updateById(sysUser));
     }
 
     /**
@@ -311,8 +306,7 @@ public class SysUserController extends BaseController {
     @PutMapping("updateInfo")
     @ApiOperation(value = "修改用户数据")
     public Result updateInfo(@RequestBody SysUser sysUser) {
-        boolean result = sysUserService.updateById(sysUser);
-        return decide(result);
+        return decide(sysUserService.updateById(sysUser));
     }
 
     /**

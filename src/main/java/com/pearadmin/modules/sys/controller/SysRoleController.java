@@ -2,7 +2,6 @@ package com.pearadmin.modules.sys.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.pearadmin.common.constant.ControllerConstant;
-import com.pearadmin.common.tools.SequenceUtil;
 import com.pearadmin.common.web.base.BaseController;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.common.web.domain.response.Result;
@@ -89,9 +88,8 @@ public class SysRoleController extends BaseController {
     @ApiOperation(value = "保存角色数据")
     @PreAuthorize("hasPermission('/system/role/add','sys:role:add')")
     public Result save(@RequestBody SysRole sysRole) {
-        sysRole.setRoleId(SequenceUtil.makeStringId());
-        boolean result = sysRoleService.save(sysRole);
-        return decide(result);
+        sysRole.setDataScope(Scope.ALL);
+        return decide(sysRoleService.save(sysRole));
     }
 
     /**
@@ -117,8 +115,7 @@ public class SysRoleController extends BaseController {
     @ApiOperation(value = "修改角色数据")
     @PreAuthorize("hasPermission('/system/role/edit','sys:role:edit')")
     public Result update(@RequestBody SysRole sysRole) {
-        boolean result = sysRoleService.update(sysRole);
-        return decide(result);
+        return decide(sysRoleService.update(sysRole));
     }
 
     /**
@@ -157,8 +154,7 @@ public class SysRoleController extends BaseController {
     @ApiOperation(value = "保存角色权限数据")
     @PreAuthorize("hasPermission('/system/role/power','sys:role:power')")
     public Result saveRolePower(String roleId, String powerIds) {
-        boolean result = sysRoleService.saveRolePower(roleId, Arrays.asList(powerIds.split(",")));
-        return decide(result);
+        return decide(sysRoleService.saveRolePower(roleId, Arrays.asList(powerIds.split(","))));
     }
 
     /**
@@ -211,8 +207,7 @@ public class SysRoleController extends BaseController {
     @ApiOperation(value = "删除角色数据")
     @PreAuthorize("hasPermission('/system/role/remove','sys:role:remove')")
     public Result remove(@PathVariable String id) {
-        boolean result = sysRoleService.remove(id);
-        return decide(result);
+        return decide(sysRoleService.remove(id));
     }
 
     /**
@@ -224,8 +219,7 @@ public class SysRoleController extends BaseController {
     @ApiOperation(value = "批量删除角色数据")
     @PreAuthorize("hasPermission('/system/role/remove','sys:role:remove')")
     public Result batchRemove(@PathVariable String ids) {
-        boolean result = sysRoleService.batchRemove(ids.split(","));
-        return decide(result);
+        return decide(sysRoleService.batchRemove(ids.split(",")));
     }
 
     /**
@@ -237,8 +231,7 @@ public class SysRoleController extends BaseController {
     @ApiOperation(value = "启用角色")
     public Result enable(@RequestBody SysRole sysRole) {
         sysRole.setEnable("0");
-        boolean result = sysRoleService.update(sysRole);
-        return decide(result);
+        return decide(sysRoleService.update(sysRole));
     }
 
     /**
@@ -250,8 +243,7 @@ public class SysRoleController extends BaseController {
     @ApiOperation(value = "禁用角色")
     public Result disable(@RequestBody SysRole sysRole) {
         sysRole.setEnable("1");
-        boolean result = sysRoleService.update(sysRole);
-        return decide(result);
+        return decide(sysRoleService.update(sysRole));
     }
 
 }
