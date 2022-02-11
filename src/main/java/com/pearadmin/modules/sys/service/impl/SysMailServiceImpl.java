@@ -12,7 +12,7 @@ import com.pearadmin.common.tools.SequenceUtil;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.modules.sys.domain.SysMail;
 import com.pearadmin.modules.sys.mapper.SysMailMapper;
-import com.pearadmin.modules.sys.service.ISysMailService;
+import com.pearadmin.modules.sys.service.SysMailService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class SysMailServiceImpl implements ISysMailService {
+public class SysMailServiceImpl implements SysMailService {
 
     @Resource
     private SysMailMapper sysMailMapper;

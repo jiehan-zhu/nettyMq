@@ -6,12 +6,10 @@ import com.pearadmin.common.cache.impl.DictionaryCache;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.modules.sys.domain.SysDictData;
 import com.pearadmin.modules.sys.mapper.SysDictDataMapper;
-import com.pearadmin.modules.sys.service.ISysDictDataService;
-import org.springframework.context.annotation.Lazy;
+import com.pearadmin.modules.sys.service.SysDictDataService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,7 +18,7 @@ import java.util.List;
  * CreateTime: 2019/10/23
  */
 @Service
-public class SysDictDataServiceImpl implements ISysDictDataService {
+public class SysDictDataServiceImpl implements SysDictDataService {
 
     @Resource
     private DictionaryCache dictionaryCache;

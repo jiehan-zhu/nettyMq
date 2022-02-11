@@ -8,7 +8,7 @@ import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.common.web.domain.response.module.ResultTable;
 import com.pearadmin.modules.sys.domain.SysDict;
-import com.pearadmin.modules.sys.service.ISysDictService;
+import com.pearadmin.modules.sys.service.SysDictService;
 import io.swagger.annotations.Api;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
@@ -31,7 +31,7 @@ public class SysDictController extends BaseController {
     private final String MODULE_PATH = "system/dict/";
 
     @Resource
-    private ISysDictService sysDictTypeService;
+    private SysDictService sysDictTypeService;
 
     /**
      * Describe: 数据字典列表视图

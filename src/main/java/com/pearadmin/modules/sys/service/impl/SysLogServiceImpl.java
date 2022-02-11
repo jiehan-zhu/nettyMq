@@ -7,14 +7,12 @@ import com.pearadmin.common.tools.ServletUtil;
 import com.pearadmin.modules.sys.domain.SysLog;
 import com.pearadmin.modules.sys.domain.SysUser;
 import com.pearadmin.modules.sys.mapper.SysLogMapper;
-import com.pearadmin.modules.sys.service.ISysLogService;
+import com.pearadmin.modules.sys.service.SysLogService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Describe: 日 志 服 务 接 口 实 现
@@ -22,7 +20,7 @@ import java.util.Map;
  * CreateTime: 2019/10/23
  */
 @Service
-public class SysLogServiceImpl implements ISysLogService {
+public class SysLogServiceImpl implements SysLogService {
 
     @Resource
     private SysLogMapper sysLogMapper;

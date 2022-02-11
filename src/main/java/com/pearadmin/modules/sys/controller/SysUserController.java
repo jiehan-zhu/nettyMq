@@ -6,16 +6,15 @@ import com.pearadmin.common.aop.annotation.Log;
 import com.pearadmin.common.aop.enums.BusinessType;
 import com.pearadmin.common.aop.annotation.Repeat;
 import com.pearadmin.common.context.UserContext;
-import com.pearadmin.common.tools.SequenceUtil;
 import com.pearadmin.common.web.base.BaseController;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.common.web.domain.response.module.ResultTable;
 import com.pearadmin.modules.sys.domain.SysUser;
 import com.pearadmin.modules.sys.domain.SysPassword;
-import com.pearadmin.modules.sys.service.ISysRoleService;
+import com.pearadmin.modules.sys.service.SysRoleService;
 import com.pearadmin.modules.sys.service.SysUserService;
-import com.pearadmin.modules.sys.service.ISysLogService;
+import com.pearadmin.modules.sys.service.SysLogService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.logging.log4j.util.Strings;
@@ -55,13 +54,13 @@ public class SysUserController extends BaseController {
      * Describe: 角色模块服务
      */
     @Resource
-    private ISysRoleService sysRoleService;
+    private SysRoleService sysRoleService;
 
     /**
      * Describe: 日志模块服务
      */
     @Resource
-    private ISysLogService sysLogService;
+    private SysLogService sysLogService;
 
     /**
      * Describe: 密码加密

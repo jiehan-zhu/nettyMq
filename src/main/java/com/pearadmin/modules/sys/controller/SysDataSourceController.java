@@ -8,18 +8,16 @@ import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.common.web.domain.response.module.ResultTable;
 import com.pearadmin.modules.sys.domain.SysDataSource;
-import com.pearadmin.modules.sys.service.ISysDataSourceService;
+import com.pearadmin.modules.sys.service.SysDataSourceService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * 多数据源控制器
@@ -38,7 +36,7 @@ public class SysDataSourceController extends BaseController {
     private final String MODULE_PATH = "system/dataSource/";
 
     @Resource
-    private ISysDataSourceService sysDataSourceService;
+    private SysDataSourceService sysDataSourceService;
 
     /**
      * Describe: 数据字典列表视图

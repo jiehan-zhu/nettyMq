@@ -6,7 +6,7 @@ import com.pearadmin.modules.sys.domain.SysUser;
 import com.pearadmin.modules.sys.mapper.SysPowerMapper;
 import com.pearadmin.modules.sys.mapper.SysRoleMapper;
 import com.pearadmin.modules.sys.mapper.SysUserMapper;
-import com.pearadmin.modules.sys.service.ISysLogService;
+import com.pearadmin.modules.sys.service.SysLogService;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
@@ -28,7 +28,7 @@ public class BaseContext {
     private SysRoleMapper sysRoleMapper;
 
     @Resource
-    private ISysLogService sysLogService;
+    private SysLogService sysLogService;
 
     @Resource
     private SysPowerMapper sysPowerMapper;

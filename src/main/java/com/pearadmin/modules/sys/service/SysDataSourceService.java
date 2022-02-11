@@ -6,7 +6,7 @@ import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.modules.sys.domain.SysDataSource;
 import com.pearadmin.modules.sys.domain.SysDept;
 
-public interface ISysDataSourceService extends IService<SysDataSource> {
+public interface SysDataSourceService extends IService<SysDataSource> {
 
     /**
      * Describe: 分页查询部门数据

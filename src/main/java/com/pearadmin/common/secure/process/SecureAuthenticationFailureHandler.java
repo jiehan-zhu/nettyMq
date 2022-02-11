@@ -8,7 +8,7 @@ import com.pearadmin.common.tools.SequenceUtil;
 import com.pearadmin.common.tools.ServletUtil;
 import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.modules.sys.domain.SysLog;
-import com.pearadmin.modules.sys.service.ISysLogService;
+import com.pearadmin.modules.sys.service.SysLogService;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.LockedException;
@@ -36,7 +36,7 @@ public class SecureAuthenticationFailureHandler implements AuthenticationFailure
      * 引 入 日 志 服 务
      */
     @Resource
-    private ISysLogService sysLogService;
+    private SysLogService sysLogService;
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {

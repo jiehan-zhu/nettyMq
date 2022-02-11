@@ -8,7 +8,7 @@ import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.common.web.domain.response.module.ResultTable;
 import com.pearadmin.common.web.domain.response.module.ResultTree;
 import com.pearadmin.modules.sys.domain.SysPower;
-import com.pearadmin.modules.sys.service.ISysPowerService;
+import com.pearadmin.modules.sys.service.SysPowerService;
 import io.swagger.annotations.Api;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -39,7 +39,7 @@ public class SysPowerController extends BaseController {
      * Describe: 权限模块服务
      */
     @Resource
-    private ISysPowerService sysPowerService;
+    private SysPowerService sysPowerService;
 
 
     /**

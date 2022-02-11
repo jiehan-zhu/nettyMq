@@ -9,7 +9,7 @@ import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.common.web.domain.response.module.ResultTable;
 import com.pearadmin.modules.sys.domain.SysNotice;
-import com.pearadmin.modules.sys.service.ISysNoticeService;
+import com.pearadmin.modules.sys.service.SysNoticeService;
 import com.pearadmin.modules.sys.service.SysUserService;
 import io.swagger.annotations.Api;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -37,7 +37,7 @@ public class SysNoticeController extends BaseController {
     private String prefix = "system/notice";
 
     @Resource
-    private ISysNoticeService sysNoticeService;
+    private SysNoticeService sysNoticeService;
 
     @Resource
     private SysUserService sysUserService;

@@ -9,7 +9,7 @@ import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.common.web.domain.response.module.ResultTable;
 import com.pearadmin.modules.sys.domain.SysMail;
-import com.pearadmin.modules.sys.service.ISysMailService;
+import com.pearadmin.modules.sys.service.SysMailService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -35,7 +35,7 @@ public class SysMailController extends BaseController {
     private final String MODULE_PATH = "system/mail/";
 
     @Resource
-    private ISysMailService sysMailService;
+    private SysMailService sysMailService;
 
     /**
      * Describe: 邮件管理页面

@@ -9,7 +9,7 @@ import com.pearadmin.common.tools.ServletUtil;
 import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.modules.sys.domain.SysLog;
 import com.pearadmin.modules.sys.domain.SysUser;
-import com.pearadmin.modules.sys.service.ISysLogService;
+import com.pearadmin.modules.sys.service.SysLogService;
 import com.pearadmin.modules.sys.service.SysUserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -30,7 +30,7 @@ import java.time.LocalDateTime;
 public class SecureAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     @Resource
-    private ISysLogService sysLogService;
+    private SysLogService sysLogService;
 
     @Resource
     private SysUserService sysUserService;

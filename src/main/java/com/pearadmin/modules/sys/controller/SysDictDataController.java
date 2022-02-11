@@ -1,18 +1,16 @@
 package com.pearadmin.modules.sys.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 import com.pearadmin.common.constant.CommonConstant;
 import com.pearadmin.common.constant.ControllerConstant;
 import com.pearadmin.modules.sys.domain.SysDictData;
-import com.pearadmin.common.context.BaseContext;
 import com.pearadmin.common.tools.SqlInjectionUtil;
 import com.pearadmin.common.tools.SequenceUtil;
 import com.pearadmin.common.web.base.BaseController;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.common.web.domain.response.module.ResultTable;
-import com.pearadmin.modules.sys.service.ISysDictDataService;
+import com.pearadmin.modules.sys.service.SysDictDataService;
 import io.swagger.annotations.Api;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
@@ -36,7 +34,7 @@ public class SysDictDataController extends BaseController {
     private final String MODULE_PATH = "system/dict/data/";
 
     @Resource
-    private ISysDictDataService sysDictDataService;
+    private SysDictDataService sysDictDataService;
 
     /**
      * Describe: 数据字典列表视图

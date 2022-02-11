@@ -12,7 +12,7 @@ import java.util.List;
  * @author jmys
  * @date 2021-03-13
  */
-public interface ISysNoticeService {
+public interface SysNoticeService {
     /**
      * 查询notice
      *

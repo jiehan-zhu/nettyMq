@@ -9,7 +9,7 @@ import com.pearadmin.common.web.domain.response.module.ResultTable;
 import com.pearadmin.common.web.domain.response.module.ResultTree;
 import com.pearadmin.common.web.interceptor.enums.Scope;
 import com.pearadmin.modules.sys.domain.SysRole;
-import com.pearadmin.modules.sys.service.ISysRoleService;
+import com.pearadmin.modules.sys.service.SysRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -40,7 +40,7 @@ public class SysRoleController extends BaseController {
      * Describe: 角色模块服务
      */
     @Resource
-    private ISysRoleService sysRoleService;
+    private SysRoleService sysRoleService;
 
     /**
      * Describe: 获取角色列表视图

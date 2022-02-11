@@ -8,7 +8,7 @@ import com.pearadmin.common.web.base.BaseController;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.common.web.domain.response.module.ResultTable;
 import com.pearadmin.modules.sys.domain.SysLog;
-import com.pearadmin.modules.sys.service.ISysLogService;
+import com.pearadmin.modules.sys.service.SysLogService;
 import io.swagger.annotations.Api;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +30,7 @@ import java.time.LocalDateTime;
 public class SysLogController extends BaseController {
 
     @Resource
-    private ISysLogService sysLogService;
+    private SysLogService sysLogService;
 
     /**
      * Describe: 行为日志视图

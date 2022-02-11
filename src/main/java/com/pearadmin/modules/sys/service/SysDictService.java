@@ -11,7 +11,7 @@ import java.util.List;
  * Author: 就 眠 仪 式
  * CreateTime: 2019/10/23
  */
-public interface ISysDictService {
+public interface SysDictService {
 
     /**
      * Describe: 根据条件查询字典类型列表数据

@@ -10,7 +10,7 @@ import java.util.List;
  * @date 2021/12/29 14:43
  * @Description:
  */
-public interface ISysMenuService {
+public interface SysMenuService {
     /**
      * Describe: 获取用户菜单数据
      * Param: SysUser

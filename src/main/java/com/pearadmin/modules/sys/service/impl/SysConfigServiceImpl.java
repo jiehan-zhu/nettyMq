@@ -6,7 +6,7 @@ import com.github.pagehelper.PageInfo;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.modules.sys.domain.SysConfig;
 import com.pearadmin.modules.sys.mapper.SysConfigMapper;
-import com.pearadmin.modules.sys.service.ISysConfigService;
+import com.pearadmin.modules.sys.service.SysConfigService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,7 +18,7 @@ import java.util.List;
  * CreateTime: 2019/10/23
  */
 @Service
-public class SysConfigServiceImpl extends ServiceImpl<SysConfigMapper, SysConfig> implements ISysConfigService {
+public class SysConfigServiceImpl extends ServiceImpl<SysConfigMapper, SysConfig> implements SysConfigService {
 
     /**
      * 系统配置数据库操作接口

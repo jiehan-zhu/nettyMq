@@ -10,7 +10,7 @@ import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.common.web.domain.response.module.ResultTable;
 import com.pearadmin.modules.sys.domain.SysFile;
-import com.pearadmin.modules.sys.service.ISysFileService;
+import com.pearadmin.modules.sys.service.SysFileService;
 import io.swagger.annotations.Api;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,15 +48,15 @@ public class SysFileController extends BaseController {
      * 移 除 服 务
      */
     @Autowired
-    private Map<String, ISysFileService> fileServiceMap;
+    private Map<String, SysFileService> fileServiceMap;
 
     /**
      * 根据配置文件选择实现类
      *
      * @return
      */
-    private ISysFileService getFileService() {
-        ISysFileService fileService = null;
+    private SysFileService getFileService() {
+        SysFileService fileService = null;
         if (uploadProperty.isFtpUse()) {
             fileService = this.fileServiceMap.get("SysFileFTPServiceImpl");
         } else {

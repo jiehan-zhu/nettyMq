@@ -12,7 +12,7 @@ import java.util.List;
  * Author: Heiky
  * CreateTime: 2021/1/13 15:21
  */
-public interface ISysMailService {
+public interface SysMailService {
 
     /**
      * Describe: 邮件保存

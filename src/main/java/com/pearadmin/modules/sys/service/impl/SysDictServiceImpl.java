@@ -6,8 +6,8 @@ import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.modules.sys.domain.SysDict;
 import com.pearadmin.modules.sys.mapper.SysDictDataMapper;
 import com.pearadmin.modules.sys.mapper.SysDictMapper;
-import com.pearadmin.modules.sys.service.ISysDictDataService;
-import com.pearadmin.modules.sys.service.ISysDictService;
+import com.pearadmin.modules.sys.service.SysDictDataService;
+import com.pearadmin.modules.sys.service.SysDictService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,13 +19,13 @@ import java.util.List;
  * CreateTime: 2019/10/23
  */
 @Service
-public class SysDictServiceImpl implements ISysDictService {
+public class SysDictServiceImpl implements SysDictService {
 
     @Resource
     private SysDictMapper sysDictMapper;
 
     @Resource
-    private ISysDictDataService iSysDictDataService;
+    private SysDictDataService sysDictDataService;
 
     @Resource
     private SysDictDataMapper sysDictDataMapper;
@@ -61,7 +61,7 @@ public class SysDictServiceImpl implements ISysDictService {
     public Boolean save(SysDict sysDict) {
         Integer result = sysDictMapper.insert(sysDict);
         if (result > 0) {
-            iSysDictDataService.refreshCacheTypeCode(sysDict.getTypeCode());
+            sysDictDataService.refreshCacheTypeCode(sysDict.getTypeCode());
             return true;
         } else {
             return false;
@@ -88,7 +88,7 @@ public class SysDictServiceImpl implements ISysDictService {
         int result = sysDictMapper.updateById(sysDict);
         SysDict dictType = sysDictMapper.selectById(sysDict.getId());
         if (result > 0) {
-            iSysDictDataService.refreshCacheTypeCode(dictType.getTypeCode());
+            sysDictDataService.refreshCacheTypeCode(dictType.getTypeCode());
             return true;
         } else {
             return false;
@@ -106,7 +106,7 @@ public class SysDictServiceImpl implements ISysDictService {
         if (sysDict != null) {
             sysDictMapper.deleteById(id);
             sysDictDataMapper.deleteByCode(sysDict.getTypeCode());
-            iSysDictDataService.refreshCacheTypeCode(sysDict.getTypeCode());
+            sysDictDataService.refreshCacheTypeCode(sysDict.getTypeCode());
         }
 
         return true;

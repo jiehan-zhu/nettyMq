@@ -9,7 +9,7 @@ import java.util.List;
  * Author: 就 眠 仪 式
  * CreateTime: 2019/10/23
  */
-public interface ISysPowerService {
+public interface SysPowerService {
 
     /**
      * Describe: 根据条件查询权限列表数据

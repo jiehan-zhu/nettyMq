@@ -5,7 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.modules.sys.domain.SysNotice;
 import com.pearadmin.modules.sys.mapper.SysNoticeMapper;
-import com.pearadmin.modules.sys.service.ISysNoticeService;
+import com.pearadmin.modules.sys.service.SysNoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ import java.util.List;
  * @date 2021-03-13
  */
 @Service
-public class SysNoticeServiceImpl implements ISysNoticeService {
+public class SysNoticeServiceImpl implements SysNoticeService {
     @Autowired
     private SysNoticeMapper sysNoticeMapper;
 

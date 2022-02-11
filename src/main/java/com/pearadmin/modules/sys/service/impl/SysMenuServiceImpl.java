@@ -2,7 +2,7 @@ package com.pearadmin.modules.sys.service.impl;
 
 import com.pearadmin.common.configure.proprety.SecurityProperty;
 import com.pearadmin.modules.sys.domain.SysMenu;
-import com.pearadmin.modules.sys.service.ISysMenuService;
+import com.pearadmin.modules.sys.service.SysMenuService;
 import com.pearadmin.modules.sys.mapper.SysMenuMapper;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ import java.util.List;
  * @Description:
  */
 @Service
-public class SysMenuServiceImpl implements ISysMenuService {
+public class SysMenuServiceImpl implements SysMenuService {
 
     @Resource
     private SysMenuMapper sysMenuMapper;

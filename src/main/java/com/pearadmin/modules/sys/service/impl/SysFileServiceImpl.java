@@ -7,7 +7,7 @@ import com.pearadmin.common.tools.SequenceUtil;
 import com.pearadmin.common.tools.ServletUtil;
 import com.pearadmin.modules.sys.domain.SysFile;
 import com.pearadmin.modules.sys.mapper.SysFileMapper;
-import com.pearadmin.modules.sys.service.ISysFileService;
+import com.pearadmin.modules.sys.service.SysFileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +29,7 @@ import java.util.List;
  */
 @Slf4j
 @Service("SysFileServiceImpl")
-public class SysFileServiceImpl implements ISysFileService {
+public class SysFileServiceImpl implements SysFileService {
 
     /**
      * 引 入 服 务

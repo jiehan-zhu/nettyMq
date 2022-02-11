@@ -3,7 +3,7 @@ package com.pearadmin.modules.sys.service.impl;
 import com.pearadmin.modules.sys.domain.SysPower;
 import com.pearadmin.modules.sys.mapper.SysPowerMapper;
 import com.pearadmin.modules.sys.mapper.SysRolePowerMapper;
-import com.pearadmin.modules.sys.service.ISysPowerService;
+import com.pearadmin.modules.sys.service.SysPowerService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +17,7 @@ import java.util.List;
  * CreateTime: 2019/10/23
  */
 @Service
-public class SysPowerServiceImpl implements ISysPowerService {
+public class SysPowerServiceImpl implements SysPowerService {
 
     /**
      * 引入服务

@@ -4,9 +4,11 @@ import com.pearadmin.common.secure.process.SecureLogoutHandler;
 import com.pearadmin.common.secure.support.SecurePermissionSupport;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.task.DelegatingSecurityContextAsyncTaskExecutor;
 import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
@@ -27,16 +29,13 @@ public class SecureExtendConfiguration {
     @Resource
     private SecurePermissionSupport securityPermissionEvaluator;
 
-    /**
-     * Describe: 加密方式
-     */
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     /**
-     * 注册SessionRegistry
+     * 注册 SessionRegistry
      */
     @Bean
     public SessionRegistry sessionRegistry() {
@@ -44,16 +43,13 @@ public class SecureExtendConfiguration {
     }
 
     /**
-     * 注册HttpSessionEventPublisher，发布HttpSessionEvent
+     * 注册 HttpSessionEventPublisher, 发布 HttpSessionEvent
      */
     @Bean
     public HttpSessionEventPublisher httpSessionEventPublisher() {
         return new HttpSessionEventPublisher();
     }
 
-    /**
-     * Describe: 自定义权限注解实现
-     */
     @Bean
     public DefaultWebSecurityExpressionHandler userSecurityExpressionHandler() {
         DefaultWebSecurityExpressionHandler handler = new DefaultWebSecurityExpressionHandler();
@@ -95,5 +91,20 @@ public class SecureExtendConfiguration {
             t.setDaemon(true);
             return t;
         });
+    }
+
+    @Bean
+    public ThreadPoolTaskExecutor threadPoolTaskExecutor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(10);
+        executor.setMaxPoolSize(100);
+        executor.setQueueCapacity(50);
+        executor.setThreadNamePrefix("async-");
+        return executor;
+    }
+
+    @Bean
+    public DelegatingSecurityContextAsyncTaskExecutor taskExecutor(ThreadPoolTaskExecutor delegate) {
+        return new DelegatingSecurityContextAsyncTaskExecutor(delegate);
     }
 }

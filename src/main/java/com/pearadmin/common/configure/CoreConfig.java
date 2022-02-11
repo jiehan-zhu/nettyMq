@@ -9,7 +9,7 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import com.pearadmin.common.constant.ConfigurationConstant;
 import com.pearadmin.common.web.interceptor.PreviewInterceptor;
 import com.pearadmin.common.web.interceptor.RateLimitInterceptor;
-import com.pearadmin.modules.sys.service.ISysConfigService;
+import com.pearadmin.modules.sys.service.SysConfigService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -32,7 +32,7 @@ import java.time.format.DateTimeFormatter;
 public class CoreConfig implements WebMvcConfigurer {
 
     @Resource
-    private ISysConfigService sysContext;
+    private SysConfigService sysContext;
 
     @Resource
     private RateLimitInterceptor rateLimitInterceptor;

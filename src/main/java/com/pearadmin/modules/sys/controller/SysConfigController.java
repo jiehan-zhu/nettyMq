@@ -8,7 +8,7 @@ import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.common.web.domain.response.module.ResultTable;
 import com.pearadmin.modules.sys.domain.SysConfig;
-import com.pearadmin.modules.sys.service.ISysConfigService;
+import com.pearadmin.modules.sys.service.SysConfigService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -39,7 +39,7 @@ public class SysConfigController extends BaseController {
      * 引入服务
      */
     @Resource
-    private ISysConfigService sysConfigService;
+    private SysConfigService sysConfigService;
 
     /**
      * Describe: 数据字典列表视图

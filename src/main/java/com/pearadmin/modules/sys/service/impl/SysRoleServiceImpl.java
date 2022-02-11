@@ -6,7 +6,7 @@ import com.pearadmin.common.tools.SequenceUtil;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.modules.sys.domain.*;
 import com.pearadmin.modules.sys.mapper.*;
-import com.pearadmin.modules.sys.service.ISysRoleService;
+import com.pearadmin.modules.sys.service.SysRoleService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,7 +22,7 @@ import java.util.List;
  * CreateTime: 2019/10/23
  */
 @Service
-public class SysRoleServiceImpl implements ISysRoleService {
+public class SysRoleServiceImpl implements SysRoleService {
 
     /**
      * 注入角色服务

@@ -7,7 +7,7 @@ import com.pearadmin.common.context.DataContext;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.modules.sys.domain.SysDataSource;
 import com.pearadmin.modules.sys.mapper.SysDataSourceMapper;
-import com.pearadmin.modules.sys.service.ISysDataSourceService;
+import com.pearadmin.modules.sys.service.SysDataSourceService;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +18,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-public class SysDataSourceServiceImpl extends ServiceImpl<SysDataSourceMapper, SysDataSource> implements ISysDataSourceService {
+public class SysDataSourceServiceImpl extends ServiceImpl<SysDataSourceMapper, SysDataSource> implements SysDataSourceService {
 
     @Resource
     private SysDataSourceMapper sysDataSourceMapper;

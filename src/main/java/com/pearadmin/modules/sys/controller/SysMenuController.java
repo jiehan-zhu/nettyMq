@@ -3,7 +3,7 @@ package com.pearadmin.modules.sys.controller;
 import com.pearadmin.common.constant.ControllerConstant;
 import com.pearadmin.common.context.UserContext;
 import com.pearadmin.modules.sys.domain.SysMenu;
-import com.pearadmin.modules.sys.service.ISysMenuService;
+import com.pearadmin.modules.sys.service.SysMenuService;
 import com.pearadmin.modules.sys.domain.SysUser;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,7 +25,7 @@ import java.util.List;
 public class SysMenuController {
 
     @Resource
-    private ISysMenuService sysMenuService;
+    private SysMenuService sysMenuService;
 
     /**
      * Describe: 根据 username 获取菜单数据

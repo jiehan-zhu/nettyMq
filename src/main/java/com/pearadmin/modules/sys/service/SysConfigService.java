@@ -13,7 +13,7 @@ import java.util.List;
  * CreateTime: 2019/10/23
  */
 
-public interface ISysConfigService extends IService<SysConfig> {
+public interface SysConfigService extends IService<SysConfig> {
 
     /**
      * Describe: 根据条件查询系统配置列表数据

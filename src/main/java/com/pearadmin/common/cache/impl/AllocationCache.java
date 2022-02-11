@@ -4,11 +4,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import com.pearadmin.common.cache.BaseCache;
 import com.pearadmin.modules.sys.domain.SysConfig;
-import com.pearadmin.modules.sys.service.ISysConfigService;
+import com.pearadmin.modules.sys.service.SysConfigService;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,7 +24,7 @@ import java.util.stream.Collectors;
 public class AllocationCache extends BaseCache<String> {
 
     @Resource
-    private ISysConfigService sysConfigService;
+    private SysConfigService sysConfigService;
 
     @Override
     public Map<String, String> load() {

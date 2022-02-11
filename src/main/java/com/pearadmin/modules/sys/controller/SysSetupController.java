@@ -9,7 +9,7 @@ import com.pearadmin.common.web.base.BaseController;
 import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.modules.sys.domain.SysConfig;
 import com.pearadmin.modules.sys.domain.SysSetup;
-import com.pearadmin.modules.sys.service.ISysConfigService;
+import com.pearadmin.modules.sys.service.SysConfigService;
 import io.swagger.annotations.Api;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
@@ -37,7 +37,7 @@ public class SysSetupController extends BaseController implements ApplicationEve
     private ApplicationEventPublisher applicationEventPublisher;
 
     @Resource
-    private ISysConfigService sysConfigService;
+    private SysConfigService sysConfigService;
 
     @GetMapping("main")
     @PreAuthorize("hasPermission('/system/setup/main','sys:setup:main')")
