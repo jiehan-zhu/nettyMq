@@ -199,7 +199,14 @@ layui.define(['table', 'laypage', 'jquery', 'element'], function (exports) {
 
     function getData(url) {
         var defer = $.Deferred();
-        $.get(url + "?fresh=" + Math.random(), function (result) {
+        var _url;
+        if(url.indexOf('?' != -1)){
+            _url = url + "&fresh=" + Math.random()
+        }else{
+            _url = url + "?fresh=" + Math.random()
+        }
+        // $.get(url + "?fresh=" + Math.random(), function (result) {
+        $.get(_url, function (result) {
             defer.resolve(result)
         });
         return defer.promise();
