@@ -122,8 +122,8 @@ public class SysUserController extends BaseController {
         sysUser.setEnable("1");
         sysUser.setStatus("1");
         sysUser.setPassword(passwordEncoder.encode(sysUser.getPassword()));
-        sysUserService.saveUserRole(sysUser.getUserId(), Arrays.asList(sysUser.getRoleIds().split(",")));
         sysUserService.save(sysUser);
+        sysUserService.saveUserRole(sysUser.getUserId(), Arrays.asList(sysUser.getRoleIds().split(",")));
         return success("保存成功");
     }
 
