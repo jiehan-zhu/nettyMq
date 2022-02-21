@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:include="include :: header('notice列表')"/>
+    <th:block th:include="include :: header('dataSource列表')"/>
 </head>
 <body class="pear-container">
 <div class="layui-card">
@@ -38,12 +38,12 @@
         <table id="dataSource-table" lay-filter="dataSource-table"></table>
 
         <script id="dataSource-toolbar" type="text/html">
-            <button sec:authorize="hasPermission('/system/notice/add','system:notice:add')"
+            <button sec:authorize="hasPermission('/system/dataSource/add','system:dataSource:add')"
                     class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
                 <i class="layui-icon layui-icon-add-1"></i>
                 新增
             </button>
-            <button sec:authorize="hasPermission('/system/notice/remove','system:notice:remove')"
+            <button sec:authorize="hasPermission('/system/dataSource/remove','system:dataSource:remove')"
                     class="pear-btn pear-btn-md" lay-event="batchRemove">
                 <i class="layui-icon layui-icon-delete"></i>
                 删除
@@ -51,11 +51,11 @@
         </script>
 
         <script id="dataSource-bar" type="text/html">
-            <button sec:authorize="hasPermission('/system/notice/edit','system:notice:edit')"
+            <button sec:authorize="hasPermission('/system/dataSource/edit','system:dataSource:edit')"
                     class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i
                     class="layui-icon layui-icon-edit"></i>
             </button>
-            <button sec:authorize="hasPermission('/system/notice/remove','system:notice:remove')"
+            <button sec:authorize="hasPermission('/system/dataSource/remove','system:dataSource:remove')"
                     class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i
                     class="layui-icon layui-icon-delete"></i>
             </button>
