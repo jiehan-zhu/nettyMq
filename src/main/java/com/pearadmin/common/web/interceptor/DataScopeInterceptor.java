@@ -130,7 +130,7 @@ public class DataScopeInterceptor implements Interceptor {
      * */
     private String preHandler(String sql) {
         if(sql.indexOf("order") != -1) sql += " limit 9999";
-        sql = "select * from ("+ sql +") data left join sys_user b on b.id = data.create_by";
+        sql = "select * from ("+ sql +") data left join sys_user b on b.user_id = data.create_by";
         return sql;
     }
 
