@@ -215,7 +215,7 @@ public class SysUserController extends BaseController {
     public Result update(@RequestBody SysUser sysUser) {
         sysUserService.saveUserRole(sysUser.getUserId(), Arrays.asList(sysUser.getRoleIds().split(",")));
         sysUserService.updateById(sysUser);
-        return success();
+        return success("修改成功");
     }
 
     /**
