@@ -230,7 +230,7 @@ public class SysRoleController extends BaseController {
     @PutMapping("enable")
     @ApiOperation(value = "启用角色")
     public Result enable(@RequestBody SysRole sysRole) {
-        sysRole.setEnable("0");
+        sysRole.setEnable("1");
         return decide(sysRoleService.update(sysRole));
     }
 
@@ -242,7 +242,7 @@ public class SysRoleController extends BaseController {
     @PutMapping("disable")
     @ApiOperation(value = "禁用角色")
     public Result disable(@RequestBody SysRole sysRole) {
-        sysRole.setEnable("1");
+        sysRole.setEnable("0");
         return decide(sysRoleService.update(sysRole));
     }
 
