@@ -67,7 +67,7 @@
 
 <script id="role-enable" type="text/html">
     <input type="checkbox" name="enable" value="{{d.roleId}}" lay-skin="switch" lay-text="启用|禁用"
-           lay-filter="role-enable" {{d.enable== '0' ? 'checked' : '' }} >
+           lay-filter="role-enable" {{d.enable== '1' ? 'checked' : '' }} >
 </script>
 
 <th:block th:include="include :: footer"/>
