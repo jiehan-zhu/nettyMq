@@ -157,7 +157,7 @@ public class SysDeptController extends BaseController {
     @PutMapping("enable")
     @PreAuthorize("hasPermission('/system/dept/edit','sys:dept:edit')")
     public Result enable(@RequestBody SysDept sysDept) {
-        sysDept.setStatus("0");
+        sysDept.setStatus("1");
         boolean result = sysDeptService.update(sysDept);
         return decide(result);
     }
@@ -170,7 +170,7 @@ public class SysDeptController extends BaseController {
     @PutMapping("disable")
     @PreAuthorize("hasPermission('/system/dept/edit','sys:dept:edit')")
     public Result disable(@RequestBody SysDept sysDept) {
-        sysDept.setStatus("1");
+        sysDept.setStatus("0");
         boolean result = sysDeptService.update(sysDept);
         return decide(result);
     }
