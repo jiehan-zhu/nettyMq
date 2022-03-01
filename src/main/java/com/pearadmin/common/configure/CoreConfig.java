@@ -2,6 +2,9 @@ package com.pearadmin.common.configure;
 
 import cn.hutool.extra.mail.MailAccount;
 import com.fasterxml.jackson.databind.Module;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
@@ -61,6 +64,17 @@ public class CoreConfig implements WebMvcConfigurer {
         javaTimeModule.addSerializer(LocalTime.class, new LocalTimeSerializer(DateTimeFormatter.ofPattern("HH:mm:ss")));
         return javaTimeModule;
     }
+
+    @Bean
+    public ObjectMapper objectMapper() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        objectMapper.registerModule(new JavaLongTypeModule());
+        objectMapper.registerModule(new SimpleModule());
+        objectMapper.registerModule(dateTime());
+        return objectMapper;
+    }
+
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
