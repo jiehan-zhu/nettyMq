@@ -3,7 +3,7 @@
 <br/>
 
   <h1 align="center">
-    Pear Admin Boot ( Next : Develop )
+    Pear Admin Boot ( next : beta )
   </h1>
   <h4 align="center">
     开 箱 即 用 的 Spring 快 速 开 发 平 台
