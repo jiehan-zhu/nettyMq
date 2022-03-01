@@ -8,7 +8,6 @@ import com.pearadmin.common.web.base.BaseController;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.common.web.domain.response.Result;
 import com.pearadmin.common.web.domain.response.module.ResultTable;
-import com.pearadmin.modules.sys.domain.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.ModelMap;
@@ -66,7 +65,7 @@ public class ${ClassName}Controller extends BaseController {
     @PostMapping("/save")
     @PreAuthorize("hasPermission('/${moduleName}/${businessName}/add','${permissionPrefix}:add')")
     public Result save(@RequestBody ${ClassName} ${className}) {
-        return decide(${className}Service.insert${ClassName}(${className}));
+        return decide(${className}Service.save(${className}));
     }
 
     /**
@@ -75,7 +74,7 @@ public class ${ClassName}Controller extends BaseController {
     @GetMapping("/edit")
     @PreAuthorize("hasPermission('/${moduleName}/${businessName}/edit','${permissionPrefix}:edit')")
     public ModelAndView edit(${pkColumn.javaType} ${pkColumn.javaField}, ModelMap mmap) {
-        ${ClassName} ${className} =${className}Service.select${ClassName}ById(${pkColumn.javaField});
+        ${ClassName} ${className} =${className}Service.getById(${pkColumn.javaField});
         mmap.put("${className}", ${className});
         return jumpPage(prefix + "/edit");
     }
@@ -87,7 +86,7 @@ public class ${ClassName}Controller extends BaseController {
     @PutMapping("/update")
     @PreAuthorize("hasPermission('/${moduleName}/${businessName}/edit','${permissionPrefix}:edit')")
     public Result update(@RequestBody ${ClassName} ${className}) {
-        return decide(${className}Service.update${ClassName}(${className}));
+        return decide(${className}Service.updateById(${className}));
     }
 
     /**
@@ -107,6 +106,6 @@ public class ${ClassName}Controller extends BaseController {
     @DeleteMapping("/remove/{${pkColumn.javaField}}")
     @PreAuthorize("hasPermission('/${moduleName}/${businessName}/remove','${permissionPrefix}:remove')")
     public Result remove(@PathVariable("${pkColumn.javaField}") ${pkColumn.javaType} ${pkColumn.javaField}) {
-        return decide(${className}Service.delete${ClassName}ById(${pkColumn.javaField}));
+        return decide(${className}Service.removeById(${pkColumn.javaField}));
     }
 }

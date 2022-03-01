@@ -10,7 +10,10 @@ import org.springframework.stereotype.Service;
 import ${packageName}.mapper.${ClassName}Mapper;
 import ${packageName}.domain.${ClassName};
 import ${packageName}.service.I${ClassName}Service;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 
+import java.util.Arrays;
 /**
  * ${functionName}Service业务层处理
  *
@@ -18,32 +21,8 @@ import ${packageName}.service.I${ClassName}Service;
  * @date ${datetime}
  */
 @Service
-public class ${ClassName}ServiceImpl implements I${ClassName}Service {
+public class ${ClassName}ServiceImpl extends ServiceImpl<${ClassName}Mapper,${ClassName}> implements I${ClassName}Service {
 
-    @Autowired
-    private ${ClassName}Mapper ${className}Mapper;
-
-    /**
-     * 查询${functionName}
-     *
-     * @param ${pkColumn.javaField} ${functionName}ID
-     * @return ${functionName}
-     */
-    @Override
-    public ${ClassName} select${ClassName}ById(${pkColumn.javaType} ${pkColumn.javaField}) {
-        return ${className}Mapper.select${ClassName}ById(${pkColumn.javaField});
-    }
-
-    /**
-     * 查询${functionName}列表
-     *
-     * @param ${className} ${functionName}
-     * @return ${functionName}
-     */
-    @Override
-    public List<${ClassName}> select${ClassName}List(${ClassName} ${className}) {
-        return ${className}Mapper.select${ClassName}List(${className});
-    }
 
     /**
      * 查询${functionName}
@@ -54,31 +33,8 @@ public class ${ClassName}ServiceImpl implements I${ClassName}Service {
     @Override
     public PageInfo<${ClassName}> select${ClassName}Page(${ClassName} ${className}, PageDomain pageDomain) {
         PageHelper.startPage(pageDomain.getPage(), pageDomain.getLimit());
-        List<${ClassName}> data = ${className}Mapper.select${ClassName}List(${className});
+        List<${ClassName}> data = baseMapper.select${ClassName}List(${className});
         return new PageInfo<>(data);
-    }
-
-    /**
-     * 新增${functionName}
-     *
-     * @param ${className} ${functionName}
-     * @return 结果
-     */
-
-    @Override
-    public int insert${ClassName}(${ClassName} ${className}) {
-        return ${className}Mapper.insert${ClassName}(${className});
-    }
-
-    /**
-     * 修改${functionName}
-     *
-     * @param ${className} ${functionName}
-     * @return 结果
-     */
-    @Override
-    public int update${ClassName}(${ClassName} ${className}) {
-        return ${className}Mapper.update${ClassName}(${className});
     }
 
     /**
@@ -89,18 +45,7 @@ public class ${ClassName}ServiceImpl implements I${ClassName}Service {
      */
     @Override
     public int delete${ClassName}ByIds(String[] ids) {
-        return ${className}Mapper.delete${ClassName}ByIds(ids);
-    }
-
-    /**
-     * 删除${functionName}信息
-     *
-     * @param ${pkColumn.javaField} ${functionName}ID
-     * @return 结果
-     */
-    @Override
-    public int delete${ClassName}ById(${pkColumn.javaType} ${pkColumn.javaField}) {
-        return ${className}Mapper.delete${ClassName}ById(${pkColumn.javaField});
+        return baseMapper.deleteBatchIds(Arrays.asList(ids));
     }
 
 }
