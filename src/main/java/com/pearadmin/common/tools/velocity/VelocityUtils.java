@@ -1,6 +1,7 @@
 package com.pearadmin.common.tools.velocity;
 
 import cn.hutool.core.date.DateUtil;
+import com.alibaba.fastjson.JSON;
 import com.pearadmin.common.constant.GenerateConstant;
 import com.pearadmin.common.tools.SequenceUtil;
 import com.pearadmin.common.tools.string.StringUtil;
@@ -53,6 +54,11 @@ public class VelocityUtils {
         velocityContext.put("columns", genTable.getColumns());
         velocityContext.put("table", genTable);
         velocityContext.put("ids", ids);
+
+        System.out.println("主键信息:" + genTable.getPkColumn().getColumnName());
+        System.out.println("列信息:" + JSON.toJSONString(genTable.getColumns()));
+
+
         setMenuVelocityContext(velocityContext, genTable);
         if (GenerateConstant.TPL_TREE.equals(tplCategory)) {
             setTreeVelocityContext(velocityContext, genTable);

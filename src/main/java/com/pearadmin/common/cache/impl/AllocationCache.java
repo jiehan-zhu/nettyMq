@@ -29,10 +29,13 @@ public class AllocationCache extends BaseCache<String> {
     @Override
     public Map<String, String> load() {
         log.info("Refresh Cache - 全局配置");
+        Map<String, String> map = new HashMap<>();
         List<SysConfig> list = sysConfigService.list(new QueryWrapper<>());
         if(list.size() > 0) {
-            return list.stream().collect(Collectors.toMap(SysConfig::getConfigCode, SysConfig::getConfigValue));
+            for (SysConfig sysConfig : list) {
+                map.put(sysConfig.getConfigCode(), sysConfig.getConfigValue());
+            }
         }
-        return new HashMap<>();
+        return map;
     }
 }

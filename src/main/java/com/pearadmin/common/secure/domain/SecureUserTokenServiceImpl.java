@@ -98,5 +98,4 @@ public class SecureUserTokenServiceImpl implements PersistentTokenRepository {
     private String generateKey(String series, String prefix) {
         return prefix + series;
     }
-
 }

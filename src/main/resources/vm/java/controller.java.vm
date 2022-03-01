@@ -59,7 +59,7 @@ public class ${ClassName}Controller extends BaseController {
     }
 
     /**
-     * 新增保存${functionName}
+     * 新增${functionName}
      */
     @ResponseBody
     @PostMapping("/save")
@@ -73,14 +73,14 @@ public class ${ClassName}Controller extends BaseController {
      */
     @GetMapping("/edit")
     @PreAuthorize("hasPermission('/${moduleName}/${businessName}/edit','${permissionPrefix}:edit')")
-    public ModelAndView edit(${pkColumn.javaType} ${pkColumn.javaField}, ModelMap mmap) {
+    public ModelAndView edit(${pkColumn.javaType} ${pkColumn.javaField}, ModelMap map) {
         ${ClassName} ${className} =${className}Service.getById(${pkColumn.javaField});
-        mmap.put("${className}", ${className});
+        map.put("${className}", ${className});
         return jumpPage(prefix + "/edit");
     }
 
     /**
-     * 修改保存${functionName}
+     * 修改${functionName}
      */
     @ResponseBody
     @PutMapping("/update")
@@ -96,11 +96,11 @@ public class ${ClassName}Controller extends BaseController {
     @DeleteMapping("/batchRemove")
     @PreAuthorize("hasPermission('/${moduleName}/${businessName}/remove','${permissionPrefix}:remove')")
     public Result batchRemove(String ids) {
-        return decide(${className}Service.delete${ClassName}ByIds(Convert.toStrArray(ids)));
+        return decide(${className}Service.removeByIds(Arrays.asList(ids.split(","))))
     }
 
     /**
-     * 删除
+     * 删除${functionName}
      */
     @ResponseBody
     @DeleteMapping("/remove/{${pkColumn.javaField}}")

@@ -34,17 +34,11 @@ public class SecureExtendConfiguration {
         return new BCryptPasswordEncoder();
     }
 
-    /**
-     * 注册 SessionRegistry
-     */
     @Bean
     public SessionRegistry sessionRegistry() {
         return new SessionRegistryImpl();
     }
 
-    /**
-     * 注册 HttpSessionEventPublisher, 发布 HttpSessionEvent
-     */
     @Bean
     public HttpSessionEventPublisher httpSessionEventPublisher() {
         return new HttpSessionEventPublisher();
@@ -57,9 +51,6 @@ public class SecureExtendConfiguration {
         return handler;
     }
 
-    /**
-     * thymeleaf security 别名注册，方便前端使用
-     */
     @Bean
     public ISpringTemplateEngine templateEngine(ITemplateResolver templateResolver) {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
@@ -69,20 +60,11 @@ public class SecureExtendConfiguration {
         return templateEngine;
     }
 
-    /**
-     * 注册自定义的LogoutHandler
-     *
-     * @param httpSessionEventPublisher
-     * @return SecurityLogoutHandler
-     */
     @Bean
     public SecureLogoutHandler securityLogoutHandler(HttpSessionEventPublisher httpSessionEventPublisher) {
         return new SecureLogoutHandler(httpSessionEventPublisher);
     }
 
-    /**
-     * 注册ScheduledThreadPoolExecutor，进行在线用户用户检测，清除过期Session
-     */
     @Bean
     public ScheduledThreadPoolExecutor manageSessionThreadPool() {
         return new ScheduledThreadPoolExecutor(1, r -> {

@@ -3,6 +3,8 @@ package ${packageName}.domain;
 #foreach ($import in $importList)
 import ${import};
 #end
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -13,7 +15,7 @@ import com.pearadmin.common.web.base.TreeDomain;
 #end
 
 /**
- * ${functionName}对象 ${tableName}
+ * ${functionName}实体
  *
  * @author ${author}
  * @date ${datetime}
@@ -24,6 +26,7 @@ import com.pearadmin.common.web.base.TreeDomain;
     #set($Entity="TreeDomain")
 #end
 @Data
+@TableName("${tableName}")
 public class ${ClassName} extends ${Entity}{
 
 #foreach ($column in $columns)
@@ -36,6 +39,9 @@ public class ${ClassName} extends ${Entity}{
 #else
     #set($comment=$column.columnComment)
 #end
+#end
+#if($column.columnName == $pkColumn.columnName)
+    @TableId
 #end
     private $column.javaType $column.javaField;
 

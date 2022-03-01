@@ -37,15 +37,4 @@ public class ${ClassName}ServiceImpl extends ServiceImpl<${ClassName}Mapper,${Cl
         return new PageInfo<>(data);
     }
 
-    /**
-     * 删除${functionName}对象
-     *
-     * @param ids 需要删除的数据ID
-     * @return 结果
-     */
-    @Override
-    public int delete${ClassName}ByIds(String[] ids) {
-        return baseMapper.deleteBatchIds(Arrays.asList(ids));
-    }
-
 }

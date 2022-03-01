@@ -22,12 +22,4 @@ public interface I${ClassName}Service extends IService<${ClassName}> {
      * */
     PageInfo<${ClassName}> select${ClassName}Page(${ClassName} ${className}, PageDomain pageDomain);
 
-
-    /**
-     * 批量删除${functionName}
-     *
-     * @param ids 需要删除的数据ID
-     * @return 结果
-     */
-    int delete${ClassName}ByIds(String[] ids);
 }
