@@ -4,11 +4,13 @@ import com.fasterxml.jackson.core.json.PackageVersion;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
+/**
+ * Long 精度处理
+ * */
+public class LongModule extends SimpleModule {
 
-public class JavaLongTypeModule extends SimpleModule {
-    public JavaLongTypeModule() {
+    public LongModule() {
         super(PackageVersion.VERSION);
-        // 将 Long 转 String
         this.addSerializer(Long.TYPE, ToStringSerializer.instance);
         this.addSerializer(Long.class, ToStringSerializer.instance);
     }

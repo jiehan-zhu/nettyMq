@@ -6,7 +6,6 @@ import com.pearadmin.modules.sys.domain.SysUser;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
-
 import javax.annotation.Resource;
 import java.io.Serializable;
 import java.util.HashSet;

@@ -69,7 +69,7 @@ public class CoreConfig implements WebMvcConfigurer {
     public ObjectMapper objectMapper() {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        objectMapper.registerModule(new JavaLongTypeModule());
+        objectMapper.registerModule(new LongModule());
         objectMapper.registerModule(new SimpleModule());
         objectMapper.registerModule(dateTime());
         return objectMapper;
