@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -31,7 +32,7 @@ public class SysNoticeServiceImpl implements SysNoticeService {
      */
     @Override
     public SysNotice selectSysNoticeById(String id) {
-        return sysNoticeMapper.selectSysNoticeById(id);
+        return sysNoticeMapper.selectById(id);
     }
 
     /**
@@ -69,7 +70,7 @@ public class SysNoticeServiceImpl implements SysNoticeService {
     @Override
     public int insertSysNotice(SysNotice sysNotice) {
         sysNotice.setCreateTime(LocalDateTime.now());
-        return sysNoticeMapper.insertSysNotice(sysNotice);
+        return sysNoticeMapper.insert(sysNotice);
     }
 
     /**
@@ -80,7 +81,7 @@ public class SysNoticeServiceImpl implements SysNoticeService {
      */
     @Override
     public int updateSysNotice(SysNotice sysNotice) {
-        return sysNoticeMapper.updateSysNotice(sysNotice);
+        return sysNoticeMapper.updateById(sysNotice);
     }
 
     /**
@@ -91,7 +92,8 @@ public class SysNoticeServiceImpl implements SysNoticeService {
      */
     @Override
     public int deleteSysNoticeByIds(String[] ids) {
-        return sysNoticeMapper.deleteSysNoticeByIds(ids);
+        List<String> idList = Arrays.asList(ids);
+        return sysNoticeMapper.deleteBatchIds(idList);
     }
 
     /**
@@ -102,6 +104,6 @@ public class SysNoticeServiceImpl implements SysNoticeService {
      */
     @Override
     public int deleteSysNoticeById(String id) {
-        return sysNoticeMapper.deleteSysNoticeById(id);
+        return sysNoticeMapper.deleteById(id);
     }
 }

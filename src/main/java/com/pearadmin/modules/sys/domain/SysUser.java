@@ -3,6 +3,7 @@ package com.pearadmin.modules.sys.domain;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.pearadmin.common.web.base.BaseDomain;
 import lombok.Data;
 import lombok.Getter;
@@ -24,6 +25,7 @@ import java.util.List;
 @Data
 @Alias("SysUser")
 @TableName("sys_user")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SysUser extends BaseDomain implements UserDetails, CredentialsContainer {
 
     /**

@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.pearadmin.common.cache.impl.DictionaryCache;
@@ -28,7 +29,7 @@ public class SysDictDataServiceImpl implements SysDictDataService {
 
     @Override
     public List<SysDictData> list(SysDictData sysDictData) {
-        return sysDictDataMapper.selectList(sysDictData);
+        return sysDictDataMapper.selectList(new QueryWrapper<>(sysDictData));
     }
 
     @Override
@@ -44,7 +45,7 @@ public class SysDictDataServiceImpl implements SysDictDataService {
     @Override
     public PageInfo<SysDictData> page(SysDictData sysDictData, PageDomain pageDomain) {
         PageHelper.startPage(pageDomain.getPage(), pageDomain.getLimit());
-        List<SysDictData> list = sysDictDataMapper.selectList(sysDictData);
+        List<SysDictData> list = sysDictDataMapper.selectList(new QueryWrapper<>(sysDictData));
         return new PageInfo<>(list);
     }
 

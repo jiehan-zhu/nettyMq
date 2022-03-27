@@ -1,5 +1,7 @@
 package com.pearadmin.modules.sys.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.pearadmin.common.tools.SequenceUtil;
@@ -122,7 +124,7 @@ public class SysRoleServiceImpl implements SysRoleService {
      */
     @Override
     public List<SysPower> getRolePower(String roleId) {
-        List<SysPower> allPower = sysPowerMapper.selectPower(null);
+        List<SysPower> allPower = sysPowerMapper.selectList(null);
         List<SysRolePower> myPower = sysRolePowerMapper.selectByRoleId(roleId);
         allPower.forEach(sysPower -> myPower.forEach(sysRolePower -> {
             if (sysRolePower.getPowerId().equals(sysPower.getPowerId())) {
@@ -135,7 +137,9 @@ public class SysRoleServiceImpl implements SysRoleService {
     @Override
     public List<SysDept> getRoleDept(String roleId) {
         List<SysDept> allDept = sysDeptMapper.selectList(null);
-        List<SysRoleDept> myDept = sysRoleDeptMapper.selectByRoleId(roleId);
+        LambdaQueryWrapper<SysRoleDept> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(SysRoleDept::getRoleId,roleId);
+        List<SysRoleDept> myDept = sysRoleDeptMapper.selectList(wrapper);
         allDept.forEach(sysDept -> {
             myDept.forEach(sysRoleDept -> {
                 if(sysRoleDept.getDeptId().equals(sysDept.getDeptId())){

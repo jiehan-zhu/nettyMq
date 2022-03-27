@@ -15,11 +15,5 @@ import java.util.List;
 @Mapper
 public interface SysFileMapper extends BaseMapper<SysFile> {
 
-    /**
-     * Describe: 查询文件列表
-     * Param: null
-     * Return: List<File>
-     */
-    List<SysFile> selectList();
 
 }

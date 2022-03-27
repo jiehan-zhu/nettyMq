@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.pearadmin.common.web.domain.request.PageDomain;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -29,7 +31,9 @@ public class SysDeptServiceImpl implements SysDeptService {
      */
     @Override
     public List<SysDept> list(SysDept param) {
-        return sysDeptMapper.selectList(param);
+        LambdaQueryWrapper<SysDept> wrapper = new LambdaQueryWrapper<>();
+        if(null!=param.getDeptName())wrapper.like(SysDept::getDeptName,param.getDeptName());
+        return sysDeptMapper.selectList(wrapper);
     }
 
     /**
@@ -40,7 +44,7 @@ public class SysDeptServiceImpl implements SysDeptService {
     @Override
     public PageInfo<SysDept> page(SysDept param, PageDomain pageDomain) {
         PageHelper.startPage(pageDomain.getPage(), pageDomain.getLimit());
-        List<SysDept> list = sysDeptMapper.selectList(param);
+        List<SysDept> list = list(param);
         return new PageInfo<>(list);
     }
 
@@ -90,7 +94,7 @@ public class SysDeptServiceImpl implements SysDeptService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public boolean batchRemove(String[] ids) {
-        sysDeptMapper.deleteByIds(ids);
+        sysDeptMapper.deleteBatchIds(Arrays.asList(ids));
         sysUserMapper.resetDeptByDeptIds(ids);
         return true;
     }
@@ -102,12 +106,14 @@ public class SysDeptServiceImpl implements SysDeptService {
      */
     @Override
     public List<SysDept> selectByParentId(String tenantId) {
-        return sysDeptMapper.selectListByParentId(tenantId);
+        LambdaQueryWrapper<SysDept> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(SysDept::getParentId,tenantId);
+        return sysDeptMapper.selectList(wrapper);
     }
 
     @Override
     public List<SysDept> treeAndChildren(String parent) {
-        List<SysDept> ds = sysDeptMapper.selectListByParentId(parent);
+        List<SysDept> ds = selectByParentId(parent);
         for (SysDept sd: ds) {
             treeAndChildren(sd,ds);
         }
@@ -115,7 +121,7 @@ public class SysDeptServiceImpl implements SysDeptService {
     }
 
     private void treeAndChildren(SysDept sd, List<SysDept> ds) {
-        List<SysDept> dss = sysDeptMapper.selectListByParentId(sd.getDeptId());
+        List<SysDept> dss = selectByParentId(sd.getDeptId());
         if(dss.size() > 0) {
             for (SysDept sdd: dss) {
                 ds.add(sdd);

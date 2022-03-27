@@ -23,20 +23,6 @@ public interface SysDictDataMapper extends BaseMapper<SysDictData> {
     List<SysDictData> selectByCode(@Param("typeCode") String typeCode);
 
     /**
-     * Describe: 查询字典数据信息
-     * Param: SysDictData
-     * Return: List<SysDictData>
-     */
-    List<SysDictData> selectList(SysDictData sysDictData);
-
-    /**
-     * Describe: 根据 Id 删除字典数据
-     * Param: id
-     * Return: 执行结果
-     */
-    Integer deleteById(String id);
-
-    /**
      * Describe: 根据 code 删除字典数据
      * Param: id
      * Return 执行结果

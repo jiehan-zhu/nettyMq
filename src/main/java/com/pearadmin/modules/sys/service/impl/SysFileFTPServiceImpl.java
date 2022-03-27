@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.pearadmin.common.configure.proprety.TemplateProperty;
 import com.pearadmin.common.tools.upload.FTPUtil;
 import com.pearadmin.common.tools.SequenceUtil;
@@ -20,7 +21,7 @@ import java.util.List;
 
 @Slf4j
 @Service("SysFileFTPServiceImpl")
-public class SysFileFTPServiceImpl implements SysFileService {
+public class SysFileFTPServiceImpl extends ServiceImpl<SysFileMapper,SysFile> implements SysFileService {
 
     /**
      * 引 入 服 务
@@ -90,7 +91,7 @@ public class SysFileFTPServiceImpl implements SysFileService {
 
     @Override
     public List<SysFile> data() {
-        return fileMapper.selectList();
+        return list();
     }
 
     @Override

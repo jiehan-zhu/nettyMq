@@ -1,5 +1,8 @@
 package com.pearadmin.modules.sys.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.pearadmin.modules.sys.domain.SysPower;
 import com.pearadmin.modules.sys.mapper.SysPowerMapper;
 import com.pearadmin.modules.sys.mapper.SysRolePowerMapper;
@@ -38,7 +41,7 @@ public class SysPowerServiceImpl implements SysPowerService {
      */
     @Override
     public List<SysPower> list(SysPower sysPower) {
-        return sysPowerMapper.selectPower(sysPower);
+        return sysPowerMapper.selectList(new QueryWrapper<>(sysPower));
     }
 
     /**
@@ -93,6 +96,8 @@ public class SysPowerServiceImpl implements SysPowerService {
      */
     @Override
     public List<SysPower> selectByParentId(String parentId) {
-        return sysPowerMapper.selectListByParentId(parentId);
+        LambdaQueryWrapper<SysPower> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(SysPower::getParentId,parentId);
+        return sysPowerMapper.selectList(wrapper);
     }
 }

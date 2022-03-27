@@ -60,5 +60,7 @@ public interface SysUserService extends IService<SysUser> {
      * */
     List<SysDept> dept(String userId);
 
+    SysUser getUserByUsername(String username);
+
 }
 

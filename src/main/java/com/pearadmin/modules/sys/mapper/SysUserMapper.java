@@ -15,26 +15,7 @@ import java.util.List;
 @Mapper
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
-    /**
-     * Describe: 根据 username 查询用户
-     * Param: username
-     * Return: SysUser
-     */
-    SysUser selectByUsername(@Param("username") String username);
 
-    /**
-     * Describe: 根据 SysUser 条件查询用户
-     * Param: username
-     * Return: SysUser
-     */
-    List<SysUser> selectUser(SysUser param);
-
-    /**
-     * Describe: 根据 SysUser 条件查询用户数量
-     * Param: username
-     * Return: Integer
-     */
-    Integer count(SysUser sysUser);
 
     /**
      * Describe: 重置部门

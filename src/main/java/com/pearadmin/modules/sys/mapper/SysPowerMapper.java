@@ -16,20 +16,6 @@ import java.util.List;
 public interface SysPowerMapper extends BaseMapper<SysPower> {
 
     /**
-     * Describe: 根据 SysPower 条件查询权限
-     * Param: SysPower
-     * Return: SysPower
-     */
-    List<SysPower> selectPower(SysPower sysPower);
-
-    /**
-     * Describe: 根据 SysPower 条件查询权限
-     * Param: tenantId
-     * Return: SysPower
-     */
-    List<SysPower> selectListByParentId(String parentId);
-
-    /**
      * Describe: 根据 username 查询用户权限
      * Param: username
      * Return: SysPower

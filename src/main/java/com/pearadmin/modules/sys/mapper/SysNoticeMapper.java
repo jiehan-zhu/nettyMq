@@ -14,13 +14,6 @@ import java.util.List;
  */
 @Mapper
 public interface SysNoticeMapper extends BaseMapper<SysNotice> {
-    /**
-     * 查询notice
-     *
-     * @param id noticeID
-     * @return notice
-     */
-    public SysNotice selectSysNoticeById(String id);
 
     /**
      * 查询notice列表
@@ -30,36 +23,5 @@ public interface SysNoticeMapper extends BaseMapper<SysNotice> {
      */
     List<SysNotice> selectSysNoticeList(SysNotice sysNotice);
 
-    /**
-     * 新增notice
-     *
-     * @param sysNotice notice
-     * @return 结果
-     */
-    int insertSysNotice(SysNotice sysNotice);
-
-    /**
-     * 修改notice
-     *
-     * @param sysNotice notice
-     * @return 结果
-     */
-    int updateSysNotice(SysNotice sysNotice);
-
-    /**
-     * 删除notice
-     *
-     * @param id noticeID
-     * @return 结果
-     */
-    int deleteSysNoticeById(String id);
-
-    /**
-     * 批量删除notice
-     *
-     * @param ids 需要删除的数据ID
-     * @return 结果
-     */
-    int deleteSysNoticeByIds(String[] ids);
 
 }

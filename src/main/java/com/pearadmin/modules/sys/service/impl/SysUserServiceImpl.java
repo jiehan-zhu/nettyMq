@@ -1,5 +1,7 @@
 package com.pearadmin.modules.sys.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -59,7 +61,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper,SysUser> imple
     @Override
     public PageInfo<SysUser> page(SysUser param, PageDomain pageDomain) {
         PageHelper.startPage(pageDomain.getPage(), pageDomain.getLimit());
-        List<SysUser> sysUsers = sysUserMapper.selectUser(param);
+        List<SysUser> sysUsers = list(new QueryWrapper<>(param));
         return new PageInfo<>(sysUsers);
     }
 
@@ -132,6 +134,13 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper,SysUser> imple
     @Override
     public List<SysDept> dept(String userId) {
         return sysDeptMapper.selectDeptByUserId(userId);
+    }
+
+    @Override
+    public SysUser getUserByUsername(String username) {
+        LambdaQueryWrapper<SysUser> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(SysUser::getUsername,username);
+        return sysUserMapper.selectOne(wrapper);
     }
 
 }

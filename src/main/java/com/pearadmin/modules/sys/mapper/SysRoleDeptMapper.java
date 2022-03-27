@@ -10,7 +10,6 @@ import java.util.List;
 @Mapper
 public interface SysRoleDeptMapper extends BaseMapper<SysRoleDept> {
 
-    List<SysRoleDept> selectByRoleId(String roleId);
 
     int deleteByRoleId(String roleId);
 

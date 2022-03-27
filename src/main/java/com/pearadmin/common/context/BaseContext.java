@@ -1,5 +1,6 @@
 package com.pearadmin.common.context;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.pearadmin.modules.sys.domain.SysLog;
 import com.pearadmin.modules.sys.domain.SysRole;
 import com.pearadmin.modules.sys.domain.SysUser;
@@ -7,6 +8,7 @@ import com.pearadmin.modules.sys.mapper.SysPowerMapper;
 import com.pearadmin.modules.sys.mapper.SysRoleMapper;
 import com.pearadmin.modules.sys.mapper.SysUserMapper;
 import com.pearadmin.modules.sys.service.SysLogService;
+import com.pearadmin.modules.sys.service.SysUserService;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
@@ -33,8 +35,11 @@ public class BaseContext {
     @Resource
     private SysPowerMapper sysPowerMapper;
 
+    @Resource
+    private SysUserService sysUserService;
+
     public SysUser getUserByName(String username) {
-        SysUser sysUser = sysUserMapper.selectByUsername(username);
+        SysUser sysUser = sysUserService.getUserByUsername(username);
         if (sysUser != null) {
             sysUser.setPowerList(sysPowerMapper.selectByUsername(username));
         }

@@ -33,30 +33,7 @@
         order by create_time desc
     </select>
 
-    <!--根据 Username 加载 SysUser -->
-    <select id="count" resultType="integer">
-        select count(*) from sys_user
-        <where>
-            <if test="username!=null and username!=''">
-                and username = #{username}
-            </if>
-            <if test="status!=null and status!=''">
-                and status = #{status}
-            </if>
-            <if test="realName!=null and realName!=''">
-                and real_name = #{realName}
-            </if>
-            <if test="email!=null and email!=''">
-                and email = #{email}
-            </if>
-            <if test="sex!=null and sex!=''">
-                and sex = #{sex}
-            </if>
-            <if test="phone!=null and phone!=''">
-                and phone = #{phone}
-            </if>
-        </where>
-    </select>
+
 
     <!-- 根据部门字段清空部门字段 -->
     <update id="resetDeptByDeptId" parameterType="string">

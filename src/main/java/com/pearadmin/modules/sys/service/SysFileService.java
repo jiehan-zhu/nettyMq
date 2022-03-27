@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.pearadmin.modules.sys.domain.SysFile;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * Author: 就 眠 仪 式
  * CreateTime: 2019/10/23
  */
-public interface SysFileService {
+public interface SysFileService extends IService<SysFile> {
 
     /**
      * 文 件 上 传 服 务
