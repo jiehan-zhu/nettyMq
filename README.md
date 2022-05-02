@@ -55,59 +55,57 @@ Spring Boot + Security + MyBatis Plus 快速开发平台
 
 #### 项目结构
 
-```aidl
-
+```
 Pear Admin Boot
 │
-├─sql  项目SQL文件
+├─sql SQL 脚本
 │
 ├─src 公共模块
 │  │
-│  ├─config 框架集成配置
-│  │
-│  ├─constant 通用常量
-│  │
-│  ├─exception 异常处理
-│  │
-│  ├─plugins 封装组件
-│  │
-│  ├─tools 工具类
-│  │
-│  └─web WEB 处理封装
-│
-├─pear-entrance 启动模块
-│  │
-│  ├─api 通用接口
-│  │
-│  ├─secure 安全框架
-│  │
-│  └─EntranceApplication 启动类
-│
-├─pear-entrance 启动模块
-│  │
-│  ├─static 静态资源
-│  │
-│  ├─templates 页面文件
-│  │
-│  ├─logback-spring.xml 日志配置
-│  │
-│  ├─application-dev.yml 开发环境配置
-│  │
-│  ├─application-prod.yml 线上环境配置
-│  │
-│  ├─application-test.yml 测试环境配置
-│  │
-│  └─application.yml 配置文件
-│
-├─pear-modules 业务模块
-│  │
-│  ├─pear-generator 代码生成
-│  │
-│  ├─pear-system 系统业务
-│  │
-│  ├─pear-schedule 定时任务
-│  │
-│  └─pear-process 工作流程
+│  └─main 
+│      │
+│      ├─java 源码文件
+│      │   │
+│      │   ├─common 公共代码
+│      │   │   │
+│      │   │   ├─aop 切面逻辑
+│      │   │   │
+│      │   │   ├─cache 缓存服务
+│      │   │   │
+│      │   │   ├─configure 集成配置
+│      │   │   │
+│      │   │   ├─constant 静态常量
+│      │   │   │
+│      │   │   ├─context 核心服务
+│      │   │   │
+│      │   │   ├─quartz 定时任务
+│      │   │   │
+│      │   │   ├─secure 安全实现
+│      │   │   │
+│      │   │   ├─tools 工具包
+│      │   │   │
+│      │   │   └─web 核心封装
+│      │   │   
+│      │   ├─modules 业务代码
+│      │   │   │
+│      │   │   ├─job 定时任务
+│      │   │   │      │
+│      │   │   │      ├─domain 实体
+│      │   │   │      │
+│      │   │   │      ├─params 参数
+│      │   │   │      │
+│      │   │   │      ├─repository ORM 操作
+│      │   │   │      │
+│      │   │   │      ├─rest 接口
+│      │   │   │      │
+│      │   │   │      └─service 服务
+│      │   │   │        
+│      │   │   │
+│      │   │   └─sys 基础功能
+│      │   │   
+│      │   └─EntranceApplication 启动类
+│      │   
+│      └─resource 资源文件
 │  
 └─pom.xml  Maven 配置
 
@@ -115,6 +113,6 @@ Pear Admin Boot
 
 #### 开源共建
 
-1. 欢迎提交 [pull request](https://gitee.com/pear-admin/Pear-Admin-Fast/pulls)，注意对应提交对应 `master` 分支
+1. 欢迎提交 [pull request](https://gitee.com/pear-admin/Pear-Admin-Boot/pulls)，注意对应提交对应 `master` 分支
 
-2. 欢迎提交 [issue](https://gitee.com/pear-admin/Pear-Admin-Fast/issues)，请写清楚遇到问题的原因、开发环境、复显步骤。
+2. 欢迎提交 [issue](https://gitee.com/pear-admin/Pear-Admin-Boot/issues)，请写清楚遇到问题的原因、开发环境、复显步骤。

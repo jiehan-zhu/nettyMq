@@ -51,12 +51,11 @@ spring:
         url-pattern: /druid/*
         reset-enable: false
         aop-patterns: com.pearadmin.*
-    # 动态数据源配置
+    # 数据源
     dynamic:
       primary: master
       strict: false
       p6spy: false
-      # 数据源列表
       datasource:
         # 主库
         master:
