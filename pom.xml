@@ -17,8 +17,8 @@
     <version>2.0.0</version>
 
     <!-- 项 目 描 述 -->
-    <name>pear-admin-boot</name>
-    <description>基于 Spring Boot 生态的快速开发框架</description>
+    <name> pear-admin-boot </name>
+    <description> 基 于 Spring Boot 生 态 的 快 速 开 发 框 架 </description>
 
     <!-- 版 本 管 理 -->
     <properties>
