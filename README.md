@@ -1,4 +1,3 @@
-
 <div align="center">
 <br/>
 
@@ -29,11 +28,11 @@
   <img  width="92%" style="border-radius:10px;margin-top:20px;margin-bottom:20px;box-shadow: 2px 0 6px gray;" src="https://images.gitee.com/uploads/images/2020/1019/104805_042b888c_4835367.png" />
 </div>
 
-#### 项目介绍  :jack_o_lantern: 
+### 项目介绍  :jack_o_lantern: 
 
 Spring Boot + Security + MyBatis Plus 快速开发平台
 
-#### 内置功能
+### 内置功能
 
 1. 用户管理：用户是系统操作者，该功能主要完成系统用户配置。
 2. 权限管理：配置系统菜单，操作权限，按钮权限, 数据权限标识等。
@@ -53,7 +52,7 @@ Spring Boot + Security + MyBatis Plus 快速开发平台
 16. 接口限流：新增 @RateLimit 注解, 轻量级限流方案。
 17. 导出导出：集成 easy-excel, 提供声明式报表导出。
 
-#### 项目结构
+### 项目结构
 
 ```
 Pear Admin Boot
