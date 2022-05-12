@@ -111,12 +111,6 @@ Pear Admin Boot
 
 ```
 
-#### 开源共建
-
-1. 欢迎提交 [pull request](https://gitee.com/pear-admin/Pear-Admin-Boot/pulls)，注意对应提交对应 `master` 分支
-
-2. 欢迎提交 [issue](https://gitee.com/pear-admin/Pear-Admin-Boot/issues)，请写清楚遇到问题的原因、开发环境、复显步骤。
-
 #### 预览项目
 
 | |  |
@@ -130,3 +124,23 @@ Pear Admin Boot
 | ![](readme/14.jpg)| ![](readme/15.jpg) |
 | ![](readme/16.jpg)| ![](readme/17.jpg) |
 | ![](readme/18.jpg)| ![](readme/19.jpg) |
+
+### 联系我们
+
+- 申请加入：[contact@pearadmin.com](mailto:contact@pearadmin.com)
+- 意见反馈：[contact@pearadmin.com](mailto:contact@pearadmin.com)
+- 社区交流：[➀ 682110771](https://qm.qq.com/cgi-bin/qm/qr?k=wguN0SYYFVTX9K-5Muf36E_J77bCzdDD&authKey=Ye5voDJGOphYUvypWJHOEyHoYBcgzk1l7djAS4fWcmls1jybLnYjwLrzwsS6Jdo3&group_code=682110771), [➁ 864581125](https://jq.qq.com/?_wv=1027&k=3K8GjF2G)
+
+### 开源共建
+
+<p style="padding:10px;"  width="90%">
+
+1. 欢迎提交 [pull request](https://gitee.com/pear-admin/Pear-Admin-Boot/pulls)，注意对应提交对应 `master` 分支
+
+2. 欢迎提交 [issue](https://gitee.com/pear-admin/Pear-Admin-Boot/issues)，请写清楚遇到问题的原因、开发环境、复显步骤。
+
+</p>
+
+感谢每一位贡献代码的朋友。
+
+如果对您有帮助，您可以点右上角 💘Star💘支持
