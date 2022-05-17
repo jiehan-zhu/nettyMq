@@ -136,6 +136,7 @@
 
         form.on('submit(power-save)', function (data) {
             data.field.icon = "layui-icon " + data.field.icon;
+            data.field.selectParent_select_input = undefined;
             $.ajax({
                 url: '/system/power/save',
                 data: JSON.stringify(data.field),
