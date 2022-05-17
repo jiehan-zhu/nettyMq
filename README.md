@@ -8,7 +8,7 @@
     开 箱 即 用 的 Spring 快 速 开 发 平 台
   </h4> 
 
-  [预 览](http://boot.pearadmin.com)   |   [官 网](http://www.pearadmin.com/)   |   [群聊](https://jq.qq.com/?_wv=1027&k=TkLAKUxC)   |   [社区](http://forum.pearadmin.com/)
+  [预 览](http://boot.pearadmin.com)   |   [官 网](http://www.pearadmin.com/)  |   [社区](http://forum.pearadmin.com/)
 
 </div>
 
@@ -123,12 +123,6 @@ Pear Admin Boot
 | ![](readme/14.jpg)| ![](readme/15.jpg) |
 | ![](readme/16.jpg)| ![](readme/17.jpg) |
 | ![](readme/18.jpg)| ![](readme/19.jpg) |
-
-### 联系我们
-
-- 申请加入：[contact@pearadmin.com](mailto:contact@pearadmin.com)
-- 意见反馈：[contact@pearadmin.com](mailto:contact@pearadmin.com)
-- 社区交流：[➀ 682110771](https://qm.qq.com/cgi-bin/qm/qr?k=wguN0SYYFVTX9K-5Muf36E_J77bCzdDD&authKey=Ye5voDJGOphYUvypWJHOEyHoYBcgzk1l7djAS4fWcmls1jybLnYjwLrzwsS6Jdo3&group_code=682110771), [➁ 864581125](https://jq.qq.com/?_wv=1027&k=3K8GjF2G)
 
 ### 开源共建
 
