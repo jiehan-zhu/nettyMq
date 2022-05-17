@@ -1,5 +1,6 @@
 package com.pearadmin.modules.sys.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.pearadmin.common.web.base.BaseDomain;
 import lombok.Data;
@@ -29,12 +30,14 @@ public class SysNotice extends BaseDomain {
     private String sender;
 
     /** 发送人 */
+    @TableField(exist = false)
     private String senderName;
 
     /** 接收者 */
     private String accept;
 
     /** 接收人 */
+    @TableField(exist = false)
     private String acceptName;
 
     /** 类型 */
