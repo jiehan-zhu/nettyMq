@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ${packageName}.service.I${ClassName}Service;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
 /**
  * ${functionName}Controller
