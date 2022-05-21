@@ -266,7 +266,7 @@
                     let templateName = index.substring(index.lastIndexOf("/") + 1, index.length).replace(/\.vm/g, "");
                     items.push({
                         title: templateName,
-                        content: "<pre class=\"layui-code\">" + value + "</pre>"
+                        content: "<pre class=\"layui-code\">" + value + "</pre><style>.layui-layer-content {width: 100%;}.layui-layer-tabmain {margin-top: -20px;}</style>"
                     })
                 });
                 top.layer.tab({
