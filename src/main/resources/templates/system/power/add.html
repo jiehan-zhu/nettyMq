@@ -84,22 +84,18 @@
 </form>
 <th:block th:include="include :: footer"/>
 <script>
-    layui.use(['form', 'jquery', 'icon', 'dtree', 'dictionary'], function () {
+    layui.use(['form', 'jquery', 'iconPicker', 'dtree', 'dictionary'], function () {
         let form = layui.form;
         let $ = layui.jquery;
-        let icon = layui.icon;
+        let iconPicker = layui.iconPicker;
         let dtree = layui.dtree;
 
-        icon.render({
+        iconPicker.render({
             elem: '#icon',
-            style: 'color: #5FB878;',
-            placeholder: '',
-            isSplit: true,
-            page: true,
+            type: 'fontClass',
             search: true,
-            click: function(obj) {
-                console.log(obj)
-            }
+            page: true,
+            limit: 16
         });
 
         dtree.renderSelect({

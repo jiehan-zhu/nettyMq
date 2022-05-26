@@ -1,4 +1,4 @@
-.layui-card-body .layui-form {
+.layui-card-body .layui-form{
     margin-top: 15px;
 }
 
@@ -22,7 +22,7 @@ textarea::-webkit-input-placeholder {
 
 .layui-input[success] {
     box-shadow: 0px 0px 0px 3px #f0f9eb !important;
-    border: #5FB878 1px solid !important;
+    border: #5FB878 1px solid!important;
 }
 
 .layui-input[failure],
@@ -65,4 +65,10 @@ textarea::-webkit-input-placeholder {
 
 .layui-form-select dl::-webkit-scrollbar-corner {
     background: #f6f6f6;
+}
+
+/* layui 2.6.9 样式变化 */
+.layui-form-select dl dd.layui-this{
+    background-color: #F6F6F6;
+    font-weight: 700;
 }

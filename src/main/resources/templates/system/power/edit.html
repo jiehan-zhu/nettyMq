@@ -95,11 +95,19 @@
 </form>
 <th:block th:include="include :: footer"/>
 <script th:inline="javascript">
-    layui.use(['form', 'jquery', 'icon', 'dtree'], function () {
+    layui.use(['form', 'jquery', 'iconPicker', 'dtree'], function () {
         let form = layui.form;
         let $ = layui.jquery;
-        let icon = layui.icon;
+        let iconPicker = layui.iconPicker;
         let dtree = layui.dtree;
+
+        iconPicker.render({
+            elem: '#icon',
+            type: 'fontClass',
+            search: true,
+            page: true,
+            limit: 16
+        });
 
         dtree.renderSelect({
             elem: "#selectParent",
@@ -154,18 +162,6 @@
                 }
             })
             return false;
-        });
-
-        icon.render({
-            elem: '#icon',
-            style: 'color: #5FB878;',
-            placeholder: '',
-            isSplit: true,
-            page: true,
-            search: true,
-            click: function(obj) {
-                console.log(obj)
-            }
         });
 
         window.init = function (type) {

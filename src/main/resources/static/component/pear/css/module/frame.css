@@ -61,45 +61,45 @@
     -webkit-transform: translate(-50%, -50%)
 }
 
-.ball-loader > span,
-.signal-loader > span {
+.ball-loader>span,
+.signal-loader>span {
     background-color: #4aca85;
     display: inline-block
 }
 
-.ball-loader > span:nth-child(1),
-.ball-loader.sm > span:nth-child(1),
-.signal-loader > span:nth-child(1),
-.signal-loader.sm > span:nth-child(1) {
+.ball-loader>span:nth-child(1),
+.ball-loader.sm>span:nth-child(1),
+.signal-loader>span:nth-child(1),
+.signal-loader.sm>span:nth-child(1) {
     -webkit-animation-delay: 0s;
     animation-delay: 0s
 }
 
-.ball-loader > span:nth-child(2),
-.ball-loader.sm > span:nth-child(2),
-.signal-loader > span:nth-child(2),
-.signal-loader.sm > span:nth-child(2) {
+.ball-loader>span:nth-child(2),
+.ball-loader.sm>span:nth-child(2),
+.signal-loader>span:nth-child(2),
+.signal-loader.sm>span:nth-child(2) {
     -webkit-animation-delay: .1s;
     animation-delay: .1s
 }
 
-.ball-loader > span:nth-child(3),
-.ball-loader.sm > span:nth-child(3),
-.signal-loader > span:nth-child(3),
-.signal-loader.sm > span:nth-child(3) {
+.ball-loader>span:nth-child(3),
+.ball-loader.sm>span:nth-child(3),
+.signal-loader>span:nth-child(3),
+.signal-loader.sm>span:nth-child(3) {
     -webkit-animation-delay: .15s;
     animation-delay: .15s
 }
 
-.ball-loader > span:nth-child(4),
-.ball-loader.sm > span:nth-child(4),
-.signal-loader > span:nth-child(4),
-.signal-loader.sm > span:nth-child(4) {
+.ball-loader>span:nth-child(4),
+.ball-loader.sm>span:nth-child(4),
+.signal-loader>span:nth-child(4),
+.signal-loader.sm>span:nth-child(4) {
     -webkit-animation-delay: .2s;
     animation-delay: .2s
 }
 
-.ball-loader > span {
+.ball-loader>span {
     width: 20px;
     height: 20px;
     margin: 0 3px;

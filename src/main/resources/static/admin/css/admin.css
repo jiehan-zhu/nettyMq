@@ -13,7 +13,7 @@ body,
 }
 
 .pear-admin.banner-layout .layui-side {
-    top: 60px !important;
+    top: 60px!important;
 }
 
 .pear-admin.banner-layout .layui-side .layui-logo {
@@ -25,15 +25,15 @@ body,
 }
 
 .pear-admin.banner-layout .layui-side .layui-side-scroll {
-    height: 100% !important;
+    height: 100%!important;
 }
 
 .pear-admin.banner-layout .layui-side .layui-side-scroll {
-    height: 100% !important;
+    height: 100%!important;
 }
 
-.pear-admin .layui-header.dark-theme .layui-layout-control .layui-this * {
-    background-color: rgba(0, 0, 0, .1) !important;
+.pear-admin .layui-header.dark-theme .layui-layout-control .layui-this *{
+    background-color: rgba(0,0,0,.1)!important;
 }
 
 .pear-admin.banner-layout .layui-header {
@@ -70,7 +70,9 @@ body,
 .pear-admin .layui-layout-right .layui-nav-child {
     border: 1px solid whitesmoke;
     border-radius: 4px;
-    width: 150px;
+    width: auto;
+    left: auto;
+    right: -23px;
 }
 
 .pear-admin .layui-header {
@@ -135,7 +137,7 @@ body,
 
 }
 
-.pear-admin .layui-header .layui-nav .layui-nav-item > a {
+.pear-admin .layui-header .layui-nav .layui-nav-item>a {
     color: black;
     font-size: 15px;
 }
@@ -148,6 +150,23 @@ body,
 
 .pear-admin .layui-layout-left {
     left: 0px;
+}
+
+.pear-admin .layui-footer {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    left: 230px;
+    background: #fff;
+    border-top: 1px solid #F2F2F2;
+    box-shadow: none;
+    -webkit-transition: left .3s;
+    transition: left .3s;
+    overflow: hidden;
+}
+
+.pear-admin .layui-footer.close {
+    display: none;
 }
 
 /** 收缩布局 */
@@ -176,6 +195,10 @@ body,
     width: 60px;
 }
 
+.pear-mini .layui-footer {
+    left: 60px;
+}
+
 .pear-mini .layui-nav-tree .layui-nav-item span {
     display: none;
 }
@@ -202,7 +225,7 @@ body,
     display: none;
 }
 
-.pear-collasped-pe {
+.pear-collapsed-pe {
     display: none;
     width: 50px;
     position: absolute;
@@ -217,7 +240,7 @@ body,
     box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
 }
 
-.pear-collasped-pe a {
+.pear-collapsed-pe a {
     color: white !important;
 }
 
@@ -234,12 +257,12 @@ body,
 }
 
 /** 新增兼容 */
-@media screen and (max-width: 768px) {
-    .collaspe {
+@media screen and (max-width:768px) {
+    .collapse {
         display: none !important;
     }
 
-    .pear-collasped-pe {
+    .pear-collapsed-pe {
         display: inline-block !important;
     }
 
@@ -270,6 +293,10 @@ body,
     }
 
     .pear-mini .layui-body {
+        left: 0px;
+    }
+
+    .pear-mini .layui-footer {
         left: 0px;
     }
 
@@ -360,8 +387,8 @@ body,
     color: whitesmoke;
 }
 
-.dark-theme.layui-header li > a {
-    color: whitesmoke !important;
+.dark-theme.layui-header li>a{
+    color: whitesmoke!important;
 }
 
 .dark-theme.layui-header .layui-logo {
@@ -463,3 +490,71 @@ body,
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .15);
     line-height: 30px;
 }
+
+.message .layui-tab-title li:not(:last-child) {
+    border-right: 1px solid #eee;
+}
+
+/* 搜索面板 */
+.menu-search-content .layui-input-prefix {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.menu-search-content .layui-input {
+    padding-left: 30px;
+}
+
+.menu-search-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.menu-search-input-wrapper {
+    width: 100%;
+    padding: 15px 15px;
+}
+
+.menu-search-no-data {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 122px;
+    align-items: center;
+}
+
+.menu-search-list {
+    width: 100%;
+    padding: 5px 15px;
+}
+
+.menu-search-list li {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 50px;
+    margin-bottom: 8px;
+    padding: 0px 10px;
+    color: currentColor;
+    font-size: 14px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px #d4d9e1;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.menu-search-list li:hover {
+    background-color: #5FB878;
+    color: white;
+}
+
+.menu-search-list li.this {
+    background-color: #5FB878;
+    color: white;
+}
+
+/* 搜索面板结束 */

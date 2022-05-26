@@ -1,6 +1,7 @@
-(function (define) {
-    define(['jquery'], function ($) {
-        return (function () {
+
+(function(define) {
+    define(['jquery'], function($) {
+        return (function() {
             var $container;
             var listener;
             var toastId = 0;
@@ -32,8 +33,6 @@
             var previousToast;
 
             return toastr;
-
-            ////////////////
 
             function error(message, title, optionsOverride) {
                 return notify({
@@ -132,7 +131,7 @@
                     $toastElement[options.hideMethod]({
                         duration: options.hideDuration,
                         easing: options.hideEasing,
-                        complete: function () {
+                        complete: function() {
                             removeToast($toastElement);
                         }
                     });
@@ -205,7 +204,7 @@
                 var options = getOptions();
                 var iconClass = map.iconClass || options.iconClass;
 
-                if (typeof (map.optionsOverride) !== 'undefined') {
+                if (typeof(map.optionsOverride) !== 'undefined') {
                     options = $.extend(options, map.optionsOverride);
                     iconClass = map.optionsOverride.iconClass || iconClass;
                 }
@@ -298,7 +297,7 @@
                     }
 
                     if (options.closeButton && $closeElement) {
-                        $closeElement.click(function (event) {
+                        $closeElement.click(function(event) {
                             if (event.stopPropagation) {
                                 event.stopPropagation();
                             } else if (event.cancelBubble !== undefined && event.cancelBubble !== true) {
@@ -314,7 +313,7 @@
                     }
 
                     if (options.onclick) {
-                        $toastElement.click(function (event) {
+                        $toastElement.click(function(event) {
                             options.onclick(event);
                             hideToast();
                         });
@@ -419,7 +418,7 @@
                     return $toastElement[method]({
                         duration: duration,
                         easing: easing,
-                        complete: function () {
+                        complete: function() {
                             removeToast($toastElement);
                             clearTimeout(intervalId);
                             if (options.onHidden && response.state !== 'hidden') {
@@ -476,11 +475,11 @@
 
         })();
     });
-}(typeof define === 'function' && define.amd ? define : function (deps, factory) {
+}(typeof define === 'function' && define.amd ? define : function(deps, factory) {
     if (typeof module !== 'undefined' && module.exports) { //Node
         module.exports = factory(require('jquery'));
     } else if (window.layui && layui.define) {
-        layui.define('jquery', function (exports) { //layui加载
+        layui.define('jquery', function(exports) { //layui加载
             exports('toastr', factory(layui.jquery));
             exports('notice', factory(layui.jquery));
         });

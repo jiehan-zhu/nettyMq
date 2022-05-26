@@ -20,17 +20,16 @@
         </div>
         <!-- 顶 部 左 侧 功 能 -->
         <ul class="layui-nav layui-layout-left">
-            <li class="collaspe layui-nav-item"><a class="layui-icon layui-icon-shrink-right" href="#"></a></li>
+            <li class="collapse layui-nav-item"><a class="layui-icon layui-icon-shrink-right" href="#"></a></li>
             <li class="refresh layui-nav-item"><a class="layui-icon layui-icon-refresh-1" href="#" loading=600></a></li>
         </ul>
         <!-- 多 系 统 菜 单 -->
         <div class="layui-layout-control" id="control"></div>
         <!-- 顶 部 右 侧 菜 单 -->
         <ul class="layui-nav layui-layout-right">
-            <li class="layui-nav-item layui-hide-xs"><a class="fullScreen layui-icon layui-icon-screen-full"
-                                                        href="#"></a></li>
-            <li class="layui-nav-item layui-hide-xs"><a class="layui-icon layui-icon-website"
-                                                        href="http://www.pearadmin.com"></a></li>
+            <li class="layui-nav-item layui-hide-xs"><a href="#" class="menuSearch layui-icon layui-icon-search"></a></li>
+            <li class="layui-nav-item layui-hide-xs"><a class="fullScreen layui-icon layui-icon-screen-full" href="#"></a></li>
+            <li class="layui-nav-item layui-hide-xs"><a class="layui-icon layui-icon-website" href="http://www.pearadmin.com"></a></li>
             <li class="layui-nav-item layui-hide-xs message"></li>
             <li class="layui-nav-item user">
                 <!-- 头 像 -->
@@ -50,7 +49,7 @@
         <!-- 菜 单 顶 部 -->
         <div class="layui-logo">
             <!-- 图 标 -->
-            <img class="logo"></img>
+            <img class="logo">
             <!-- 标 题 -->
             <span class="title"></span>
         </div>
@@ -64,6 +63,17 @@
         <!-- 内 容 页 面 -->
         <div id="content"></div>
     </div>
+    <!-- 页脚 -->
+    <div class="layui-footer layui-text">
+        <span class="left">
+            <span>
+                官网：<a href="http://www.pearadmin.com/team.html" target="_blank">www.pearadmin.com</a>&nbsp;&nbsp;&nbsp;
+                仓库：<a href="https://gitee.com/pear-admin/Pear-Admin-Layui" target="_blank">gitee.com/pear-admin</a>
+            </span>
+        </span>
+        <span class="center"></span>
+        <span class="right"></span>
+    </div>
     <!-- 遮 盖 层 -->
     <div class="pear-cover"></div>
     <!-- 加 载 动 画 -->
@@ -73,8 +83,8 @@
     </div>
 </div>
 <!-- 移 动 端 便 捷 操 作 -->
-<div class="pear-collasped-pe collaspe">
-    <a class="layui-icon layui-icon-shrink-right" href="#"></a>
+<div class="pear-collapsed-pe collapse">
+    <a href="#" class="layui-icon layui-icon-shrink-right"></a>
 </div>
 <!-- 依 赖 脚 本 -->
 <th:block th:include="include :: footer"/>
@@ -85,30 +95,31 @@
         let layer = layui.layer;
         let popup = layui.popup;
 
-        // 框架初始化时会读取 根目录下 pear.config.yml 文件作为初始化配置
+        // 框架初始化时会读取 根目录下 pear.config.yml 文件配置
         // 你可以通过 admin.setConfigPath 方法修改配置文件位置
         // 你可以通过 admin.setConfigType 方法修改配置文件类型
         admin.setConfigType("yml");
         admin.setConfigPath("pear.config.yml");
         admin.render();
 
-        // 注销实现
+        // 登录注销
         admin.logout(function () {
             let loading = layer.load();
             $.ajax({
                 url: '/logout',
                 dataType: 'json',
+                async: false,
                 type: 'post',
-                success: function (result) {
+                success: (result) => {
                     layer.close(loading);
                     if (result.success) {
                         popup.success(result.msg, function () {
                             location.href = "/";
                         });
-                        return true;
                     }
                 }
             })
+            return true;
         })
     })
 </script>

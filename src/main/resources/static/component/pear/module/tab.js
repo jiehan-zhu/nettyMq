@@ -11,6 +11,7 @@ layui.define(['jquery', 'element'], function(exports) {
 
     var tabData = new Array();
     var tabDataCurrent = 0;
+    var contextTabDOM;
 
     pearTab.prototype.render = function(opt) {
 
@@ -64,16 +65,19 @@ layui.define(['jquery', 'element'], function(exports) {
         option.success(sessionStorage.getItem(option.elem + "-pear-tab-data-current"));
 
         $("body .layui-tab[lay-filter='" + option.elem + "'] .layui-tab-title").on("contextmenu", "li", function(e) {
-
             // 获取当前元素位置
             var top = e.clientY;
             var left = e.clientX;
-
+            var menuWidth = 100;
             var currentId = $(this).attr("lay-id");
-
             var menu = "<ul><li class='item' id='" + option.elem + "closeThis'>关闭当前</li><li class='item' id='" + option.elem +
                 "closeOther'>关闭其他</li><li class='item' id='" + option.elem + "closeAll'>关闭所有</li></ul>";
 
+            contextTabDOM = $(this);
+            var isOutsideBounds = (left + menuWidth) > $(window).width();
+            if(isOutsideBounds){
+                left = $(window).width() - menuWidth;
+            }
             // 初始化
             layer.open({
                 type: 1,
@@ -81,7 +85,7 @@ layui.define(['jquery', 'element'], function(exports) {
                 shade: false,
                 skin: 'pear-tab-menu',
                 closeBtn: false,
-                area: ['100px', '108px'],
+                area: [menuWidth + 'px', '108px'],
                 fixed: true,
                 anim: false,
                 isOutAnim: false,
@@ -226,30 +230,15 @@ layui.define(['jquery', 'element'], function(exports) {
                 '</span><i class="layui-icon layui-unselect layui-tab-close">ဆ</i>'
         }
         if ($(".layui-tab[lay-filter='" + elem + "'] .layui-tab-title li[lay-id]").length <= 0) {
-
-            if (time != false && time != 0) {
-
-                var load = '<div id="pear-tab-loading' + index + '" class="pear-tab-loading">' +
-                    '<div class="ball-loader">' +
-                    '<span></span><span></span><span></span><span></span>' +
-                    '</div>' +
-                    '</div>'
-                $("#" + elem).find(".pear-tab").append(load);
-                var pearLoad = $("#" + elem).find("#pear-tab-loading" + index);
-                pearLoad.css({
-                    display: "block"
-                });
-                setTimeout(function() {
-                    pearLoad.fadeOut(500);
-                }, time);
-                index++;
-            }
             element.tabAdd(elem, {
                 title: title,
                 content: '<iframe id="' + opt.id + '" data-frameid="' + opt.id + '" scrolling="auto" frameborder="0" src="' +
                     opt.url + '" style="width:100%;height:100%;"></iframe>',
                 id: opt.id
             });
+            if (time != false && time != 0) {
+                tabIframeLoading(elem, opt.id);
+            }
             tabData.push(opt);
             sessionStorage.setItem(elem + "-pear-tab-data", JSON.stringify(tabData));
         } else {
@@ -261,29 +250,15 @@ layui.define(['jquery', 'element'], function(exports) {
             })
 
             if (isData == false) {
-                if (time != false && time != 0) {
-                    var load = '<div id="pear-tab-loading' + index + '" class="pear-tab-loading">' +
-                        '<div class="ball-loader">' +
-                        '<span></span><span></span><span></span><span></span>' +
-                        '</div>' +
-                        '</div>'
-
-                    $("#" + elem).find(".pear-tab").append(load);
-                    var pearLoad = $("#" + elem).find("#pear-tab-loading" + index);
-                    pearLoad.css({
-                        display: "block"
-                    });
-                    setTimeout(function() {
-                        pearLoad.fadeOut(500);
-                    }, time);
-                    index++;
-                }
                 element.tabAdd(elem, {
                     title: title,
                     content: '<iframe id="' + opt.id + '" data-frameid="' + opt.id + '" scrolling="auto" frameborder="0" src="' +
                         opt.url + '" style="width:100%;height:100%;"></iframe>',
                     id: opt.id
                 });
+                if (time != false && time != 0) {
+                    tabIframeLoading(this.option.elem, opt.id);
+                }
                 tabData.push(opt);
                 sessionStorage.setItem(elem + "-pear-tab-data", JSON.stringify(tabData));
 
@@ -304,28 +279,15 @@ layui.define(['jquery', 'element'], function(exports) {
                 '</span><i class="layui-icon layui-unselect layui-tab-close">ဆ</i>';
         }
         if ($(".layui-tab[lay-filter='" + this.option.elem + "'] .layui-tab-title li[lay-id]").length <= 0) {
-            if (time != false && time != 0) {
-                var load = '<div id="pear-tab-loading' + index + '" class="pear-tab-loading">' +
-                    '<div class="ball-loader">' +
-                    '<span></span><span></span><span></span><span></span>' +
-                    '</div>' +
-                    '</div>';
-                $("#" + this.option.elem).find(".pear-tab").append(load);
-                var pearLoad = $("#" + this.option.elem).find("#pear-tab-loading" + index);
-                pearLoad.css({
-                    display: "block"
-                });
-                setTimeout(function() {
-                    pearLoad.fadeOut(500);
-                }, time);
-                index++;
-            }
             element.tabAdd(this.option.elem, {
                 title: title,
                 content: '<iframe id="' + opt.id + '" data-frameid="' + opt.id + '" scrolling="auto" frameborder="0" src="' +
                     opt.url + '" style="width:100%;height:100%;"></iframe>',
                 id: opt.id
             });
+            if (time != false && time != 0) {
+                tabIframeLoading(this.option.elem, opt.id);
+            }
             tabData.push(opt);
             sessionStorage.setItem(this.option.elem + "-pear-tab-data", JSON.stringify(tabData));
             sessionStorage.setItem(this.option.elem + "-pear-tab-data-current", opt.id);
@@ -338,38 +300,26 @@ layui.define(['jquery', 'element'], function(exports) {
             })
             if (isData == false) {
 
-                if ($(".layui-tab[lay-filter='" + this.option.elem + "'] .layui-tab-title li[lay-id]").length >= this.option.tabMax) {
-                    layer.msg("最多打开" + this.option.tabMax + "个标签页", {
-                        icon: 2,
-                        time: 1000,
-                        shift: 6
-                    });
-                    return false;
+                if(this.option.tabMax != false) {
+                    if ($(".layui-tab[lay-filter='" + this.option.elem + "'] .layui-tab-title li[lay-id]").length >= this.option.tabMax) {
+                        layer.msg("最多打开" + this.option.tabMax + "个标签页", {
+                            icon: 2,
+                            time: 1000,
+                            shift: 6
+                        });
+                        return false;
+                    }
                 }
 
-                if (time != false && time != 0) {
-                    var load = '<div id="pear-tab-loading' + index + '" class="pear-tab-loading">' +
-                        '<div class="ball-loader">' +
-                        '<span></span><span></span><span></span><span></span>' +
-                        '</div>' +
-                        '</div>'
-
-                    $("#" + this.option.elem).find(".pear-tab").append(load);
-                    var pearLoad = $("#" + this.option.elem).find("#pear-tab-loading" + index);
-                    pearLoad.css({
-                        display: "block"
-                    });
-                    setTimeout(function() {
-                        pearLoad.fadeOut(500);
-                    }, time);
-                    index++;
-                }
                 element.tabAdd(this.option.elem, {
                     title: title,
                     content: '<iframe id="' + opt.id + '" data-frameid="' + opt.id + '" scrolling="auto" frameborder="0" src="' +
                         opt.url + '" style="width:100%;height:100%;"></iframe>',
                     id: opt.id
                 });
+                if (time != false && time != 0) {
+                    tabIframeLoading(this.option.elem, opt.id);
+                }
                 tabData.push(opt);
                 sessionStorage.setItem(this.option.elem + "-pear-tab-data", JSON.stringify(tabData));
                 sessionStorage.setItem(this.option.elem + "-pear-tab-data-current", opt.id);
@@ -380,33 +330,37 @@ layui.define(['jquery', 'element'], function(exports) {
     }
 
     // 刷 新 指 定 的 选 项 卡
-    pearTab.prototype.refresh = function(time) {
+    pearTab.prototype.refresh = function (time) {
         // 刷 新 指 定 的 选 项 卡
         if (time != false && time != 0) {
-            var load = '<div id="pear-tab-loading' + index + '" class="pear-tab-loading">' +
-                '<div class="ball-loader">' +
-                '<span></span><span></span><span></span><span></span>' +
-                '</div>' +
-                '</div>'
-
-            var elem = this.option.elem;
-            $("#" + this.option.elem).find(".pear-tab").append(load);
-            var pearLoad = $("#" + this.option.elem).find("#pear-tab-loading" + index);
-            pearLoad.css({
-                display: "block"
-            });
-            index++;
-            setTimeout(function() {
-                pearLoad.fadeOut(500, function() {
-                    pearLoad.remove();
-                });
-            }, time);
-            $(".layui-tab[lay-filter='" + elem + "'] .layui-tab-content .layui-show").find("iframe")[0].contentWindow
-                .location.reload(true);
+            tabIframeLoading(this.option.elem);
         } else {
-            $(".layui-tab[lay-filter='" + this.option.elem + "'] .layui-tab-content .layui-show").find("iframe")[0].contentWindow
-                .location.reload(true);
+            var $iframe = $(".layui-tab[lay-filter='" + this.option.elem + "'] .layui-tab-content .layui-show").find("iframe");
+            $iframe.attr("src", $iframe.attr("src"));
         }
+    }
+
+    function tabIframeLoading(elem, id) {
+        var load = '<div id="pear-tab-loading' + index + '" class="pear-tab-loading">' +
+            '<div class="ball-loader">' +
+            '<span></span><span></span><span></span><span></span>' +
+            '</div>' +
+            '</div>'
+        var $iframe = $(".layui-tab[lay-filter='" + elem + "'] .layui-tab-content .layui-show").find("iframe");
+        if(id){
+            $iframe = $(".layui-tab[lay-filter='" + elem + "'] .layui-tab-content").find("iframe[id='"+ id +"']");
+        }
+        // loading 和 iframe 同级处理, 避免一个 tab 加载,其它 tab 无法查看的问题
+        $iframe.parent().append(load);
+        var pearLoad = $("#" + elem).find("#pear-tab-loading" + index);
+        pearLoad.css({ display: "block" });
+        index++;
+        $iframe.attr("src", $iframe.attr("src")); // 支持跨域刷新 iframe
+        $iframe.load(function () {
+            pearLoad.fadeOut(1000, function () {
+                pearLoad.remove();
+            });
+        })
     }
 
 
@@ -552,7 +506,7 @@ layui.define(['jquery', 'element'], function(exports) {
     function menuEvent(option, index) {
 
         $("#" + option.elem + "closeThis").click(function() {
-            var currentTab = $(".layui-tab[lay-filter='" + option.elem + "'] .layui-tab-title .layui-this");
+            var currentTab = contextTabDOM;
 
             if (currentTab.find("span").is(".able-close")) {
                 var currentId = currentTab.attr("lay-id");
@@ -567,7 +521,7 @@ layui.define(['jquery', 'element'], function(exports) {
         })
 
         $("#" + option.elem + "closeOther").click(function() {
-            var currentId = $(".layui-tab[lay-filter='" + option.elem + "'] .layui-tab-title .layui-this").attr("lay-id");
+            var currentId = contextTabDOM.attr("lay-id");
             var tabtitle = $(".layui-tab[lay-filter='" + option.elem + "'] .layui-tab-title li");
             $.each(tabtitle, function(i) {
                 if ($(this).attr("lay-id") != currentId) {
@@ -580,7 +534,7 @@ layui.define(['jquery', 'element'], function(exports) {
         })
 
         $("#" + option.elem + "closeAll").click(function() {
-            var currentId = $(".layui-tab[lay-filter='" + option.elem + "'] .layui-tab-title .layui-this").attr("lay-id");
+            var currentId = contextTabDOM.attr("lay-id");
             var tabtitle = $(".layui-tab[lay-filter='" + option.elem + "'] .layui-tab-title li");
             $.each(tabtitle, function(i) {
                 if ($(this).find("span").is(".able-close")) {

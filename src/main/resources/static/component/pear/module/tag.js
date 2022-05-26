@@ -8,8 +8,8 @@ layui.define('jquery', function (exports) {
         INPUT_NEW_TAG = 'input-new-tag',
         TAG_ITEM = 'tag-item',
         CLOSE = 'tag-close',
-        DEFAULT_SKIN = 'layui-btn layui-btn-primary layui-btn-sm'
-        , tag = function () {
+        DEFAULT_SKIN = 'layui-btn layui-btn-primary layui-btn-sm',
+        tag = function () {
             this.config = {
                 likeHref: '../../modules/tag.css',
                 skin: DEFAULT_SKIN,
@@ -18,7 +18,6 @@ layui.define('jquery', function (exports) {
             this.configs = {}
         };
 
-    //全局设置
     tag.prototype.set = function (options) {
         var that = this;
         $.extend(true, that.config, options);

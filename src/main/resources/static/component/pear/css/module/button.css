@@ -38,19 +38,19 @@
 
 /** Button 主题 */
 .pear-btn-primary {
-    border: #2D8CF0 solid 1px;
+    border: #2D8CF0;
     background-color: #2D8CF0 !important;
 }
 .pear-btn-danger {
-    border: #f56c6c solid 1px;
+    border: #f56c6c;
     background-color: #f56c6c !important;
 }
 .pear-btn-warming {
-    border: #f6ad55 solid 1px;
+    border: #f6ad55;
     background-color: #f6ad55 !important;
 }
 .pear-btn-success {
-    border: #36b368 solid 1px;
+    border: #36b368;
     background-color: #36b368 !important;
 }
 
