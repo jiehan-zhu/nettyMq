@@ -4,6 +4,7 @@ import com.pearadmin.modules.job.domain.ScheduleJob;
 import com.pearadmin.modules.job.mapper.ScheduleJobMapper;
 import org.quartz.CronTrigger;
 import org.quartz.Scheduler;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -17,6 +18,7 @@ import java.util.List;
  * @serial 2.0.0
  * @author 就眠儀式
  */
+@Component
 public class QuartzStarted {
 
     @Resource
