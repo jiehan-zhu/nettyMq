@@ -51,7 +51,13 @@ public class UserContext {
     /**
      * SysUser 当前用户
      * */
-    public SysUser getPrincipal(){ return (SysUser) getAuthentication().getPrincipal(); }
+    public SysUser getPrincipal(){
+        try {
+            return (SysUser) getAuthentication().getPrincipal();
+        } catch (NullPointerException e){
+            return new SysUser();
+        }
+    }
 
     /**
      * Username 当前用户名
