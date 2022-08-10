@@ -85,7 +85,7 @@ public class Result<T> implements Serializable {
      * 失 败 操 作, 默 认 数 据
      */
     public static <T> Result<T> failure() {
-        return failure(ResultCode.SUCCESS.getMessage());
+        return failure(ResultCode.FAILURE.getMessage());
     }
 
     /**
