@@ -109,6 +109,10 @@ layui.define(['jquery', 'element', 'layer'], function (exports) {
         option.anim = -1;
         option.move = false;
         option.fixed = true;
+        if (option.iframe) {
+            option.type = 2;
+            option.content = option.iframe;
+        }
         if (option.offset === undefined) option.offset = "r";
         option.area = calcDrawerArea(option.offset, option.area);
         if (option.title === undefined) option.title = false;
