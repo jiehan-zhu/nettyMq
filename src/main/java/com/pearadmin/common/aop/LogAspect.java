@@ -4,6 +4,7 @@ import com.pearadmin.common.aop.annotation.Log;
 import com.pearadmin.common.aop.enums.LoggingType;
 import com.pearadmin.common.tools.SequenceUtil;
 import com.pearadmin.modules.sys.domain.SysLog;
+import com.pearadmin.modules.sys.service.SysLogService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -22,6 +23,9 @@ import java.lang.reflect.Method;
 @Aspect
 @Component
 public class LogAspect {
+
+    @Resource
+    private SysLogService sysLogService;
 
     /**
      * 切 面 编 程
@@ -53,6 +57,7 @@ public class LogAspect {
             throw exception;
         } finally {
             // TODO 记录日志
+            sysLogService.save(sysLog);
         }
         return result;
     }

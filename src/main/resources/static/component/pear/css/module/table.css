@@ -17,6 +17,11 @@
     border: none !important;
 }
 
+/** 兼容 layui 2.7.0 升级 table cell 单元格边距的调整 */
+.layui-table-view .layui-table td, .layui-table-view .layui-table th {
+    padding: 5px 0px;
+}
+
 .layui-table-cell {
     height: 34px;
     line-height: 34px;
@@ -24,10 +29,11 @@
 
 .layui-table .layui-laypage .layui-laypage-curr .layui-laypage-em {
     border-radius: 50px !important;
+    border-radius: 4px!important;
     background-color: #5FB878 !important;
 }
 
-.layui-table-view .layui-table {
+.layui-table-view .layui-table{
     width: 100%;
 }
 
@@ -40,9 +46,13 @@
     padding-top: 1px !important;
 }
 
+.layui-table-box * {
+    font-size: 13px !important;
+}
+
 .layui-table-page .layui-laypage input {
     width: 40px;
-    height: 26.5px !important;
+    height: 26.5px!important;
 }
 
 .layui-table-box button {
@@ -65,6 +75,11 @@
     border: none !important;
 }
 
+.layui-table-init .layui-icon{
+    font-size: 40px !important;
+    margin: -15px 0 0 -15px;
+}
+
 .layui-table-body::-webkit-scrollbar {
     width: 0px;
     height: 0px;
@@ -74,7 +89,6 @@
     width: 6px;
     height: 6px;
 }
-
 .layui-table-body::-webkit-scrollbar-track {
     background: white;
     border-radius: 2px;

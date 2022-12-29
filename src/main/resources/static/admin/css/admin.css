@@ -496,12 +496,6 @@ body,
 }
 
 /* 搜索面板 */
-.menu-search-content .layui-input-prefix {
-    position: absolute;
-    margin-top: 10px;
-    margin-left: 10px;
-}
-
 .menu-search-content .layui-input {
     padding-left: 30px;
 }
