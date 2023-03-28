@@ -2,6 +2,8 @@ package com.pearadmin.modules.job.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.pearadmin.common.context.BeanContext;
+import com.pearadmin.common.quartz.base.BaseQuartz;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.modules.job.domain.ScheduleJob;
 import com.pearadmin.common.quartz.QuartzService;
@@ -14,6 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Describe: 定时任务服务
@@ -163,5 +167,11 @@ public class ScheduleJobServiceImpl implements IScheduleJobService {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public Set<String> getBeanNames() {
+        Map<String, BaseQuartz> beans = BeanContext.getBeansOfType(BaseQuartz.class);
+        return beans.keySet();
     }
 }
