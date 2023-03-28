@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 /**
  * Describe: 定时任务控制器
@@ -155,5 +156,12 @@ public class ScheduleJobController extends BaseController {
     public Result deleteJob(@PathVariable("id") String jobId) {
         Boolean result = scheduleJobService.delete(jobId);
         return decide(result, "删除成功", "删除失败");
+    }
+
+    @GetMapping("beans")
+    @PreAuthorize("hasPermission('/schdule/job/add','sch:job:add')")
+    public Result beans(){
+        Set<String> beanNames = scheduleJobService.getBeanNames();
+        return success(beanNames);
     }
 }

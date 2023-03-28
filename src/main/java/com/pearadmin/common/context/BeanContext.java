@@ -5,6 +5,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 /**
  * Spring 上下文
  * <p>
@@ -80,6 +82,16 @@ public class BeanContext implements ApplicationContextAware {
      * */
     public static Class<? extends Object> getType(String name) {
         return applicationContext.getType(name);
+    }
+
+    /**
+     * 获取实现了接口，抽象类的bean
+     * @param clazz 接口或抽象类
+     * @param <T> 接口，抽象类
+     * @return 实现了接口，抽象类的bean
+     */
+    public static<T> Map<String,T> getBeansOfType(Class<T> clazz){
+        return applicationContext.getBeansOfType(clazz);
     }
 
 }

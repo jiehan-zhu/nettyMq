@@ -18,8 +18,9 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span style="color: red;">*</span>任务</label>
                     <div class="layui-input-block">
-                        <input autocomplete="off" class="layui-input" lay-verify="required" name="beanName" placeholder="运行类"
-                               type="text">
+                        <!--                        <input autocomplete="off" class="layui-input" lay-verify="required" name="beanName" placeholder="运行类"-->
+                        <!--                               type="text">-->
+                        <select id="beanName" name="beanName" lay-verify="required" placeholder="运行类"></select>
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -93,6 +94,20 @@
             });
             return false;
         });
+
+        $.ajax({
+            url: '/schedule/job/beans',
+            dataType: 'json',
+            contentType: 'application/json',
+            type: 'get',
+            success: function (response) {
+                let beanNames = response.data;
+                for (var i = 0; i < beanNames.length; i++) {
+                    $('#beanName').append("<option value='" + beanNames[i] + "'>" + beanNames[i] + "</option>");
+                }
+                form.render();
+            }
+        })
     })
 </script>
 <script>

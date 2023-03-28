@@ -5,6 +5,7 @@ import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.modules.job.domain.ScheduleJob;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Describe: 定时任务服务接口
@@ -75,4 +76,10 @@ public interface IScheduleJobService {
      * Return: Schedule
      */
     ScheduleJob getById(String jobId);
+
+    /**
+     * Describe: 获取定时任务可用的bean
+     * @return beanName List
+     */
+    Set<String> getBeanNames();
 }
