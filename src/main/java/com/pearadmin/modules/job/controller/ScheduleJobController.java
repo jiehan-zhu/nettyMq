@@ -64,7 +64,8 @@ public class ScheduleJobController extends BaseController {
      */
     @GetMapping("add")
     @PreAuthorize("hasPermission('/schdule/job/add','sch:job:add')")
-    public ModelAndView add() {
+    public ModelAndView add(Model model) {
+        model.addAttribute("beanNames", scheduleJobService.getBeanNames());
         return jumpPage("schedule/job/add");
     }
 
@@ -77,6 +78,7 @@ public class ScheduleJobController extends BaseController {
     @PreAuthorize("hasPermission('/schdule/job/edit','sch:job:edit')")
     public ModelAndView edit(Model model, String jobId) {
         model.addAttribute("scheduleJob", scheduleJobService.getById(jobId));
+        model.addAttribute("beanNames", scheduleJobService.getBeanNames());
         return jumpPage("schedule/job/edit");
     }
 
@@ -156,12 +158,5 @@ public class ScheduleJobController extends BaseController {
     public Result deleteJob(@PathVariable("id") String jobId) {
         Boolean result = scheduleJobService.delete(jobId);
         return decide(result, "删除成功", "删除失败");
-    }
-
-    @GetMapping("beans")
-    @PreAuthorize("hasPermission('/schdule/job/add','sch:job:add')")
-    public Result beans(){
-        Set<String> beanNames = scheduleJobService.getBeanNames();
-        return success(beanNames);
     }
 }

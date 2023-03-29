@@ -170,8 +170,7 @@ public class ScheduleJobServiceImpl implements IScheduleJobService {
     }
 
     @Override
-    public Set<String> getBeanNames() {
-        Map<String, BaseQuartz> beans = BeanContext.getBeansOfType(BaseQuartz.class);
-        return beans.keySet();
+    public String[] getBeanNames() {
+        return BeanContext.getBeanNamesForType(BaseQuartz.class);
     }
 }

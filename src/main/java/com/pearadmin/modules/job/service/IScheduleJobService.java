@@ -79,7 +79,8 @@ public interface IScheduleJobService {
 
     /**
      * Describe: 获取定时任务可用的bean
+     *
      * @return beanName List
      */
-    Set<String> getBeanNames();
+    String[] getBeanNames();
 }
