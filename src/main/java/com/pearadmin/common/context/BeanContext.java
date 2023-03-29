@@ -79,19 +79,30 @@ public class BeanContext implements ApplicationContextAware {
      * 获取 Bean 类型
      *
      * @param name 名称
-     * */
-    public static Class<? extends Object> getType(String name) {
+     */
+    public static Class<?> getType(String name) {
         return applicationContext.getType(name);
     }
 
     /**
      * 获取实现了接口，抽象类的bean
+     *
      * @param clazz 接口或抽象类
-     * @param <T> 接口，抽象类
+     * @param <T>   接口，抽象类
      * @return 实现了接口，抽象类的bean
      */
-    public static<T> Map<String,T> getBeansOfType(Class<T> clazz){
+    public static <T> Map<String, T> getBeansOfType(Class<T> clazz) {
         return applicationContext.getBeansOfType(clazz);
+    }
+
+    /**
+     * 获取实现了接口，抽象类的beanName
+     *
+     * @param clazz 接口，抽象类
+     * @return 实现了接口，抽象类的beanName
+     */
+    public static String[] getBeanNamesForType(Class<?> clazz) {
+        return applicationContext.getBeanNamesForType(clazz);
     }
 
 }
