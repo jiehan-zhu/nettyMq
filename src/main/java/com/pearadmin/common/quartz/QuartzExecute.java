@@ -47,8 +47,9 @@ public class QuartzExecute extends QuartzJobBean {
             long executeTime = System.currentTimeMillis() - beginTime;
             logBean.setTimes((int) executeTime);
             logBean.setStatus(1);
-            logBean.setError(e.getCause().getMessage());
-            e.getCause();
+            Throwable cause = e.getCause();
+            logBean.setError(cause.toString());
+            log.error(cause.getMessage(), cause);
         } finally {
             scheduleJobLogService.insert(logBean);
         }
