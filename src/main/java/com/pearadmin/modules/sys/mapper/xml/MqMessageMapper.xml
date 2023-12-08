@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pearadmin.modules.sys.mapper.MqMessageMapper">
+
+
+
+    <select id="selectMqMessageList" parameterType="com.pearadmin.modules.sys.domain.MqMessage" resultType="com.pearadmin.modules.sys.domain.MqMessage">
+        select `id`,`topic`,`group`,`data`,`status`,`retry_count`,`sharding_id`,`timeout`,`effect_time`,`add_time`,`log` from `mq_message`
+        <where>
+            <if test="topic != null  and topic != ''"> and `topic` = #{topic}</if>
+            <if test="group != null  and group != ''"> and `group` = #{group}</if>
+            <if test="data != null  and data != ''"> and `data` = #{data}</if>
+            <if test="status != null  and status != ''"> and `status` = #{status}</if>
+            <if test="retryCount != null "> and `retry_count` = #{retryCount}</if>
+            <if test="shardingId != null "> and `sharding_id` = #{shardingId}</if>
+            <if test="timeout != null "> and `timeout` = #{timeout}</if>
+            <if test="effectTime != null "> and `effect_time` = #{effectTime}</if>
+            <if test="addTime != null "> and `add_time` = #{addTime}</if>
+            <if test="log != null  and log != ''"> and `log` = #{log}</if>
+        </where>
+    </select>
+
+</mapper>

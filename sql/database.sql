@@ -1417,19 +1417,19 @@ INSERT INTO `sys_config` VALUES ('4', '4', 'oss_bucket', 'pearadmin-bbs', NULL, 
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_data_source`;
 CREATE TABLE `sys_data_source`  (
-  `id` char(19) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '数据源编号',
-  `name` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '数据源名称',
+  `id` char(19) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '数据源编号',
+  `name` char(50) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '数据源名称',
   `enable` bit(1) NULL DEFAULT NULL COMMENT '是否启用',
-  `username` char(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '用户名',
-  `password` char(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '密码',
-  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `driver` char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '驱动',
-  `create_by` char(19) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `username` char(30) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '用户名',
+  `password` char(30) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '密码',
+  `url` varchar(255) CHARACTER SET utf8mb4  NULL DEFAULT NULL,
+  `driver` char(50) CHARACTER SET utf8mb4  NULL DEFAULT NULL COMMENT '驱动',
+  `create_by` char(19) CHARACTER SET utf8mb4  NULL DEFAULT NULL,
   `create_time` datetime NULL DEFAULT NULL,
-  `update_by` char(19) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `update_by` char(19) CHARACTER SET utf8mb4  NULL DEFAULT NULL,
   `update_time` datetime NULL DEFAULT NULL,
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+  `remark` varchar(255) CHARACTER SET utf8mb4  NULL DEFAULT NULL
+) ENGINE = InnoDB CHARACTER SET = utf8mb4  ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_data_source
@@ -11797,10 +11797,10 @@ INSERT INTO `sys_role` VALUES ('1356112133691015168', '应急管理员', 'users'
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role_dept`;
 CREATE TABLE `sys_role_dept`  (
-  `id` char(19) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `role_id` char(19) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `dept_id` char(19) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+  `id` char(19) CHARACTER SET utf8mb4  NULL DEFAULT NULL,
+  `role_id` char(19) CHARACTER SET utf8mb4  NULL DEFAULT NULL,
+  `dept_id` char(19) CHARACTER SET utf8mb4  NULL DEFAULT NULL
+) ENGINE = InnoDB CHARACTER SET = utf8mb4  ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_role_dept
