@@ -2,20 +2,16 @@
 <br/>
 
   <h1 align="center">
-    Pear Admin Boot
+    NettyMq
   </h1>
   <h4 align="center">
-    开 箱 即 用 的 Spring 快 速 开 发 平 台
+    开 箱 即 用 的 消 息 队 列 管 理 中 心
   </h4> 
 
-  [预 览](http://boot.pearadmin.com)   |   [官 网](http://www.pearadmin.com/)   |   [社区](http://forum.pearadmin.com/)
 
 </div>
 
 <p align="center">
-    <a href="#">
-        <img src="https://img.shields.io/badge/Pear Admin Layui-3.1.0+-green.svg" alt="Pear Admin Layui Version">
-    </a>
     <a href="#">
         <img src="https://img.shields.io/badge/Spring Boot-2.3.0+-green.svg" alt="Jquery Version">
     </a>
@@ -28,9 +24,7 @@
   <img  width="92%" style="border-radius:10px;margin-top:20px;margin-bottom:20px;box-shadow: 2px 0 6px gray;" src="https://images.gitee.com/uploads/images/2020/1019/104805_042b888c_4835367.png" />
 </div>
 
-### 项目介绍
 
-Spring Boot + Security + MyBatis Plus 快速开发平台
 
 ### 内置功能
 
@@ -124,16 +118,12 @@ Pear Admin Boot
 | ![](readme/16.jpg)| ![](readme/17.jpg) |
 | ![](readme/18.jpg)| ![](readme/19.jpg) |
 
-### 开源共建
 
 <p style="padding:10px;"  width="90%">
 
-1. 欢迎提交 [pull request](https://gitee.com/pear-admin/Pear-Admin-Boot/pulls)，注意对应提交对应 `master` 分支
 
-2. 欢迎提交 [issue](https://gitee.com/pear-admin/Pear-Admin-Boot/issues)，请写清楚遇到问题的原因、开发环境、复显步骤。
 
 </p>
 
-感谢每一位贡献代码的朋友。
 
 如果对您有帮助，您可以点右上角 💘Star💘 支持

@@ -12,12 +12,12 @@
     </parent>
 
     <!-- 仓 库 地 址 -->
-    <groupId>com.pearadmin</groupId>
-    <artifactId>pear-admin-boot</artifactId>
-    <version>2.0.0</version>
+    <groupId>com.netty.mq</groupId>
+    <artifactId>netty-mq</artifactId>
+    <version>1.0.0</version>
 
     <!-- 项 目 描 述 -->
-    <name> pear-admin-boot </name>
+    <name> netty-mq </name>
     <description> 基 于 Spring Boot 生 态 的 快 速 开 发 框 架 </description>
 
     <!-- 版 本 管 理 -->
