@@ -32,9 +32,12 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">状态：</label>
                 <div class="layui-input-block">
-                    <div class="radio-box" radio-dict-code="input"
-                         th:attr="default-value=*{status}" name="status">
-                    </div>
+                    <select  name="status" th:attr="default-value=*{status}">
+<!--                        <option value="NEW">NEW</option>-->
+<!--                        <option value="RUNNING">RUNNING</option>-->
+<!--                        <option value="SUCCESS">SUCCESS</option>-->
+<!--                        <option value="FAIL">FAIL</option>-->
+                    </select>
                 </div>
             </div>
             <div class="layui-form-item">

@@ -9,6 +9,11 @@
         <div class="col-sm-12 search-collapse">
             <form id="formId" class="layui-form">
                 <div class="layui-form-item">
+                    <label class="layui-form-label">id：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="topic" placeholder="请输入id"
+                               class="layui-input"  lay-required/>
+                    </div>
                     <label class="layui-form-label">主题：</label>
                     <div class="layui-input-inline">
                         <input type="text" name="topic" placeholder="请输入主题"
@@ -27,27 +32,16 @@
                     <label class="layui-form-label">状态：</label>
                     <div class="layui-input-inline">
                         <select name="status"  lay-requireddict-code="input" >
-                            <option value="">所有</option>
+                            <option value="NEW">NEW</option>
+                            <option value="RUNNING">RUNNING</option>
+                            <option value="SUCCESS">SUCCESS</option>
+                            <option value="FAIL">FAIL</option>
                         </select>
                     </div>
                     <label class="layui-form-label">重试次数：</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="retryCount" placeholder="请输入重试次数"
-                               class="layui-input" />
-                    </div>
                     <label class="layui-form-label">分片id：</label>
                     <div class="layui-input-inline">
                         <input type="text" name="shardingId" placeholder="请输入分片id"
-                               class="layui-input" />
-                    </div>
-                    <label class="layui-form-label">超时时间：</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="timeout" placeholder="请输入超时时间"
-                               class="layui-input" />
-                    </div>
-                    <label class="layui-form-label">消费日志：</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="log" placeholder="请输入消费日志"
                                class="layui-input" />
                     </div>
                     <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="message-query">
@@ -79,6 +73,9 @@
             </button>
         </script>
         <script type="text/html" id="message-bar">
+            <button class="pear-btn pear-btn-normal pear-btn-sm" lay-event="search"><i
+                    class="layui-icon layui-icon-form"></i>
+            </button>
             <button sec:authorize="hasPermission('/system/message/edit','system:message:edit')"
                     class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i
                     class="layui-icon layui-icon-edit"></i>
@@ -142,11 +139,11 @@
                     field: 'addTime',
                     title: '创建时间'
                 },
-                {
-                    field: 'log',
-                    title: '消费日志'
-                },
-                {title: '操作', toolbar: '#message-bar', align: 'center', width: 130}
+                // {
+                //     field: 'log',
+                //     title: '消费日志'
+                // },
+                {title: '操作', toolbar: '#message-bar', align: 'left', width: 200}
             ]
         ]
 
@@ -168,6 +165,8 @@
                 window.remove(obj);
             } else if (obj.event === 'edit') {
                 window.edit(obj);
+            } else if (obj.event === 'search') {
+                window.search(obj);
             }
         });
 
@@ -196,6 +195,15 @@
             });
         }
 
+        window.search = function (obj) {
+            layer.open({
+                type: 2,
+                title: '修改存放所有消息',
+                shade: 0.1,
+                area: ['550px', '500px'],
+                content: prefix + 'edit?id=' + obj.data['id']
+            });
+        }
         window.edit = function (obj) {
             layer.open({
                 type: 2,
