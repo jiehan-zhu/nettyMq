@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pearadmin.modules.mq.mapper.MqMessageMapper">
+
+    <resultMap type="com.netty.mq.MqMessage" id="MqMessageResult">
+        <result property="id" column="id"/>
+        <result property="topic" column="topic"/>
+        <result property="group" column="group"/>
+        <result property="data" column="data"/>
+        <result property="status" column="status"/>
+        <result property="retryCount" column="retry_count"/>
+        <result property="shardingId" column="sharding_id"/>
+        <result property="timeout" column="timeout"/>
+        <result property="effectTime" column="effect_time"/>
+        <result property="addTime" column="add_time"/>
+        <result property="log" column="log"/>
+    </resultMap>
+
+    <select id="selectMqMessageList" parameterType="com.netty.mq.MqMessage" resultMap="MqMessageResult">
+        select `id`,`topic`,`group`,`data`,`status`,`retry_count`,`sharding_id`,`timeout`,`effect_time`,`add_time`,`log` from `mq_message`
+        <where>
+             <if test="topic != null  and topic != ''"> and `topic` = #{topic}</if>
+             <if test="group != null  and group != ''"> and `group` = #{group}</if>
+             <if test="data != null  and data != ''"> and `data` = #{data}</if>
+             <if test="status != null  and status != ''"> and `status` = #{status}</if>
+             <if test="shardingId != null "> and `sharding_id` = #{shardingId}</if>
+        </where>
+    </select>
+
+
+
+    <insert id="save" parameterType="com.netty.mq.MqMessage" useGeneratedKeys="true" keyProperty="id" >
+        INSERT INTO mq_message (
+        `topic`,
+        `group`,
+        `data`,
+        `status`,
+        `retry_count`,
+        `sharding_id`,
+        `timeout`,
+        `effect_time`,
+        `add_time`,
+        `log`
+        ) VALUES
+        <foreach collection ="messageList" item="messageItem" index= "index" separator =",">
+            (
+            #{messageItem.topic},
+            #{messageItem.group},
+            #{messageItem.data},
+            #{messageItem.status},
+            #{messageItem.retryCount},
+            #{messageItem.shardingId},
+            #{messageItem.timeout},
+            #{messageItem.effectTime},
+            NOW(),
+            #{messageItem.log}
+            )
+        </foreach >
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <select id="getById" resultType="com.netty.mq.MqMessage">
+        SELECT * FROM `mq_message` where id = #{Id}
+    </select>
+
+    <update id="update" parameterType ="com.netty.mq.MqMessage">
+
+        UPDATE mq_message AS t
+        SET
+            t.`group` = #{group},
+            t.`data` = #{data},
+            t.`status` = #{status},
+            t.`retry_count` = #{retryCount},
+            t.`sharding_id` = #{shardingId},
+            t.`timeout` = #{timeout},
+            t.`effect_time` = #{effectTime},
+            t.`log` = CONCAT(t.`log`, #{log})
+        WHERE t.`id` = #{id}
+
+    </update>
+
+
+</mapper>

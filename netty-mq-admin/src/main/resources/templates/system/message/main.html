@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <th:block th:include="include :: header('存放所有消息列表')"/>
+</head>
+<body class="pear-container">
+<div class="layui-card">
+    <div class="layui-card-body">
+        <div class="col-sm-12 search-collapse">
+            <form id="formId" class="layui-form">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">id：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="id" placeholder="请输入id"
+                               class="layui-input"  lay-required/>
+                    </div>
+                    <label class="layui-form-label">主题：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="topic" placeholder="请输入主题"
+                               class="layui-input"  lay-required/>
+                    </div>
+                    <label class="layui-form-label">分组：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="group" placeholder="请输入分组"
+                               class="layui-input" />
+                    </div>
+                    <label class="layui-form-label">消息：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="data" placeholder="请输入消息"
+                               class="layui-input"  lay-required/>
+                    </div>
+                    <label class="layui-form-label">状态：</label>
+                    <div class="layui-input-inline">
+                        <select name="status"  lay-requireddict-code="input" >
+                            <option value=""></option>
+                            <option value="NEW">NEW</option>
+                            <option value="RUNNING">RUNNING</option>
+                            <option value="SUCCESS">SUCCESS</option>
+                            <option value="FAIL">FAIL</option>
+                        </select>
+                    </div>
+                    <label class="layui-form-label">分片id：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="shardingId" placeholder="请输入分片id"
+                               class="layui-input" />
+                    </div>
+                    <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="message-query">
+                        <i class="layui-icon layui-icon-search"></i>
+                        查询
+                    </button>
+                    <button type="reset" class="pear-btn pear-btn-md">
+                        <i class="layui-icon layui-icon-refresh"></i>
+                        重置
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="layui-card">
+    <div class="layui-card-body">
+        <table id="message-table" lay-filter="message-table"></table>
+        <script type="text/html" id="message-toolbar">
+            <button sec:authorize="hasPermission('/system/message/add','system:message:add')"
+                    class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
+                <i class="layui-icon layui-icon-add-1"></i>
+                新增
+            </button>
+            <button sec:authorize="hasPermission('/system/message/remove','system:message:remove')"
+                    class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
+                <i class="layui-icon layui-icon-delete"></i>
+                删除
+            </button>
+        </script>
+        <script type="text/html" id="message-bar">
+            <button class="pear-btn pear-btn-normal pear-btn-sm" lay-event="search"><i
+                    class="layui-icon layui-icon-form"></i>
+            </button>
+            <button sec:authorize="hasPermission('/system/message/edit','system:message:edit')"
+                    class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i
+                    class="layui-icon layui-icon-edit"></i>
+            </button>
+            <button sec:authorize="hasPermission('/system/message/remove','system:message:remove')"
+                    class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i
+                    class="layui-icon layui-icon-delete"></i>
+            </button>
+        </script>
+    </div>
+</div>
+<th:block th:include="include :: footer"/>
+<script>
+    layui.use(['table', 'form', 'jquery', 'dictionary'], function () {
+        let table = layui.table;
+        let form = layui.form;
+        let $ = layui.jquery;
+
+        let prefix = "/system/message/";
+
+        let cols = [
+            [
+                {type: 'checkbox'},
+                {
+                    field: 'id',
+                    title: '主键'
+                },
+                {
+                    field: 'topic',
+                    title: '主题'
+                },
+                {
+                    field: 'group',
+                    title: '分组'
+                },
+                {
+                    field: 'data',
+                    title: '消息'
+                },
+                {
+                    field: 'status',
+                    title: '状态'
+                },
+                {
+                    field: 'retryCount',
+                    title: '重试次数'
+                },
+                {
+                    field: 'shardingId',
+                    title: '分片id'
+                },
+                {
+                    field: 'timeout',
+                    title: '超时时间'
+                },
+                {
+                    field: 'effectTime',
+                    title: '生效时间'
+                },
+                {
+                    field: 'addTime',
+                    title: '创建时间'
+                },
+                // {
+                //     field: 'log',
+                //     title: '消费日志'
+                // },
+                {title: '操作', toolbar: '#message-bar', align: 'left', width: 200}
+            ]
+        ]
+
+        table.render({
+            elem: '#message-table',
+            url: prefix + 'data',
+            page: true,
+            cols: cols,
+            skin: 'line',
+            toolbar: '#message-toolbar',
+            defaultToolbar: [{
+                layEvent: 'refresh',
+                icon: 'layui-icon-refresh',
+            }, 'filter', 'print', 'exports']
+        });
+
+        table.on('tool(message-table)', function (obj) {
+            if (obj.event === 'remove') {
+                window.remove(obj);
+            } else if (obj.event === 'edit') {
+                window.edit(obj);
+            } else if (obj.event === 'search') {
+                window.search(obj);
+            }
+        });
+
+        table.on('toolbar(message-table)', function (obj) {
+            if (obj.event === 'add') {
+                window.add();
+            } else if (obj.event === 'refresh') {
+                window.refresh();
+            } else if (obj.event === 'batchRemove') {
+                window.batchRemove(obj);
+            }
+        });
+
+        form.on('submit(message-query)', function (data) {
+            table.reload('message-table', {where: data.field})
+            return false;
+        });
+
+        window.add = function () {
+            layer.open({
+                type: 2,
+                title: '新增存放所有消息',
+                shade: 0.1,
+                area: ['550px', '500px'],
+                content: prefix + 'add'
+            });
+        }
+
+        window.search = function (obj) {
+            layer.open({
+                type: 2,
+                title: '修改存放所有消息',
+                shade: 0.1,
+                area: ['550px', '500px'],
+                content: prefix + 'edit?id=' + obj.data['id']
+            });
+        }
+        window.edit = function (obj) {
+            layer.open({
+                type: 2,
+                title: '修改存放所有消息',
+                shade: 0.1,
+                area: ['550px', '500px'],
+                content: prefix + 'edit?id=' + obj.data['id']
+            });
+        }
+
+        window.remove = function (obj) {
+            layer.confirm('确定要删除该存放所有消息', {icon: 3, title: '提示'}, function (index) {
+                layer.close(index);
+                let loading = layer.load();
+                $.ajax({
+                    url: prefix + "remove/" + obj.data['id'],
+                    dataType: 'json',
+                    type: 'delete',
+                    success: function (result) {
+                        layer.close(loading);
+                        if (result.success) {
+                            layer.msg(result.msg, {icon: 1, time: 1000}, function () {
+                                obj.del();
+                            });
+                        } else {
+                            layer.msg(result.msg, {icon: 2, time: 1000});
+                        }
+                    }
+                })
+            });
+        }
+
+        window.batchRemove = function (obj) {
+            let data = table.checkStatus(obj.config.id).data;
+            if (data.length === 0) {
+                layer.msg("未选中数据", {icon: 3, time: 1000});
+                return false;
+            }
+            let ids = "";
+            for (let i = 0; i < data.length; i++) {
+                ids += data[i].id + ",";
+            }
+            ids = ids.substr(0, ids.length - 1);
+            layer.confirm('确定要删除这些存放所有消息', {icon: 3, title: '提示'}, function (index) {
+                layer.close(index);
+                let loading = layer.load();
+                $.ajax({
+                    url: prefix + "batchRemove",
+                    dataType: 'json',
+                    data: {"ids": ids},
+                    type: 'delete',
+                    success: function (result) {
+                        layer.close(loading);
+                        if (result.success) {
+                            layer.msg(result.msg, {icon: 1, time: 1000}, function () {
+                                table.reload('message-table');
+                            });
+                        } else {
+                            layer.msg(result.msg, {icon: 2, time: 1000});
+                        }
+                    }
+                })
+            });
+        }
+
+        window.refresh = function (param) {
+            table.reload('message-table', {where: param});
+        }
+    })
+</script>
+</body>
+</html>
