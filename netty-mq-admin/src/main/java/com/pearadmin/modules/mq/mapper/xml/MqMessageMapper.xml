@@ -51,7 +51,14 @@
             #{messageItem.retryCount},
             #{messageItem.shardingId},
             #{messageItem.timeout},
-            #{messageItem.effectTime},
+            <choose>
+                <when test="messageItem.effectTime == null">
+                    NOW(),
+                </when>
+                <otherwise>
+                    #{messageItem.effectTime},
+                </otherwise>
+            </choose>
             NOW(),
             #{messageItem.log}
             )
@@ -81,5 +88,89 @@
 
     </update>
 
+    <select id="pullNewMessage" parameterType="java.util.HashMap" resultMap="MqMessageResult">
+        SELECT
+        t.`id`,
+        t.`topic`,
+        t.`group`,
+        t.`data`,
+        t.`status`,
+        t.`retry_count`,
+        t.`sharding_id`,
+        t.`timeout`,
+        t.`effect_time`,
+        t.`add_time`,
+        t.`log`
+        FROM mq_message AS t
+        WHERE 	t.topic = #{topic}
+        AND t.group = #{group}
+        AND t.status = #{newStatus}
+        AND t.effect_time <![CDATA[ < ]]> NOW()
+        <if test="consumerTotal > 1">
+            AND (
+            (
+            t.sharding_id <![CDATA[ = ]]> 0
+            AND
+            MOD(t.id, #{consumerTotal}) = #{consumerRank}
+            )
+            OR
+            (
+            t.sharding_id <![CDATA[ > ]]> 0
+            AND
+            MOD(t.sharding_id, #{consumerTotal}) = #{consumerRank}
+            )
+            )
+        </if>
+        ORDER BY t.id ASC
+        LIMIT #{pagesize}
+    </select>
+
+
+    <update id="lockMessage" parameterType="java.util.HashMap" >
+        UPDATE mq_message AS t
+        SET
+            t.status = #{ingStatus},
+            t.`log` = CONCAT(t.`log`, #{appendLog})
+        WHERE id = #{id} AND t.status =  #{newStatus}
+    </update>
+
+
+    <update id="updateStatus" parameterType="java.util.HashMap" >
+        UPDATE mq_message
+        SET
+        status =
+        <foreach collection="messageList" item="messageItem" index="index" separator=" " open="case id" close="end">
+            when #{messageItem.id} then #{messageItem.status}
+        </foreach>
+        ,
+        log =
+        <foreach collection="messageList" item="messageItem" index="index" separator=" " open="case id" close="end">
+            when #{messageItem.id} then CONCAT(log, #{messageItem.log})
+        </foreach>
+        WHERE id IN
+        <foreach collection="messageList" item="messageItem"  index="index" separator="," open="(" close=")">
+            #{messageItem.id}
+        </foreach>
+    </update>
+
+    <update id="updateRetryCount" parameterType="java.util.HashMap" >
+        UPDATE mq_message
+        SET
+            status = #{newStatus},
+            retry_count = retry_count - 1 ,
+            effect_time = DATE_ADD(NOW(), Interval 1 minute ),
+            log = CONCAT(log, #{appendLog})
+        WHERE status =  #{failStatus}
+          AND retry_count <![CDATA[ > ]]> 0
+    </update>
+
+
+    <delete id="resetBlockTimeoutMessage" parameterType="java.util.HashMap" >
+        update mq_message
+        set `status` = #{failStatus},
+            log = CONCAT(log, #{appendLog})
+        where `status` = #{ingStatus}
+          AND NOW() <![CDATA[ > ]]> DATE_ADD( DATE_ADD(effect_time, Interval timeout SECOND) , Interval 1 hour )
+    </delete>
 
 </mapper>

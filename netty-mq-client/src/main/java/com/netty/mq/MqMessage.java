@@ -2,6 +2,7 @@ package com.netty.mq;
 
 
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -11,7 +12,10 @@ import java.util.Date;
  * @date 2023-12-08
  */
 //@TableName("mq_message")
-public class MqMessage {
+public class MqMessage implements Serializable {
+
+    private static final long serialVersionUID = 42L;
+
 
     /** 主键 */
     private Integer id;

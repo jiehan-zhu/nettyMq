@@ -2,9 +2,7 @@ package com.pearadmin.modules.mq.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import com.netty.mq.MqMessage;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -38,29 +36,29 @@ public interface MqMessageMapper extends BaseMapper<MqMessage> {
     boolean update(MqMessage mqMessage);
 
 
-//    public List<MqMessage> pullNewMessage(@Param("newStatus") String newStatus,
-//                                               @Param("topic") String topic,
-//                                               @Param("group") String group,
-//                                               @Param("consumerRank") int consumerRank,
-//                                               @Param("consumerTotal") int consumerTotal,
-//                                               @Param("pagesize") int pagesize);
+    List<MqMessage> pullNewMessage(@Param("newStatus") String newStatus,
+                                               @Param("topic") String topic,
+                                               @Param("group") String group,
+                                               @Param("consumerRank") int consumerRank,
+                                               @Param("consumerTotal") int consumerTotal,
+                                               @Param("pagesize") int pagesize);
+
+    int lockMessage(@Param("id") long id,
+                           @Param("appendLog") String appendLog,
+                           @Param("newStatus") String newStatus,
+                           @Param("ingStatus") String ingStatus);
 //
-//    public int lockMessage(@Param("id") long id,
-//                           @Param("appendLog") String appendLog,
-//                           @Param("newStatus") String newStatus,
-//                           @Param("ingStatus") String ingStatus);
-//
-//    public int updateStatus(@Param("messageList") List<MqMessage> messageList);
+    int updateStatus(@Param("messageList") List<MqMessage> messageList);
 //
 //
 //    // ---------------------- broker service ----------------------
 //
-//    /**
-//     * retry message, retryCount -1 and status from fail to new
-//     */
-//    public int updateRetryCount(@Param("failStatus") String failStatus,
-//                                @Param("newStatus") String newStatus,
-//                                @Param("appendLog") String appendLog);
+    /**
+     * retry message, retryCount -1 and status from fail to new
+     */
+    int updateRetryCount(@Param("failStatus") String failStatus,
+                                @Param("newStatus") String newStatus,
+                                @Param("appendLog") String appendLog);
 //
 //    /**
 //     * clean success message before the days
@@ -83,12 +81,12 @@ public interface MqMessageMapper extends BaseMapper<MqMessage> {
 //     */
 //    public int clearMessage(@Param("topic") String topic, @Param("status") String status, @Param("type") int type);
 //
-//    /**
-//     * reset block timeout message, reset status from RUNNING to FAIL
-//     */
-//    public int resetBlockTimeoutMessage(@Param("ingStatus") String ingStatus, @Param("failStatus") String failStatus, @Param("appendLog") String appendLog);
-//
-//
+    /**
+     * reset block timeout message, reset status from RUNNING to FAIL
+     */
+    int resetBlockTimeoutMessage(@Param("ingStatus") String ingStatus, @Param("failStatus") String failStatus, @Param("appendLog") String appendLog);
+
+
 
 
 }

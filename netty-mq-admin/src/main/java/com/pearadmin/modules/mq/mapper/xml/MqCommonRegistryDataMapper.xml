@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pearadmin.modules.mq.mapper.MqCommonRegistryDataMapper" >
+	
+	<resultMap id="mqCommonRegistryData" type="com.pearadmin.modules.mq.domain.MqCommonRegistryData" >
+		<result column="id" property="id" />
+		<result column="key" property="key" />
+		<result column="value" property="value" />
+		<result column="updateTime" property="updateTime" />
+		<result column="status" property="status" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		t.`id`,
+		t.`key`,
+		t.`value`,
+		t.`updateTime`,
+		t.`status`
+	</sql>
+
+	<update id="refresh" parameterType="com.pearadmin.modules.mq.domain.MqCommonRegistryData"  >
+		UPDATE mq_common_registry_data
+		SET
+			`updateTime` = now()
+		WHERE `key` = #{mqCommonRegistryData.key}
+			and `value` = #{mqCommonRegistryData.value}
+	</update>
+
+	<insert id="add" parameterType="com.pearadmin.modules.mq.domain.MqCommonRegistryData" >
+		INSERT INTO mq_common_registry_data (
+			`key`,
+			`value`,
+			`updateTime`
+		) VALUES
+		(
+			#{mqCommonRegistryData.key},
+			#{mqCommonRegistryData.value},
+			now()
+		)
+	</insert>
+
+	<select id="findData" parameterType="java.util.HashMap" resultMap="mqCommonRegistryData">
+		SELECT <include refid="Base_Column_List" />
+		FROM mq_common_registry_data AS t
+		where t.key = #{key}
+		ORDER BY t.value ASC
+	</select>
+
+	<delete id="cleanData" parameterType="java.util.HashMap" >
+		DELETE FROM mq_common_registry_data
+		WHERE NOW() <![CDATA[ > ]]> DATE_ADD(updateTime, Interval #{timeout} SECOND)
+	</delete>
+
+	<delete id="deleteDataValue" parameterType="java.util.HashMap" >
+		DELETE FROM mq_common_registry_data
+		WHERE `key` = #{key}
+			and `value` = #{value}
+	</delete>
+
+	<select id="count" resultType="java.lang.Integer" >
+		SELECT count(1)
+		FROM mq_common_registry_data
+	</select>
+
+	<select id="pageList" parameterType="java.util.HashMap" resultMap="mqCommonRegistryData">
+		SELECT <include refid="Base_Column_List" />
+		FROM mq_common_registry_data AS t
+		where 1 = 1
+		<if test="key != null and key != ''">
+			AND t.key = #{key}
+		</if>
+		ORDER BY t.key DESC
+		LIMIT #{offset}, #{pagesize}
+	</select>
+
+	<select id="pageListCount" parameterType="java.util.HashMap" resultType="int">
+		SELECT count(1)
+		FROM mq_common_registry_data AS t
+		where 1 = 1
+		<if test="key != null and key != ''">
+			AND t.key = #{key}
+		</if>
+	</select>
+
+	<update id="updateStatus" parameterType="java.util.HashMap">
+		UPDATE mq_common_registry_data
+		SET
+			`status` = #{status}
+		WHERE `id` = #{id}
+	</update>
+
+</mapper>
