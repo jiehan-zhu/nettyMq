@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.async.DeferredResult;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -64,7 +65,7 @@ public class ApiController {
     @RequestMapping("/registry")
     @ResponseBody
     @PermessionLimit(limit=false)
-    public ReturnT<String> registry(@RequestBody(required = false) String data){
+    public ReturnT<String> registry(@RequestBody(required = false) String data, HttpServletRequest request){
 
         // parse data
         XxlRegistryParamVO registryParamVO = null;
@@ -75,6 +76,8 @@ public class ApiController {
         // parse param
         String accessToken = null;
         List<MqCommonRegistryData> registryDataList = null;
+        // 获取客户端的 IP 地址
+        String ipAddress = request.getRemoteAddr();
 
         if (registryParamVO != null) {
             accessToken = registryParamVO.getAccessToken();
@@ -84,6 +87,7 @@ public class ApiController {
                     MqCommonRegistryData dateItem = new MqCommonRegistryData();
                     dateItem.setKey(dataParamVO.getKey());
                     dateItem.setValue(dataParamVO.getValue());
+                    dateItem.setIp(ipAddress);
                     registryDataList.add(dateItem);
                 }
             }

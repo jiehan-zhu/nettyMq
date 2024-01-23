@@ -1,38 +1,37 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:include="include :: header('修改存放所有消息')"/>
+    <th:block th:include="include :: header('新增存放所有消息')"/>
 </head>
 <body>
-<form class="layui-form" th:object="${mqMessage}">
+<form class="layui-form">
     <div class="mainBox">
         <div class="main-container">
-            <input name="id" th:field="*{id}" type="hidden">
             <div class="layui-form-item">
                 <label class="layui-form-label">主题：</label>
                 <div class="layui-input-block">
-                    <input type="text" name="topic" th:field="*{topic}"
-                           placeholder="请输入主题" class="layui-input"  lay-verify="required"/>
+                    <input type="text" name="topic" placeholder="请输入主题"
+                           class="layui-input"  lay-verify="required"/>
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">分组：</label>
                 <div class="layui-input-block">
-                    <input type="text" name="group" th:field="*{group}"
-                           placeholder="请输入分组" class="layui-input" />
+                    <input type="text" name="group" placeholder="请输入分组"
+                           class="layui-input" />
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">消息：</label>
                 <div class="layui-input-block">
-                    <input type="text" name="data" th:field="*{data}"
-                           placeholder="请输入消息" class="layui-input"  lay-verify="required"/>
+                    <input type="text" name="data" placeholder="请输入消息"
+                           class="layui-input"  lay-verify="required"/>
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">状态：</label>
                 <div class="layui-input-block">
-                    <select  name="status" th:attr="default-value=*{status}">
+                    <select name="status"  lay-requireddict-code="input" >
                         <option value="NEW">NEW</option>
                         <option value="RUNNING">RUNNING</option>
                         <option value="SUCCESS">SUCCESS</option>
@@ -43,22 +42,22 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">重试次数：</label>
                 <div class="layui-input-block">
-                    <input type="text" name="retryCount" th:field="*{retryCount}"
-                           placeholder="请输入重试次数" class="layui-input" />
+                    <input type="text" name="retryCount" placeholder="请输入重试次数"
+                           class="layui-input" />
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">分片id：</label>
                 <div class="layui-input-block">
-                    <input type="text" name="shardingId" th:field="*{shardingId}"
-                           placeholder="请输入分片id" class="layui-input" />
+                    <input type="text" name="shardingId" placeholder="请输入分片id"
+                           class="layui-input" />
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">超时时间：</label>
                 <div class="layui-input-block">
-                    <input type="text" name="timeout" th:field="*{timeout}"
-                           placeholder="请输入超时时间" class="layui-input" />
+                    <input type="text" name="timeout" placeholder="请输入超时时间"
+                           class="layui-input" />
                 </div>
             </div>
             <div class="layui-form-item">
@@ -66,25 +65,31 @@
                 <div class="layui-input-block">
                     <div class="input-group date">
                         <input type="text" name="effectTime" class="layui-input"
-                               id="effectTime"  lay-verify="required">
+                               id="effectTime"  >
                     </div>
                 </div>
             </div>
+<!--            <div class="layui-form-item">-->
+<!--                <label class="layui-form-label">创建时间：</label>-->
+<!--                <div class="layui-input-block">-->
+<!--                    <div class="input-group date">-->
+<!--                        <input type="text" name="addTime" class="layui-input"-->
+<!--                               id="addTime" >-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
             <div class="layui-form-item">
-                <label class="layui-form-label">创建时间：</label>
+                <label class="layui-form-label">数量：</label>
                 <div class="layui-input-block">
-                    <div class="input-group date">
-                        <input type="text" name="addTime" class="layui-input"
-                               id="addTime" >
-                    </div>
+                    <input type="number" name="log" placeholder="请输入队列数量"
+                           class="layui-input" value="1" />
                 </div>
             </div>
         </div>
     </div>
     <div class="bottom">
         <div class="button-container">
-            <button type="submit" class="pear-btn pear-btn-primary pear-btn-sm" lay-submit=""
-                    lay-filter="message-update">
+            <button type="submit" class="pear-btn pear-btn-primary pear-btn-sm" lay-submit="" lay-filter="message-save">
                 <i class="layui-icon layui-icon-ok"></i>
                 提交
             </button>
@@ -98,12 +103,13 @@
 </body>
 <th:block th:include="include :: footer"/>
 <script th:inline="javascript">
+
     layui.use(['form', 'jquery', 'laydate', 'dictionary'], function () {
         let form = layui.form;
         let $ = layui.jquery;
         let laydate = layui.laydate;
 
-        let prefix = "/system/message/";
+        let prefix = "/mq/message/"
 
         laydate.render({
             elem: '#effectTime'
@@ -112,7 +118,7 @@
             elem: '#addTime'
         });
 
-        form.on('submit(message-update)', function (data) {
+        form.on('submit(message-save)', function (data) {
             for (var key in data.field) {
                 var type = $(data.form).find("input[name='" + key + "']").attr("type");
                 if (type == "checkbox") {
@@ -128,11 +134,11 @@
                 }
             }
             $.ajax({
-                url: prefix + 'update',
+                url: prefix + 'save',
                 data: JSON.stringify(data.field),
                 dataType: 'json',
                 contentType: 'application/json',
-                type: 'put',
+                type: 'post',
                 success: function (result) {
                     if (result.success) {
                         layer.msg(result.msg, {icon: 1, time: 1000}, function () {

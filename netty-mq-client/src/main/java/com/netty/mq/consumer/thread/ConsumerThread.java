@@ -67,8 +67,8 @@ public class ConsumerThread extends Thread {
                     List<MqMessage> messageList = broker.pullNewMessage(mqConsumer.topic(), mqConsumer.group(), activeInfo.rank, activeInfo.total, pageSize);
 
                     if (messageList != null && messageList.size() > 0) {
-                        logger.info(">>>>>>>>>>>>> "+consumerHandler.getClass().getName() + "start <<<<<<<<<<<<<<<<<<<");
-                        logger.info(mqConsumer.topic() + " messageListSize = " + messageList.size());
+//                        logger.info(">>>>>>>>>>>>> "+consumerHandler.getClass().getName() + "start <<<<<<<<<<<<<<<<<<<");
+//                        logger.info(mqConsumer.topic() + " messageListSize = " + messageList.size());
                         // reset wait time
                         if (mqConsumer.transaction()) {
                             waitTim = 0;    // transaction message status timely updated by lock, will not repeat pull
@@ -79,6 +79,7 @@ public class ConsumerThread extends Thread {
                         for (final MqMessage msg : messageList) {
                             //check  consumer is running
                             if(!NettyMqClientFactory.checkConsumerRunning(uuid + mqConsumer.topic() + mqConsumer.group())){
+                                TimeUnit.SECONDS.sleep(1);
                                 break;
                             }
 //                            if (NettyMqClientFactory.mqMessageStop){
@@ -162,7 +163,7 @@ public class ConsumerThread extends Thread {
 
 //                            logger.info(">>>>>>>>>>> xxl-mq, consumer finish,  topic:{}, group:{}, ActiveInfo={}", mqConsumer.topic(), mqConsumer.group(), activeInfo.toString());
                         }
-                        logger.info(">>>>>>>>>>>>> "+consumerHandler.getClass().getName() + "end <<<<<<<<<<<<<<<<<<<");
+//                        logger.info(">>>>>>>>>>>>> "+consumerHandler.getClass().getName() + "end <<<<<<<<<<<<<<<<<<<");
 
                     } else {
                         Calendar calendar = Calendar.getInstance();

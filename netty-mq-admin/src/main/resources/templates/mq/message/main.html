@@ -9,29 +9,20 @@
         <div class="col-sm-12 search-collapse">
             <form id="formId" class="layui-form">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">id：</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="id" placeholder="请输入id"
-                               class="layui-input"  lay-required/>
-                    </div>
-                    <label class="layui-form-label">主题：</label>
                     <div class="layui-input-inline">
                         <input type="text" name="topic" placeholder="请输入主题"
-                               class="layui-input"  lay-required/>
+                               class="layui-input" lay-required/>
                     </div>
-                    <label class="layui-form-label">分组：</label>
                     <div class="layui-input-inline">
                         <input type="text" name="group" placeholder="请输入分组"
-                               class="layui-input" />
+                               class="layui-input"/>
                     </div>
-                    <label class="layui-form-label">消息：</label>
                     <div class="layui-input-inline">
                         <input type="text" name="data" placeholder="请输入消息"
-                               class="layui-input"  lay-required/>
+                               class="layui-input" lay-required/>
                     </div>
-                    <label class="layui-form-label">状态：</label>
                     <div class="layui-input-inline">
-                        <select name="status"  lay-requireddict-code="input" >
+                        <select name="status" lay-requireddict-code="input">
                             <option value=""></option>
                             <option value="NEW">NEW</option>
                             <option value="RUNNING">RUNNING</option>
@@ -39,10 +30,9 @@
                             <option value="FAIL">FAIL</option>
                         </select>
                     </div>
-                    <label class="layui-form-label">分片id：</label>
                     <div class="layui-input-inline">
                         <input type="text" name="shardingId" placeholder="请输入分片id"
-                               class="layui-input" />
+                               class="layui-input"/>
                     </div>
                     <button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="message-query">
                         <i class="layui-icon layui-icon-search"></i>
@@ -61,12 +51,12 @@
     <div class="layui-card-body">
         <table id="message-table" lay-filter="message-table"></table>
         <script type="text/html" id="message-toolbar">
-            <button sec:authorize="hasPermission('/system/message/add','system:message:add')"
+            <button sec:authorize="hasPermission('/mq/message/add','mq:message:add')"
                     class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
                 <i class="layui-icon layui-icon-add-1"></i>
                 新增
             </button>
-            <button sec:authorize="hasPermission('/system/message/remove','system:message:remove')"
+            <button sec:authorize="hasPermission('/mq/message/remove','mq:message:remove')"
                     class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
                 <i class="layui-icon layui-icon-delete"></i>
                 删除
@@ -76,11 +66,11 @@
             <button class="pear-btn pear-btn-normal pear-btn-sm" lay-event="search"><i
                     class="layui-icon layui-icon-form"></i>
             </button>
-            <button sec:authorize="hasPermission('/system/message/edit','system:message:edit')"
+            <button sec:authorize="hasPermission('/mq/message/edit','mq:message:edit')"
                     class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i
                     class="layui-icon layui-icon-edit"></i>
             </button>
-            <button sec:authorize="hasPermission('/system/message/remove','system:message:remove')"
+            <button sec:authorize="hasPermission('/mq/message/remove','mq:message:remove')"
                     class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i
                     class="layui-icon layui-icon-delete"></i>
             </button>
@@ -94,7 +84,7 @@
         let form = layui.form;
         let $ = layui.jquery;
 
-        let prefix = "/system/message/";
+        let prefix = "/mq/message/";
 
         let cols = [
             [

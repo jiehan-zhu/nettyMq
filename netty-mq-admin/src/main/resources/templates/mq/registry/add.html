@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include :: header('新增已上线的消费者')"/>
+</head>
+<body>
+<form class="layui-form">
+    <div class="mainBox">
+        <div class="main-container">
+            <div class="layui-form-item">
+                <label class="layui-form-label">全类名：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="consumerClassName" placeholder="com.netty.mq.demo.test.TestConsumer"
+                           class="layui-input" lay-verify="required"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">ip：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="ip" placeholder="请输入ip"
+                           class="layui-input" lay-verify="required"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">端口：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="port" placeholder="请输入端口"
+                           class="layui-input" lay-verify="required"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">数量：</label>
+                <div class="layui-input-block">
+                    <input type="number" name="number" placeholder="请输入新增数量"
+                           class="layui-input" value="1"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="button-container">
+            <button type="submit" class="pear-btn pear-btn-primary pear-btn-sm" lay-submit=""
+                    lay-filter="commonRegistryData-save">
+                <i class="layui-icon layui-icon-ok"></i>
+                提交
+            </button>
+            <button type="reset" class="pear-btn pear-btn-sm">
+                <i class="layui-icon layui-icon-refresh"></i>
+                重置
+            </button>
+        </div>
+    </div>
+</form>
+</body>
+<th:block th:include="include :: footer"/>
+<script th:inline="javascript">
+
+    layui.use(['form', 'jquery', 'laydate', 'dictionary'], function () {
+        let form = layui.form;
+        let $ = layui.jquery;
+        let laydate = layui.laydate;
+
+        let prefix = "/mq/commonRegistryData/"
+
+
+        form.on('submit(commonRegistryData-save)', function (data) {
+            for (var key in data.field) {
+                var type = $(data.form).find("input[name='" + key + "']").attr("type");
+                if (type == "checkbox") {
+                    var value = "";
+                    $(data.form).find("input[name='" + key + "']:checked").each(function () {
+                        value += $(this).val() + ",";
+                    })
+                    if (value != "") {
+                        value = value.substr(0, value.length - 1);
+                        data.field[key] = value;
+                    }
+
+                }
+            }
+            $.ajax({
+                url: prefix + 'save',
+                data: JSON.stringify(data.field),
+                dataType: 'json',
+                contentType: 'application/json',
+                type: 'post',
+                success: function (result) {
+                    if (result.success) {
+                        layer.msg(result.msg, {icon: 1, time: 1000}, function () {
+                            parent.layer.close(parent.layer.getFrameIndex(window.name));
+                            parent.layui.table.reload("commonRegistryData-table");
+                        });
+                    } else {
+                        layer.msg(result.msg, {icon: 2, time: 1000});
+                    }
+                }
+            })
+            return false;
+        });
+    });
+</script>
+</html>

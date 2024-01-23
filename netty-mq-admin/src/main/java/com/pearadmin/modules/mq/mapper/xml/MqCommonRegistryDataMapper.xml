@@ -5,35 +5,54 @@
 	
 	<resultMap id="mqCommonRegistryData" type="com.pearadmin.modules.mq.domain.MqCommonRegistryData" >
 		<result column="id" property="id" />
+		<result column="ip" property="ip" />
 		<result column="key" property="key" />
 		<result column="value" property="value" />
-		<result column="updateTime" property="updateTime" />
+		<result column="update_time" property="updateTime" />
 		<result column="status" property="status" />
 	</resultMap>
 
+
+	<select id="selectMqCommonRegistryDataList" parameterType="com.pearadmin.modules.mq.domain.MqCommonRegistryData" resultMap="mqCommonRegistryData">
+		select `id`, `ip` , `key`,`value`,`update_time`,`status` from `mq_common_registry_data`
+		<where>
+			<if test="id != null "> and `id` = #{id}</if>
+			<if test="key != null  and key != ''"> and `key` = #{key}</if>
+			<if test="value != null  and value != ''"> and `value` = #{value}</if>
+			<if test="updateTime != null "> and `update_time` = #{updateTime}</if>
+			<if test="status != null  and status != ''"> and `status` = #{status}</if>
+			<if test="ip == null  and ip == ''"> and `ip`  is not null </if>
+		</where>
+	</select>
+
+
+
 	<sql id="Base_Column_List">
 		t.`id`,
+		t.`ip`,
 		t.`key`,
 		t.`value`,
-		t.`updateTime`,
+		t.`update_time`,
 		t.`status`
 	</sql>
 
 	<update id="refresh" parameterType="com.pearadmin.modules.mq.domain.MqCommonRegistryData"  >
 		UPDATE mq_common_registry_data
 		SET
-			`updateTime` = now()
+			`update_time` = now()
 		WHERE `key` = #{mqCommonRegistryData.key}
 			and `value` = #{mqCommonRegistryData.value}
 	</update>
 
 	<insert id="add" parameterType="com.pearadmin.modules.mq.domain.MqCommonRegistryData" >
 		INSERT INTO mq_common_registry_data (
+            `ip`,
 			`key`,
 			`value`,
-			`updateTime`
+			`update_time`
 		) VALUES
 		(
+			#{mqCommonRegistryData.ip},
 			#{mqCommonRegistryData.key},
 			#{mqCommonRegistryData.value},
 			now()
@@ -49,7 +68,7 @@
 
 	<delete id="cleanData" parameterType="java.util.HashMap" >
 		DELETE FROM mq_common_registry_data
-		WHERE NOW() <![CDATA[ > ]]> DATE_ADD(updateTime, Interval #{timeout} SECOND)
+		WHERE NOW() <![CDATA[ > ]]> DATE_ADD(update_time, Interval #{timeout} SECOND)
 	</delete>
 
 	<delete id="deleteDataValue" parameterType="java.util.HashMap" >

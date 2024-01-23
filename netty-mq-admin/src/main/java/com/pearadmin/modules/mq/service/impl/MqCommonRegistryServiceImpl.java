@@ -219,10 +219,10 @@ public class MqCommonRegistryServiceImpl implements MqCommonRegistryService, Ini
 
     private ExecutorService executorService = Executors.newCachedThreadPool();
     private volatile boolean executorStoped = false;
-    private volatile List<Integer> readedMessageIds = Collections.synchronizedList(new ArrayList<Integer>());
+    private volatile List<Integer> readedMessageIds = Collections.synchronizedList(new ArrayList<>());
 
-    private volatile LinkedBlockingQueue<MqCommonRegistryData> registryQueue = new LinkedBlockingQueue<MqCommonRegistryData>();
-    private volatile LinkedBlockingQueue<MqCommonRegistryData> removeQueue = new LinkedBlockingQueue<MqCommonRegistryData>();
+    private volatile LinkedBlockingQueue<MqCommonRegistryData> registryQueue = new LinkedBlockingQueue<>();
+    private volatile LinkedBlockingQueue<MqCommonRegistryData> removeQueue = new LinkedBlockingQueue<>();
     private Map<String, List<DeferredResult>> registryDeferredResultMap = new ConcurrentHashMap<>();
 
     public static MqCommonRegistryData staticRegistryData;

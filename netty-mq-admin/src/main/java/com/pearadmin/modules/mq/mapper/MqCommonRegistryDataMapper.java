@@ -1,43 +1,49 @@
 package com.pearadmin.modules.mq.mapper;
 
-import com.pearadmin.modules.mq.domain.MqCommonRegistryData;
 import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
+import com.pearadmin.modules.mq.domain.MqCommonRegistryData;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
-
 /**
- * mapper
+ * 已上线的消费者Mapper接口
  *
- * @author 祝杰汉
- * @date 2024-01-18
+ * @author zjh
+ * @date 2024-01-22
  */
 @Mapper
-public interface MqCommonRegistryDataMapper {
+public interface MqCommonRegistryDataMapper extends BaseMapper<MqCommonRegistryData> {
+    /**
+     * 查询已上线的消费者列表
+     *
+     * @param mqCommonRegistryData 已上线的消费者
+     * @return 已上线的消费者集合
+     */
+    List<MqCommonRegistryData> selectMqCommonRegistryDataList(MqCommonRegistryData mqCommonRegistryData);
+
+    int refresh(@Param("mqCommonRegistryData") MqCommonRegistryData mqCommonRegistryData);
+
+    int add(@Param("mqCommonRegistryData") MqCommonRegistryData mqCommonRegistryData);
 
 
-    public int refresh(@Param("mqCommonRegistryData") MqCommonRegistryData mqCommonRegistryData);
+    List<MqCommonRegistryData> findData(@Param("key") String key);
 
-    public int add(@Param("mqCommonRegistryData") MqCommonRegistryData mqCommonRegistryData);
+    int cleanData(@Param("timeout") int timeout);
 
-
-    public List<MqCommonRegistryData> findData(@Param("key") String key);
-
-    public int cleanData(@Param("timeout") int timeout);
-
-    public int deleteDataValue(@Param("key") String key,
+    int deleteDataValue(@Param("key") String key,
                                @Param("value") String value);
 
-    public int count();
+    int count();
 
     // 精确查询 topic
-    public List<MqCommonRegistryData> pageList(@Param("offset") int offset,
+    List<MqCommonRegistryData> pageList(@Param("offset") int offset,
                                                @Param("pagesize") int pagesize,
                                                @Param("key") String key);
 
-    public int pageListCount(@Param("offset") int offset,
+    int pageListCount(@Param("offset") int offset,
                              @Param("pagesize") int pagesize,
                              @Param("key") String key);
 
-    public int updateStatus(@Param("id") long id, @Param("status") String status);
+    int updateStatus(@Param("id") long id, @Param("status") String status);
 }
