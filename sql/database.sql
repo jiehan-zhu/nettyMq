@@ -57,6 +57,51 @@ CREATE TABLE `ACT_GE_BYTEARRAY`  (
   CONSTRAINT `ACT_FK_BYTEARR_DEPL` FOREIGN KEY (`DEPLOYMENT_ID_`) REFERENCES `ACT_RE_DEPLOYMENT` (`ID_`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
+
+CREATE TABLE `mq_common_registry` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `key` varchar(255) NOT NULL COMMENT '注册Key',
+  `data` text NOT NULL COMMENT '注册Value有效数据',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `I_k` (`key`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `mq_common_registry_data` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `ip` varchar(255) DEFAULT NULL COMMENT '客户端ip地址',
+  `key` varchar(255) NOT NULL COMMENT '注册Key',
+  `value` varchar(255) NOT NULL COMMENT '注册Value',
+  `update_time` datetime NOT NULL COMMENT '更新时间',
+  `status` varchar(255) NOT NULL DEFAULT 'RUNNING' COMMENT '状态：RUNNING/STOP',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `I_k_v` (`key`,`value`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='消费者注册表';
+
+
+CREATE TABLE `mq_common_registry_message` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `data` text NOT NULL COMMENT '消息内容',
+  `addTime` datetime NOT NULL COMMENT '添加时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `mq_message` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `topic` varchar(255) NOT NULL COMMENT '消息主题',
+  `group` varchar(255) NOT NULL COMMENT '消息分组',
+  `data` text NOT NULL COMMENT '消息数据',
+  `status` varchar(32) NOT NULL COMMENT '队列状态',
+  `retry_count` int(11) NOT NULL DEFAULT '0' COMMENT '重试次数',
+  `sharding_id` int(11) NOT NULL DEFAULT '0' COMMENT '分片id',
+  `timeout` int(11) NOT NULL DEFAULT '0' COMMENT '超时时间',
+  `effect_time` datetime NOT NULL COMMENT '生效时间',
+  `add_time` datetime NOT NULL COMMENT '创建时间',
+  `log` text NOT NULL COMMENT '消费日志',
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `I_shardingId` (`sharding_id`) USING BTREE,
+  KEY `I_t_g_f_s` (`topic`,`group`,`status`,`effect_time`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='消息主表';
 -- ----------------------------
 -- Records of ACT_GE_BYTEARRAY
 -- ----------------------------
