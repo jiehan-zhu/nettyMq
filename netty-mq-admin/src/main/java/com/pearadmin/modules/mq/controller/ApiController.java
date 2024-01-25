@@ -1,7 +1,8 @@
 package com.pearadmin.modules.mq.controller;
 
-import com.netty.mq.util.PermessionLimit;
+import com.pearadmin.common.aop.annotation.PermessionLimit;
 import com.netty.mq.util.ReturnT;
+import com.pearadmin.common.tools.ServletUtil;
 import com.pearadmin.common.tools.jsoup.JsoupUtil;
 import com.pearadmin.modules.mq.domain.MqCommonRegistryData;
 import com.pearadmin.modules.mq.service.MqCommonRegistryService;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.async.DeferredResult;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -65,7 +65,7 @@ public class ApiController {
     @RequestMapping("/registry")
     @ResponseBody
     @PermessionLimit(limit=false)
-    public ReturnT<String> registry(@RequestBody(required = false) String data, HttpServletRequest request){
+    public ReturnT<String> registry(@RequestBody(required = false) String data ){
 
         // parse data
         XxlRegistryParamVO registryParamVO = null;
@@ -77,7 +77,7 @@ public class ApiController {
         String accessToken = null;
         List<MqCommonRegistryData> registryDataList = null;
         // 获取客户端的 IP 地址
-        String ipAddress = request.getRemoteAddr();
+        String ipAddress = ServletUtil.getIpAddress();
 
         if (registryParamVO != null) {
             accessToken = registryParamVO.getAccessToken();

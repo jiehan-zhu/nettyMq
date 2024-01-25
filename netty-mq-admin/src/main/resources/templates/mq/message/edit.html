@@ -70,15 +70,6 @@
                     </div>
                 </div>
             </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">创建时间：</label>
-                <div class="layui-input-block">
-                    <div class="input-group date">
-                        <input type="text" name="addTime" class="layui-input"
-                               id="addTime" >
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <div class="bottom">
@@ -106,10 +97,10 @@
         let prefix = "/mq/message/";
 
         laydate.render({
-            elem: '#effectTime'
-        });
-        laydate.render({
-            elem: '#addTime'
+            elem: '#effectTime',
+            type: 'datetime',
+            format: 'yyyy-MM-ddTHH:mm:ss',
+            fullPanel: true // 2.8+
         });
 
         form.on('submit(message-update)', function (data) {

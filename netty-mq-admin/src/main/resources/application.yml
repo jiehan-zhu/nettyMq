@@ -33,7 +33,7 @@ pear:
   # Document 配 置 信 息
   swagger:
     # 文 档 标 题
-    title: Pear Admin Boot
+    title: Netty Mq Admin Boot
     # 是 否 开 启
     enable: true
     # 描 述 信 息
@@ -68,7 +68,7 @@ pear:
     remember-key: PEAR_REMEMBER
     # 不 需 要 权 限 拦 截 的 接 口 配 置
     open-api:
-      - /api/**  # mq
+      - /api/**  # mq注册接口
       - /login/**  # 开放登录接口
       - /system/captcha/** # 开放验证码接口
       - /assets/** # 开放静态资源

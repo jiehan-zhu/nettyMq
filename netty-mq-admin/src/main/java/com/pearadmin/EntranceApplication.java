@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 /**
- * Pear Admin Boot 入口
+ * Netty Mq Admin Boot 入口
  * */
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class, DataSourceAutoConfiguration.class, DruidDataSourceAutoConfigure.class, org.activiti.spring.boot.SecurityAutoConfiguration.class})
 public class EntranceApplication {

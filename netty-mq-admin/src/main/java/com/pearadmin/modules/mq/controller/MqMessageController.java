@@ -2,6 +2,7 @@ package com.pearadmin.modules.mq.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.netty.mq.MqMessage;
+import com.netty.mq.util.LogHelper;
 import com.pearadmin.common.web.base.BaseController;
 import com.pearadmin.common.web.domain.request.PageDomain;
 import com.pearadmin.common.web.domain.response.Result;
@@ -70,7 +71,9 @@ public class MqMessageController extends BaseController {
         for (int i = 0; i < Integer.parseInt(mqMessage.getLog()); i++) {
             MqMessage newMsg = new MqMessage();
             BeanUtils.copyProperties(mqMessage,newMsg);
-            newMsg.setLog(null);
+            // log
+            String appendLog = LogHelper.makeLog("手动添加", newMsg.toString());
+            newMsg.setLog(appendLog);
             list.add(newMsg);
         }
         return decide(mqMessageService.save(list));
@@ -94,6 +97,9 @@ public class MqMessageController extends BaseController {
     @PutMapping("/update")
     @PreAuthorize("hasPermission('/mq/message/edit','mq:message:edit')")
     public Result update(@RequestBody MqMessage mqMessage) {
+        // log
+        String appendLog = LogHelper.makeLog("手动修改", mqMessage.toString());
+        mqMessage.setLog(appendLog);
         return decide(mqMessageService.update(mqMessage));
     }
 

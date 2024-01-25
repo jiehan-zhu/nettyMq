@@ -3,10 +3,14 @@ package com.pearadmin.modules.sys.controller;
 import com.pearadmin.common.aop.annotation.Log;
 import com.pearadmin.common.aop.enums.BusinessType;
 import com.pearadmin.common.context.UserContext;
+import com.pearadmin.common.tools.server.CpuInfo;
+import com.pearadmin.common.tools.server.SystemUtil;
 import com.pearadmin.common.web.base.BaseController;
 import com.pearadmin.common.secure.session.SecureSessionService;
 import io.swagger.annotations.Api;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -60,8 +64,14 @@ public class SysEntranceController extends BaseController {
      * Return: 主页视图
      */
     @GetMapping("console")
-    public ModelAndView home() {
-        return jumpPage("console/console");
+//    public ModelAndView home() {
+//        return jumpPage("console/console");
+//    }
+    @PreAuthorize("hasPermission('/system/monitor/main','sys:monitor:main')")
+    public ModelAndView main(Model model) {
+        CpuInfo cpu = SystemUtil.getCpu();
+        model.addAttribute("cpu", cpu);
+        return jumpPage("system/monitor/main");
     }
 
     /**
